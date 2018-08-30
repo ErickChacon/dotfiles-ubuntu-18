@@ -1,0 +1,42 @@
+# ~/.unison/default.prf
+
+# Unison preferences file
+
+# skip asking for confirmations on non-conflicting changes
+auto=true
+
+# the user interface will ask no questions at all
+batch=true
+
+# Unison will request an extra confirmation if it appears that the entire replica has been deleted
+confirmbigdeletes=true
+
+# Unison will use the modification time and length of a file as a `pseudo inode number' when scanning replicas for updates, instead of reading the full cont$
+fastcheck=true
+
+# the group attributes of the files are synchronized
+group=true
+
+# the owner attributes of the files are synchronized
+owner=true
+
+# prefer newer version of files in case of conflicts
+prefer=newer
+
+# the textual user interface will print nothing at all, except in the case of errors.
+silent=false
+
+# file modification times (but not directory modtimes) are propagated.
+times=true
+
+# for fat permission.
+fat=true
+
+# ignore .git files
+ignore = Name .git
+
+# igone repositories
+ignore = Path Repositories/*
+ignore = Path Projects/FoodSecurity/5.Studies/MapFoodInse/7.Writing/paper-spmirt/*
+ignorenot = Path Repositories/repos.ecm
+

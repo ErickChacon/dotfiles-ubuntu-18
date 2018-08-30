@@ -1,0 +1,188 @@
+# ~/Documents/Nvim/UltiSnips/r.snippets
+global !p
+
+def ada_case(word):
+	out = word[0].upper()
+	for i in range(1, len(word)):
+		if word[i] == '-':
+			out = out + '.'
+		elif word[i - 1] == '_' or word[i - 1] == '-':
+			out = out + word[i].upper()
+		else:
+			out = out + word[i]
+	return out
+
+endglobal
+
+# Change defaults snippets.
+snippet wh "while loop"
+while ($1) {
+	$2
+}
+endsnippet
+
+# New snippets
+
+# Function
+snippet fun1 "Define function in one line." b
+${1:fun} <- function ($2) $3
+endsnippet
+
+# Operators
+snippet switch
+switch (${1:object},
+	${2:case} = ${3:action}
+)
+endsnippet
+
+# Timing
+snippet syst "Time to run code." b
+${1:ini} <- Sys.time()
+${0}
+print(Sys.time() - $1)
+endsnippet
+
+# Manage dataset
+snippet save "Save dataset." b
+save(${1:data}, file = file.path(${2:path_tidy}, "${3:data}.RData"))
+endsnippet
+
+# Information
+snippet sec "Section label" b
+# ${1:SECTION}`!p snip.rv = (73 - len(t[1])) * "-" + "-----"`
+endsnippet
+# 72
+
+snippet once "Include header once only guard"
+#ifndef ${1:`!p
+if not snip.c:
+	import random, string
+	name = re.sub(r'[^A-Za-z0-9]+','_', snip.fn).upper()
+	rand = ''.join(random.sample(string.ascii_letters+string.digits, 8))
+	snip.rv = ('%s_%s' % (name,rand)).upper()
+else:
+	snip.rv = snip.c`}
+endsnippet
+
+snippet pac "package"
+package ${1:`!p snip.rv = ada_case(snip.basename)`} is
+	$0
+end $1;
+endsnippet
+
+snippet paca "package"
+package ${1:`!p snip.rv = snip.basename.upper()`} is
+	$0
+end $1;
+endsnippet
+snippet title "Roxygen description" b
+#' @title ${1:title}
+#'
+#' @description
+#' \code{${2:function}} ${3:description}.
+#'
+#' @details
+#' ${4:details}.
+#'
+#' @param ${5:par}.
+#'
+#' @return ${6:return}.
+#'
+#' @author ${7:Erick A. Chacon-Montalvan}
+#'
+#' @examples
+#'
+#' $8
+#'
+#' @export
+endsnippet
+
+snippet descr "Script main description" b
+#############################################################################
+## Title: ${1:title}
+## Desc: ${1:description}
+## Status: ${5:running}
+## Author: ${6:Erick A. Chacon-Montalvan}
+## Date: `!v strftime("%d %b %Y")`
+#############################################################################
+
+endsnippet
+## Input: ${3:input}
+## Output: ${4:output}
+
+snippet progress "For loop with progress bar." b
+${0:ids} <- $1
+pb <- txtProgressBar(title = "plop", max = length($0), style = 3)
+for (i in $0) {
+	$2
+	setTxtProgressBar(pb, i)
+}
+close(pb)
+endsnippet
+
+snippet sink "Show output in an external file." b
+sink(file="/dev/null")
+sink()
+endsnippet
+
+# Starting an script.
+snippet rm "remove objects"
+rm(list = ${0:ls()})
+endsnippet
+
+snippet lib "load library"
+library($0)
+endsnippet
+
+snippet pathbw "Define paths for an study" b
+path_proj <- get_path("${0:food-security}.ecm")
+path_tidy <- file.path(path_proj, "4.TidyData")
+path_study <- file.path(path_proj, "5.Studies", "Birthweight")
+path_plots <- file.path(path_study, "6.Figures")
+endsnippet
+
+# Plots output.
+snippet pdf "Save plot output on pdf." b
+pdf(file.path(${0:path_plots}, "$1.pdf"), width = ${2:7})
+dev.off()
+endsnippet
+
+snippet png "Save plot output on png." b
+png2(file.path(${0:path_plots}, "$2.png"))
+dev.off()
+endsnippet
+
+snippet ifpng "Conditional to save plot output on png." b
+if (print) {
+	png2(file.path(${0:path_plots}, "$2.png"), ratio = ${3:0.9})
+	dev.off()
+}
+endsnippet
+
+# Sections
+
+snippet sclean "Clean workspace"
+# CLEAN WORKSPACE AND LOAD PACKAGES --------------------------------------------
+
+rm(list = ${0:ls()})
+
+$1
+endsnippet
+
+snippet ssimul "Simulate sections"
+# SIMULATE DATA ----------------------------------------------------------------
+
+$1
+endsnippet
+
+snippet svis "Visualization section"
+# VISUALIZE DATA ---------------------------------------------------------------
+$1
+endsnippet
+
+
+snippet srun "Run models"
+# RUN MODELS -------------------------------------------------------------------
+
+$1
+endsnippet

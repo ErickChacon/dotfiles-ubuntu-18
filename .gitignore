@@ -1,0 +1,5 @@
+# nerdtree files or oni files
+# *.netrwhist
+/nvim/.netrwhist
+# plop
+# nvim/plop

@@ -1,0 +1,51 @@
+# Text type
+
+snippet article "basic article structure"
+\documentclass[12pt]{article}
+
+\title{$1}
+\author{${2:Erick A. Chacon-Montalvan}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This is the paper's abstract \ldots
+\end{abstract}
+
+\section{Introduction}
+
+
+\bibliographystyle{apalike}
+\bibliography{library}
+
+\end{document}
+endsnippet
+
+snippet bf "Inline Code" i
+\textbf{$0}
+endsnippet
+
+snippet ita "Inline Code" i
+\textit{$0}
+endsnippet
+
+snippet bi "Inline Code" i
+\textbf{\textit{$0}}
+endsnippet
+
+snippet it "Individual item" b
+\item $1
+endsnippet
+
+snippet lab "label"
+\label{$1}
+endsnippet
+
+snippet frame "frame environment"
+\begin{frame}{${1:title}}
+	$2
+\end{frame}
+endsnippet
+

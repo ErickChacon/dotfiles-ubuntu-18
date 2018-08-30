@@ -1,0 +1,82 @@
+#!/bin/bash
+
+function has-session {
+  tmux has-session -t 'test'  2>/dev/null
+}
+
+if has-session ; then
+  tmux a -t 'test'
+  # echo "Session already exists"
+else
+  # windows 1: exploratory
+  cd ~/Documents/Projects/FoodSecurity/5.Studies/Birthweight/2.Exploratory
+  tmux new-session -d -s 'bw' 'nvim'
+  # tmux new-session -s 'bw' 'nvim'
+  # tmux send-keys "cd 2.Exploratory & nvim" C-m
+  tmux split-window -h -p 50 "nvim -c term"
+  # -c './2.Exploratory'
+  # tmux send-keys "nvim -c 'term R'" C-m
+  tmux rename-window "Exploratory"
+  tmux selectp -t 1 # select the first (0) pane
+  # windows 2: notes
+  # tmux new-window
+  # tmux rename-window "Notes"
+  # tmux send-keys "nvim -c 'VimwikiIndex'" C-m
+  # tmux split-window -h -p 50
+  # tmux send-keys "nvim -c 'e ~/Documents/Nvim/Vimwiki/Main\ Todo.md'" C-m
+  # tmux selectp -t 1 # select the first (0) pane
+  # # windows 3: visualization
+  # tmux new-window
+  # tmux rename-window "Visualization"
+  # tmux send-keys "cdbw" C-m
+  # tmux send-keys "cd 5.Visualization" C-m
+  # tmux send-keys "nvim" C-m
+  # tmux split-window -h -p 50 -c  '../5.Visualization'
+  # # tmux split-window -h -p 50 -c  '#{pane_current_path}'
+  # tmux send-keys "nvim -c 'term R'" C-m
+  # tmux selectp -t 1 # select the first (0) pane
+  # # windows 4: writing
+  # tmux new-window
+  # tmux rename-window "Writing"
+  # tmux send-keys "cdbw" C-m
+  # tmux send-keys "cd 7.Writing" C-m
+  # tmux send-keys "nvim birth-weight.tex" C-m
+  # # tmux send-keys "nvim -c 'e birth-weight.tex'" C-m
+  # # windows 5: day2day
+  # tmux new-window
+  # tmux rename-window "Day2Day"
+  # tmux send-keys "cdre" C-m
+  # tmux send-keys "cd day2day/R" C-m
+  # tmux send-keys "nvim" C-m
+  # # tmux split-window -h -p 50 -c  '#{pane_current_path}'
+  # tmux split-window -h -p 50
+  # tmux send-keys "cdre" C-m
+  # tmux send-keys "cd day2day/R" C-m
+  # tmux send-keys "nvim -c 'term R'" C-m
+  # tmux selectp -t 1 # select the first (0) pane
+  # # windows 6: cleaning
+  # tmux new-window
+  # tmux rename-window "Cleaning"
+  # tmux send-keys "cdf" C-m
+  # tmux send-keys "cd 3.CleanScripts" C-m
+  # tmux send-keys "nvim" C-m
+  # tmux split-window -h -p 50
+  # tmux send-keys "cdf" C-m
+  # tmux send-keys "cd 3.CleanScripts" C-m
+  # # tmux split-window -h -p 50 -c  '#{pane_current_path}'
+  # tmux send-keys "nvim -c 'term R'" C-m
+  # tmux selectp -t 1 # select the first (0) pane
+  # # windows 6: cleaning
+  # tmux new-window
+  # tmux rename-window "Modelling"
+  # tmux send-keys "cdbw" C-m
+  # tmux send-keys "cd 3.Modelling" C-m
+  # tmux send-keys "nvim" C-m
+  # tmux split-window -h -p 50 -c  '../3.Modelling'
+  # tmux send-keys "nvim -c 'term R'" C-m
+  # tmux selectp -t 1 # select the first (0) pane
+  # # tmux send-keys "nvim" C-m
+  # # focus on the windows of interest
+  # tmux select-window -t "Exploratory"
+  tmux attach-session -d
+fi

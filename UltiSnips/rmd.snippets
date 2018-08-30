@@ -1,0 +1,28 @@
+snippet knitr "knitr general options" b
+\`\`\`{r setup, include=FALSE}
+knitr::opts_knit$set(base.dir = '/home/chaconmo/Documents/Repositories/erickchacon/assets/images/')
+knitr::opts_chunk$set(echo = TRUE, fig.path = "2017-04-22-visualizing-extremes-", fig.height = 5, dpi = 200)
+\`\`\`
+endsnippet
+
+snippet r "r chunk" b
+\`\`\`{r}
+$1
+\`\`\`
+endsnippet
+
+snippet header "description"
+---
+title: "$1"
+author: "Erick A. Chacon-Montalvan"
+date: "`!v strftime("%d %b %Y")`"
+output: html_document
+---
+
+\`\`\`{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center")
+knitr::opts_chunk$set(fig.width = 12, fig.height = 7)
+options(width = 100)
+\`\`\`
+endsnippet
+

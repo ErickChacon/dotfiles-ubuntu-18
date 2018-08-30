@@ -1,0 +1,29 @@
+# !/bin/bash
+
+function has-session {
+  tmux has-session -t 'dev'  2>/dev/null
+}
+
+if has-session ; then
+  tmux a -t 'dev'
+  # echo "Session already exists"
+else
+  # main work directory:
+  proj="/home/chaconmo/Documents/Repositories/day2day/"
+  # window 1: day2day package
+  tmux new-session -d -c $proj"R" -s 'dev'
+  tmux rename-window "day2day"
+  tmux send-keys 'nvim' C-m
+  # focus on window:
+  # tmux select-window -t "day2day"
+  tmux attach-session -d
+fi
+
+
+# Some notes on tmux:
+# We can load R on the terminal with:
+# tmux send-keys "nvim -c 'term R'" C-m
+# Split window, change directory, horizontal, 50% and load R on terminal emul
+# tmux split-window -c "2.Exploratory" -h -p 50 "nvim -c 'term R'"
+# select pane
+# tmux selectp -t 1 # select the first (0) pane
