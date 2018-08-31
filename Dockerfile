@@ -44,7 +44,6 @@ RUN curl -OL \
   tic xterm-256color-italic.terminfo && \
   rm xterm-256color-italic.terminfo
 
-
 # R {{{1
 
 # pandoc
