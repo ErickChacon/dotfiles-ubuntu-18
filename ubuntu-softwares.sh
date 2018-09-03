@@ -1,33 +1,28 @@
 #!/bin/sh
 
 # UPDATE AND UPGRADE {{{1
-sudo apt-get update
-sudo apt-get upgrade -y
-sudo apt autoremove
+sudo apt-get update && sudo apt-get upgrade -y && sudo apt autoremove
 
 # SOFTWARE FOR INSTALLATION {{{1
-sudo apt-get install git -y
-sudo apt-get install curl -y
+sudo apt-get install -y git curl wget
 
 # NEOVIM {{{1
 
 # requirements
-sudo apt-get install software-properties-common -y
-sudo apt-get install python-pip python3-pip -y
-pip2 install neovim --user
-pip3 install neovim --user
-sudo apt-get install ruby ruby-dev -y
-sudo gem install neovim
+sudo apt-get install -y software-properties-common python-pip python3-pip && \
+  pip2 install neovim --user && \
+  pip3 install neovim --user && \
+
+  sudo gem install neovim
 
 # install
-sudo add-apt-repository ppa:neovim-ppa/stable -y
-sudo apt-get update
-sudo apt-get install neovim -y
-sudo apt-get install exuberant-ctags -y
+sudo add-apt-repository ppa:neovim-ppa/stable -y && \
+  sudo apt-get update && \
+  sudo apt-get install -y neovim exuberant-ctags
 
-# plugin manager
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# # plugin manager
+# curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+#   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # TMUX {{{1
 
@@ -35,53 +30,92 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 sudo apt-get install libevent-dev libncurses-dev build-essential -y
 
 # install
-curl -sL https://github.com/tmux/tmux/releases/download/2.5/tmux-2.5.tar.gz | tar xz
-cd tmux-2.5
-./configure && make
-sudo make install
-cd ..
-rm -rf tmux-2.5
+curl -sL https://github.com/tmux/tmux/releases/download/2.7/tmux-2.7.tar.gz | tar xz && \
+  cd tmux-2.7 && \
+  ./configure && make && \
+  sudo make install && \
+  cd .. && \
+  rm -rf tmux-2.7
 
 # italic and true color
-git clone --depth 1 https://github.com/ErickChacon/dotfiles-ubuntu.git
-tic dotfiles-ubuntu/xterm-256color-italic.terminfo
-rm -rf dotfiles-ubuntu
+curl -OL https://github.com/ErickChacon/dotfiles-ubuntu/raw/master/xterm-256color-italic.terminfo && \
+  tic xterm-256color-italic.terminfo && \
+  rm xterm-256color-italic.terminfo
 
 # TERMINAL SETTINGS {{{1
 
 # bash-it
-git clone --depth 1 https://github.com/Bash-it/bash-it.git ~/.bash_it
-~/.bash_it/install.sh -n
+git clone --depth 1 https://github.com/Bash-it/bash-it.git ~/.bash_it && \
+  ~/.bash_it/install.sh -n
 
 # powerline font
-git clone --depth 1 https://github.com/powerline/fonts.git
-fonts/install.sh
-rm -rf fonts
+cd && git clone --depth 1 https://github.com/powerline/fonts.git && \
+  fonts/install.sh && \
+  rm -rf fonts
 
 # Devicon font
-git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
-cd nerd-fonts && ./install.sh DroidSansMono && cd ..
-rm -rf nerd-fonts
+cd && git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git && \
+  cd nerd-fonts && ./install.sh DroidSansMono && cd .. && \
+  rm -rf nerd-fonts
 
-# terminal colors
-git clone --depth 1 https://github.com/ErickChacon/Gogh.git
-Gogh/themes/gruvbox.dark.soft.sh
-rm -rf Gogh
+# vim plugin manager
+ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# install plugins for nvim
+ mkdir -p ~/.config/nvim/ && \
+  curl -o ~/.config/nvim/init.vim -L \
+  https://github.com/ErickChacon/dotfiles-ubuntu-18/raw/master/nvim/init-docker.vim && \
+  nvim --headless +PlugInstall +UpdateRemotePlugins +qall
+
+# Dotfiles
+RUN git clone --depth 1 https://github.com/ErickChacon/dotfiles-ubuntu.git && \
+  cd dotfiles-ubuntu && chmod +x pull-docker.sh && ./pull-docker.sh && cd .. && \
+  rm -rf dotfiles-ubuntu
+
+# # terminal colors
+# git clone --depth 1 https://github.com/ErickChacon/Gogh.git
+# Gogh/themes/gruvbox.dark.soft.sh
+# rm -rf Gogh
+
+
+# # italic and true color
+# git clone --depth 1 https://github.com/ErickChacon/dotfiles-ubuntu.git
+# tic dotfiles-ubuntu/xterm-256color-italic.terminfo
+# rm -rf dotfiles-ubuntu
 
 # R {{{1
 
 # pandoc
-sudo apt-get install pandoc -y
-sudo apt-get install pandoc-citeproc -y
+sudo apt-get install -y pandoc pandoc-citeproc evince
 
 # install
+sudo apt-get install apt-transport-https && \
+  echo -e "\n## Mirror for R software" | sudo tee -a /etc/apt/sources.list && \
+  sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/" && \
+  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0x51716619e084dab9 && \
+  sudo apt-get update && \
+  sudo apt-get install -y littler r-cran-littler r-base r-base-dev r-recommended && \
+  echo 'options(repos = c(CRAN = "https://cloud.r-project.org/"), download.file.method = "libcurl")' |\
+    sudo tee /etc/R/Rprofile.site && \
+  echo 'source("/etc/R/Rprofile.site")' | sudo tee -a /etc/littler.r && \
+  sudo ln -s /usr/lib/R/site-library/littler/examples/install.r /usr/local/bin/install.r && \
+  sudo ln -s /usr/lib/R/site-library/littler/examples/install2.r /usr/local/bin/install2.r && \
+  sudo ln -s /usr/lib/R/site-library/littler/examples/installGithub.r /usr/local/bin/installGithub.r && \
+  sudo ln -s /usr/lib/R/site-library/littler/examples/testInstalled.r /usr/local/bin/testInstalled.r && \
+  sudo install.r docopt
+
+# openblas for multi-thread
+sudo apt-get update && sudo apt-get install -y libopenblas-base libopenblas-dev
+
+# devtools
 echo "
-## Mirror for R software
-deb https://cloud.r-project.org/bin/linux/ubuntu xenial/" | \
-  sudo tee -a /etc/apt/sources.list
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
-sudo apt-get update
-sudo apt-get install r-base r-base-dev -y
+userdir <- unlist(strsplit(Sys.getenv(\"R_LIBS_USER\"), .Platform\$path.sep))[1L]
+dir.create(userdir, recursive = TRUE)
+.libPaths(c(userdir, .libPaths()))
+" > r-packages.R
+R CMD BATCH r-packages.R
+rm r-packages.R
 
 # initial settings
 echo "
@@ -91,21 +125,53 @@ r[\"CRAN\"] <- \"http://cloud.r-project.org/\"
 options(repos = r)
 })" | sudo tee /etc/R/Rprofile.site
 
-# devtools
-echo "
-userdir <- unlist(strsplit(Sys.getenv(\"R_LIBS_USER\"), .Platform\$path.sep))[1L]
-dir.create(userdir, recursive = TRUE)
-.libPaths(c(userdir, .libPaths()))
-install.packages(\"devtools\")
-" > r-packages.R
-sudo apt-get install libcurl4-openssl-dev libssl-dev -y
-R CMD BATCH r-packages.R
-rm r-packages.R
+# # devtools
+# echo "
+# userdir <- unlist(strsplit(Sys.getenv(\"R_LIBS_USER\"), .Platform\$path.sep))[1L]
+# dir.create(userdir, recursive = TRUE)
+# .libPaths(c(userdir, .libPaths()))
+# install.packages(\"devtools\")
+# " > r-packages.R
+# sudo apt-get install libcurl4-openssl-dev libssl-dev -y
+# R CMD BATCH r-packages.R
+# rm r-packages.R
 
-# colorout for R
-git clone --depth 1 https://github.com/jalvesaq/colorout.git
-R CMD INSTALL colorout
-rm -rf colorout
+
+
+# tidyverse and others
+sudo apt-get update && \
+  sudo apt-get -y install \
+  libxml2-dev \
+  libcairo2-dev \
+  libsqlite3-dev \
+  libmariadbd-dev \
+  libmariadb-client-lgpl-dev \
+  libpq-dev \
+  libssh2-1-dev \
+  unixodbc-dev \
+  libssl-dev \
+  libcurl4-openssl-dev && \
+  my-install2.r --error --deps TRUE --libloc ~/R/x86_64-pc-linux-gnu-library/3.5\
+    tidyverse \
+    dplyr \
+    ggplot2 \
+    devtools \
+    formatR \
+    remotes \
+    selectr \
+    caTools && \
+  install2.r --error --deps TRUE --libloc ~/R/x86_64-pc-linux-gnu-library/3.5\
+    purrrlyr \
+    data.table && \
+  installGithub.r \
+    tidyverse/ggplot2 \
+    jalvesaq/colorout
+
+
+# # colorout for R
+# git clone --depth 1 https://github.com/jalvesaq/colorout.git
+# R CMD INSTALL colorout
+# rm -rf colorout
 
 # rstudio
 wget https://download1.rstudio.org/rstudio-xenial-1.0.153-amd64.deb

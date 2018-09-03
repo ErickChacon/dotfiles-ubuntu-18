@@ -133,42 +133,45 @@ RUN apt-get install silversearcher-ag -y && \
 # RUN apt-get install -y texlive-full latexmk dot2tex okular && \
 #  wget http://mirrors.ctan.org/macros/latex/contrib/titlesec/titlesec.sty -O /usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
 #
-# # Add my user {{{1
-# ARG user1=chaconmo
-# RUN useradd -ms /bin/bash $user1
-# USER $user1
-# WORKDIR /home/$user1
-#
-# # User configuration: terminal settings and dotfiles {{{1
-#
-# # bash-it
-# RUN git clone --depth 1 https://github.com/Bash-it/bash-it.git ~/.bash_it && \
-#   ~/.bash_it/install.sh -n
-#
-# # # powerline font
-# # RUN cd && git clone --depth 1 https://github.com/powerline/fonts.git && \
-# #   fonts/install.sh && \
-# #   rm -rf fonts
-#
-# # # Devicon font
-# # RUN cd && git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git && \
-# #   cd nerd-fonts && ./install.sh DroidSansMono && cd .. && \
-# #   rm -rf nerd-fonts
-#
-# # vim plugin manager
-# RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-#   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-#
-# # install plugins for nvim
-# RUN mkdir -p ~/.config/nvim/ && \
-#   curl -o ~/.config/nvim/init.vim -L \
-#   https://github.com/ErickChacon/dotfiles-ubuntu/raw/master/nvim/init-docker.vim && \
-#   nvim --headless +PlugInstall +UpdateRemotePlugins +qall
-#
-# # Dotfiles
-# RUN git clone --depth 1 https://github.com/ErickChacon/dotfiles-ubuntu.git && \
-#   cd dotfiles-ubuntu && chmod +x pull-docker.sh && ./pull-docker.sh && cd .. && \
-#   rm -rf dotfiles-ubuntu
-#
-# # CMD ["nvim", "-v"]
-# # ENTRYPOINT nvim
+
+
+
+# Add my user {{{1
+ARG user1=chaconmo
+RUN useradd -ms /bin/bash $user1
+USER $user1
+WORKDIR /home/$user1
+
+# User configuration: terminal settings and dotfiles {{{1
+
+# bash-it
+RUN git clone --depth 1 https://github.com/Bash-it/bash-it.git ~/.bash_it && \
+  ~/.bash_it/install.sh -n
+
+# # powerline font
+# RUN cd && git clone --depth 1 https://github.com/powerline/fonts.git && \
+#   fonts/install.sh && \
+#   rm -rf fonts
+
+# # Devicon font
+# RUN cd && git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git && \
+#   cd nerd-fonts && ./install.sh DroidSansMono && cd .. && \
+#   rm -rf nerd-fonts
+
+# vim plugin manager
+RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# install plugins for nvim
+RUN mkdir -p ~/.config/nvim/ && \
+  curl -o ~/.config/nvim/init.vim -L \
+  https://github.com/ErickChacon/dotfiles-ubuntu/raw/master/nvim/init-docker.vim && \
+  nvim --headless +PlugInstall +UpdateRemotePlugins +qall
+
+# Dotfiles
+RUN git clone --depth 1 https://github.com/ErickChacon/dotfiles-ubuntu.git && \
+  cd dotfiles-ubuntu && chmod +x pull-docker.sh && ./pull-docker.sh && cd .. && \
+  rm -rf dotfiles-ubuntu
+
+# CMD ["nvim", "-v"]
+# ENTRYPOINT nvim
