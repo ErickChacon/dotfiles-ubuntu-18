@@ -1,4 +1,3 @@
-
 # Download base image goespatial {{{1
 
 FROM rocker/geospatial
@@ -43,22 +42,14 @@ RUN apt-get update && \
   apt-get install -y exuberant-ctags
 
 # install
-# RUN apt-get install -y neovim exuberant-ctags
 RUN apt-get -t stretch-backports -y install "neovim"
-
 
 # Add my user {{{1
 
-# ARG user1=chaconmo
-# RUN useradd -ms /bin/bash $user1
-# RUN usermod -a -G staff $user1
-# USER $user1
-# WORKDIR /home/$user1
-
 ARG user1=rstudio
-ARG home_user1=/home/$user1
+ENV home_user1=/home/$user1
 USER $user1
-WORKDIR /home/$user1
+WORKDIR $home_user1
 
 # User configuration: terminal settings and dotfiles {{{1
 
@@ -71,25 +62,21 @@ RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # install plugins for neovim
-RUN mkdir -p ~/.config/nvim/ && \
-  curl -o ~/.config/nvim/init.vim -L \
-  https://github.com/ErickChacon/dotfiles-ubuntu/raw/master/nvim/init-docker.vim && \
-  nvim --headless +PlugInstall +UpdateRemotePlugins +qall
+COPY nvim/init-docker.vim $home_user1/.config/nvim/init.vim
+RUN nvim --headless +PlugInstall +UpdateRemotePlugins +qall
 
-# bash_it configuration
-RUN echo "export BASH_IT_THEME='zork'" | \
-  tee -a .bashrc
+# dotfiles
+COPY custom.aliases.bash $home_user1/.bash_it/aliases/
+COPY .bashrc .bash_profile .tmux.conf $home_user1/
+COPY .tmux $home_user1/.tmux/
+COPY nvim $home_user1/.config/nvim/
+# COPY .Rprofile /home/$user1/
 
+# initiallize nvim-r for .cache folder
+RUN mkdir .cache && \
+  nvim plop.R --headless '+call StartR("R")' +qall
 
-# # Dotfiles
-# RUN git clone --depth 1 https://github.com/ErickChacon/dotfiles-ubuntu-18.git && \
-#   cd dotfiles-ubuntu && chmod +x pull-docker.sh && ./pull-docker.sh && cd .. && \
-#   rm -rf dotfiles-ubuntu
+# Change to root for permissions {{{1
 
-# USER root
+USER root
 
-# USER $user1
-# RUN nvim plop.R --headless '+call StartR("R")' +qall
-
-# USER rstudio
-# USER root
