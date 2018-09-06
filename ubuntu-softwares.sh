@@ -63,6 +63,9 @@ sudo apt-get install atom -y
 
 # unison for bidirectional sync
 sudo apt-get install unison -y
+# dotfiles
+curl -o ~/.unison/default.prf -L \
+  https://github.com/ErickChacon/dotfiles-ubuntu-18/raw/master/default.prf
 
 # Mendeley
 wget https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
@@ -113,4 +116,3 @@ docker run hello-world
 sudo apt-get install libxss1 libappindicator1 libindicator7 -y
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome*.deb
-
