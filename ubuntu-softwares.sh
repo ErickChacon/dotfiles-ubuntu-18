@@ -30,8 +30,8 @@ cd && git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git && \
 
 # MANAGMENT AND SYSTEM SOFTWARE {{{1
 
-# # tweak-tool
-# sudo apt-get install gnome-tweak-tool -y
+# tweak-tool
+sudo apt-get install gnome-tweak-tool -y
 
 # synaptic
 sudo apt-get install synaptic -y
