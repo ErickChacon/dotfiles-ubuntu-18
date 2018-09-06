@@ -17,21 +17,8 @@ curl -o ~/.bash_it/aliases/custom.aliases.bash -L \
   https://github.com/ErickChacon/dotfiles-ubuntu-18/raw/master/docker/custom.aliases.bash
 curl -o ~/.bashrc -L \
   https://github.com/ErickChacon/dotfiles-ubuntu-18/raw/master/.bashrc
-
-cp docker/custom.aliases.bash .bash_it/aliases/
-# install plugins for nvim
-curl -o ~/.tmux.conf -L \
-  https://github.com/ErickChacon/dotfiles-ubuntu-18/raw/master/nvim/init-docker.vim && \
-  nvim --headless +PlugInstall +UpdateRemotePlugins +qall
-
-
-
-
-# COPY docker/.bashrc .bash_profile .tmux.conf $home_user1/
-# COPY --chown=rstudio .tmux $home_user1/.tmux/
-# COPY nvim $home_user1/.config/nvim/
-
-
+curl -o ~/.bash_profile -L \
+  https://github.com/ErickChacon/dotfiles-ubuntu-18/raw/master/docker/.bash_profile
 
 # TMUX {{{1
 
@@ -51,10 +38,13 @@ curl -OL https://github.com/ErickChacon/dotfiles-ubuntu/raw/master/xterm-256colo
   tic xterm-256color-italic.terminfo && \
   rm xterm-256color-italic.terminfo
 
+# dotfiles
+curl -o ~/.tmux.conf -L \
+  https://github.com/ErickChacon/dotfiles-ubuntu-18/raw/master/docker/.tmux.conf
+curl -o ~/.bashrc -L \
+  https://github.com/ErickChacon/dotfiles-ubuntu-18/raw/master/.bashrc
+
 # tmux dotfiles
-curl -OL https://github.com/ErickChacon/dotfiles-ubuntu/raw/master/xterm-256color-italic.terminfo && \
-  tic xterm-256color-italic.terminfo && \
-  rm xterm-256color-italic.terminfo
 cp custom.aliases.bash $home_user1/.bash_it/aliases/
 COPY docker/.bashrc .bash_profile .tmux.conf $home_user1/
 
