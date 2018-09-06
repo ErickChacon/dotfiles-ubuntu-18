@@ -6,23 +6,32 @@ sudo apt-get update && sudo apt-get upgrade -y && sudo apt autoremove
 # SOFTWARE FOR INSTALLATION {{{1
 sudo apt-get install -y git curl wget
 
-# NEOVIM {{{1
 
-# requirements
-sudo apt-get install -y software-properties-common python-pip python3-pip && \
-  pip2 install neovim --user && \
-  pip3 install neovim --user && \
-
-  sudo gem install neovim
+# BASH_IT {{{1
 
 # install
-sudo add-apt-repository ppa:neovim-ppa/stable -y && \
-  sudo apt-get update && \
-  sudo apt-get install -y neovim exuberant-ctags
+git clone --depth 1 https://github.com/Bash-it/bash-it.git ~/.bash_it && \
+  ~/.bash_it/install.sh --silent
+# dotfiles
+curl -o ~/.bash_it/aliases/custom.aliases.bash -L \
+  https://github.com/ErickChacon/dotfiles-ubuntu-18/raw/master/docker/custom.aliases.bash
+curl -o ~/.bashrc -L \
+  https://github.com/ErickChacon/dotfiles-ubuntu-18/raw/master/.bashrc
 
-# # plugin manager
-# curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-#   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+cp docker/custom.aliases.bash .bash_it/aliases/
+# install plugins for nvim
+curl -o ~/.tmux.conf -L \
+  https://github.com/ErickChacon/dotfiles-ubuntu-18/raw/master/nvim/init-docker.vim && \
+  nvim --headless +PlugInstall +UpdateRemotePlugins +qall
+
+
+
+
+# COPY docker/.bashrc .bash_profile .tmux.conf $home_user1/
+# COPY --chown=rstudio .tmux $home_user1/.tmux/
+# COPY nvim $home_user1/.config/nvim/
+
+
 
 # TMUX {{{1
 
@@ -42,11 +51,40 @@ curl -OL https://github.com/ErickChacon/dotfiles-ubuntu/raw/master/xterm-256colo
   tic xterm-256color-italic.terminfo && \
   rm xterm-256color-italic.terminfo
 
-# TERMINAL SETTINGS {{{1
+# tmux dotfiles
+curl -OL https://github.com/ErickChacon/dotfiles-ubuntu/raw/master/xterm-256color-italic.terminfo && \
+  tic xterm-256color-italic.terminfo && \
+  rm xterm-256color-italic.terminfo
+cp custom.aliases.bash $home_user1/.bash_it/aliases/
+COPY docker/.bashrc .bash_profile .tmux.conf $home_user1/
 
-# bash-it
-git clone --depth 1 https://github.com/Bash-it/bash-it.git ~/.bash_it && \
-  ~/.bash_it/install.sh -n
+# install plugins for nvim
+curl -o ~/.tmux.conf -L \
+  https://github.com/ErickChacon/dotfiles-ubuntu-18/raw/master/nvim/init-docker.vim && \
+  nvim --headless +PlugInstall +UpdateRemotePlugins +qall
+
+
+
+
+# NEOVIM {{{1
+
+# requirements
+sudo apt-get install -y software-properties-common python-pip python3-pip && \
+  pip2 install neovim --user && \
+  pip3 install neovim --user && \
+  sudo apt-get install -y ruby ruby-dev && \
+  sudo gem install neovim
+
+# install
+sudo add-apt-repository ppa:neovim-ppa/stable -y && \
+  sudo apt-get update && \
+  sudo apt-get install -y neovim exuberant-ctags
+
+# plugin manager
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# TERMINAL SETTINGS {{{1
 
 # powerline font
 cd && git clone --depth 1 https://github.com/powerline/fonts.git && \
@@ -58,9 +96,9 @@ cd && git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git && \
   cd nerd-fonts && ./install.sh DroidSansMono && cd .. && \
   rm -rf nerd-fonts
 
-# vim plugin manager
- curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# # vim plugin manager
+#  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+#   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # install plugins for nvim
  mkdir -p ~/.config/nvim/ && \

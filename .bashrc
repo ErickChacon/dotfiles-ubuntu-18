@@ -69,7 +69,6 @@ export CPLUS_INCLUDE_PATH=/usr/share/R/include
 # export CPLUS_INCLUDE_PATH="/home/chaconmo/R/x86_64-pc-linux-gnu-library/3.4/Rcpp/include":"/home/chaconmo/R/x86_64-pc-linux-gnu-library/3.4/RcppArmadillo/include":"/home/chaconmo/R/x86_64-pc-linux-gnu-library/3.4/RcppTN/include":"/usr/share/R/include"
 export CPLUS_INCLUDE_PATH="$HOME/R/x86_64-pc-linux-gnu-library/3.4/Rcpp/include":"$HOME/R/x86_64-pc-linux-gnu-library/3.4/RcppArmadillo/include":"$HOME/R/x86_64-pc-linux-gnu-library/3.4/RcppTN/include":"/usr/share/R/include"
 # export GCC_INCLUDE_DIR=/usr/share/R/include
-"/usr/local/lib/R/site-library" "/usr/local/lib/R/library" 
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
