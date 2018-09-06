@@ -28,6 +28,13 @@ cd && git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git && \
   cd nerd-fonts && ./install.sh DroidSansMono && cd .. && \
   rm -rf nerd-fonts
 
+# italic and true color
+curl -OL \
+  https://github.com/ErickChacon/dotfiles-ubuntu/raw/master/xterm-256color-italic.terminfo && \
+  tic xterm-256color-italic.terminfo && \
+  rm xterm-256color-italic.terminfo
+
+
 # MANAGMENT AND SYSTEM SOFTWARE {{{1
 
 # tweak-tool
