@@ -9,8 +9,7 @@ if  has-session ; then
 else
 
   # main work directory:
-  proj="/home/chaconmo/Documents/Projects/FoodSecurity/5.Studies/MapFoodInse/"
-  # tmux new-session -d -c $proj"7.Writing/paper-spmirt" -s 'FoodInsecurity'
+  proj="$HOME/Documents/Projects/FoodSecurity/5.Studies/MapFoodInse"
   tmux new-session -d -c $proj -s 'FI-Mapping'
 
   # window: notes
@@ -20,31 +19,31 @@ else
 
   if [[ "$1" == *paper* ]]; then
     # window: paper
-    tmux new-window -c $proj"7.Writing/paper-spmirt"
+    tmux new-window -c "$proj/7.Writing/paper-spmirt"
     tmux rename-window "Paper"
     tmux send-keys "nvim 00-paper.tex" C-m
     # window: outline
-    tmux new-window -c $proj"7.Writing/paper-spmirt"
+    tmux new-window -c "$proj/7.Writing/paper-spmirt"
     tmux rename-window "Outline"
     tmux send-keys "nvim outline_erick.Rmd" C-m
   fi
 
   if [[ "$1" == *dev* ]]; then
     # window: package
-    tmux new-window -c "/home/chaconmo/Documents/Repositories/spmirt"
+    tmux new-window -c "$HOME/Documents/Repositories/spmirt"
     tmux rename-window "Package"
     tmux send-keys "nvim" C-m
     # window: package test
-    tmux new-window -c "/home/chaconmo/Documents/Repositories/spmirt/demos"
+    tmux new-window -c "$HOME/Documents/Repositories/spmirt/demos"
     tmux rename-window "PackageDemos"
     tmux send-keys "nvim" C-m
   fi
 
   if [[ "$1" == *ana* ]]; then
-    path="/home/chaconmo/Documents/Repositories/Food-Security-Amazonia"
-    path+="/8.Analysis/5.FoodInsMapping/"
+    aux_path="$HOME/Documents/Repositories/Food-Security-Amazonia"
+    aux_path+="/8.Analysis/5.FoodInsMapping/"
     # window: data analysis
-    tmux new-window -c $path
+    tmux new-window -c $aux_path
     tmux rename-window "Analysis"
     tmux send-keys "nvim" C-m
   fi

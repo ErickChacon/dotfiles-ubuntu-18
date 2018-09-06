@@ -16,17 +16,17 @@ if (interactive()) {
     quit(save = save, ...)
   }
 
-  # if (!nzchar(Sys.getenv("RSTUDIO_USER_IDENTITY"))) {
-  #   options(width = system("tput cols", intern = TRUE))
-  # }
+  if (!nzchar(Sys.getenv("RSTUDIO_USER_IDENTITY"))) {
+    options(width = system("tput cols", intern = TRUE))
+  }
 
-  # openblas.set.num.threads <- inline::cfunction(signature(ipt = "integer"),
-  #   body = "openblas_set_num_threads(*ipt);",
-  #   otherdefs = c ("extern void openblas_set_num_threads(int);"),
-  #   libargs = c ("-L/opt/openblas/lib -lopenblas"),
-  #   language = "C",
-  #   convention = ".C"
-  #   )
+  openblas.set.num.threads <- inline::cfunction(signature(ipt = "integer"),
+    body = "openblas_set_num_threads(*ipt);",
+    otherdefs = c ("extern void openblas_set_num_threads(int);"),
+    libargs = c ("-L/opt/openblas/lib -lopenblas"),
+    language = "C",
+    convention = ".C"
+    )
 
   # openblas.set.num.threads(4)
 
