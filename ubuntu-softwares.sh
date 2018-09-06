@@ -70,6 +70,7 @@ sudo dpkg -i mendeleydesktop-latest
 rm mendeleydesktop-latest
 
 # dropbox
+sudo apt-get -y install python-gpg
 sudo apt-get install nautilus-dropbox -y
 
 # Gitkraken
