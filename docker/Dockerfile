@@ -51,43 +51,6 @@ RUN sudo apt-get install -y \
   # rstan requirements
   build-essential g++ libssl-dev
 
-# Additional R packages {{{1
-
-# RUN installGithub.r jalvesaq/colorout && \
-#   install2.r --error --deps TRUE languageserver \
-#   RcppArmadillo
-
-# RUN install2.r --error --deps TRUE purrrlyr ggrepel && \
-#   installGithub.r jalvesaq/colorout && \
-#   # visualization
-#   installGithub.r ggobi/ggally clauswilke/ggridges && \
-#   install2.r --error --deps TRUE ggmap && \
-#   # model
-#   install2.r --error --deps TRUE lme4 gamlss R2BayesX coda MBA spam && \
-#   install2.r --error --deps TRUE --repos http://R-Forge.R-project.org bamlss
-#   # spatial
-#   # install2.r --error --deps TRUE fields
-
-# sudo apt-get install -y r-cran-rjava
-# echo "install.packages(\"OpenStreetMap\")" > r-packages.R
-# R CMD BATCH r-packages.R
-
-# # spatial related packages
-# echo "install.packages(\"pdist\")" > r-packages.R
-# R CMD BATCH r-packages.R
-
-# echo "install.packages(\"rbenchmark\")" >> r-packages.R
-
-# echo "install.packages(\"rredis\")" > r-packages.R
-
-
-# # web and markdown
-# echo "install.packages(\"blogdown\")" > r-packages.R
-# echo "blogdown::install_hugo()" >> r-packages.R
-# echo "install.packages(\"formatR\")" >> r-packages.R
-# R CMD BATCH r-packages.R
-
-
 # Tmux {{{1
 
 RUN apt-get install -y \
@@ -100,7 +63,12 @@ RUN apt-get install -y \
   ./configure && make && \
   make install && \
   cd .. && \
-  rm -rf tmux-2.7
+  rm -rf tmux-2.7 && \
+# italic and true color
+  curl -OL \
+  https://github.com/ErickChacon/dotfiles-ubuntu-18/raw/master/docker/xterm-256color-italic.terminfo && \
+  tic xterm-256color-italic.terminfo && \
+  rm xterm-256color-italic.terminfo
 
 # Neovim {{{1
 
@@ -137,7 +105,7 @@ RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # install plugins for neovim
-COPY nvim/init-docker.vim $home_user1/.config/nvim/init.vim
+COPY nvim/plugins.vim $home_user1/.config/nvim/init.vim
 RUN nvim --headless +PlugInstall +UpdateRemotePlugins +qall
 
 # initiallize nvim-r for .cache folder
@@ -146,13 +114,50 @@ RUN mkdir .cache && \
 
 # Dotfiles {{{1
 
-COPY custom.aliases.bash $home_user1/.bash_it/aliases/
-COPY docker/.bashrc .bash_profile .tmux.conf $home_user1/
+COPY --chown=rstudio custom.aliases.bash $home_user1/.bash_it/aliases/
+COPY --chown=rstudio .bashrc .bash_profile .tmux.conf $home_user1/
 COPY --chown=rstudio .tmux $home_user1/.tmux/
-COPY nvim $home_user1/.config/nvim/
-COPY .Rprofile /home/$user1/
+COPY --chown=rstudio nvim $home_user1/.config/nvim/
+COPY --chown=rstudio .Rprofile /home/$user1/
 
 # Change to root for permissions {{{1
 
 USER root
+
+# Additional R packages {{{1
+
+# RUN installGithub.r jalvesaq/colorout && \
+#   install2.r --error --deps TRUE languageserver \
+#   RcppArmadillo
+
+# RUN install2.r --error --deps TRUE purrrlyr ggrepel && \
+#   installGithub.r jalvesaq/colorout && \
+#   # visualization
+#   installGithub.r ggobi/ggally clauswilke/ggridges && \
+#   install2.r --error --deps TRUE ggmap && \
+#   # model
+#   install2.r --error --deps TRUE lme4 gamlss R2BayesX coda MBA spam && \
+#   install2.r --error --deps TRUE --repos http://R-Forge.R-project.org bamlss
+#   # spatial
+#   # install2.r --error --deps TRUE fields
+
+# sudo apt-get install -y r-cran-rjava
+# echo "install.packages(\"OpenStreetMap\")" > r-packages.R
+# R CMD BATCH r-packages.R
+
+# # spatial related packages
+# echo "install.packages(\"pdist\")" > r-packages.R
+# R CMD BATCH r-packages.R
+
+# echo "install.packages(\"rbenchmark\")" >> r-packages.R
+
+# echo "install.packages(\"rredis\")" > r-packages.R
+
+
+# # web and markdown
+# echo "install.packages(\"blogdown\")" > r-packages.R
+# echo "blogdown::install_hugo()" >> r-packages.R
+# echo "install.packages(\"formatR\")" >> r-packages.R
+# R CMD BATCH r-packages.R
+
 
