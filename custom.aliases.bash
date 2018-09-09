@@ -26,20 +26,36 @@ tx() {
   docker exec -it -w /home/rstudio/$current global-docker tmux $1
 }
 
-my-docker() {
+R() {
   current=$(pwd)
   current=${current/"$HOME/"/}
-  docker run --user rstudio --name ${1:global-docker} \
-  -v /home/chaconmo/Documents/:/home/rstudio/Documents \
-  -v /home/chaconmo/.bash_it/aliases/custom.aliases.bash:/home/rstudio/custom.alias.bash \
-  --rm -it -e "TERM=xterm-256color-italic" my-r bash
+  docker exec -it -w /home/rstudio/$current global-docker R
 }
 
 
+my-docker() {
+  current=$(pwd)
+  current=${current/"$HOME/"/}
+  XSOCK=/tmp/.X11-unix && \
+  XAUTH=/tmp/.docker.xauth && \
+  xauth nlist :0 | sed -e "s/^..../ffff/" | xauth -f $XAUTH nmerge - && \
+  docker run --user rstudio --name ${1:global-docker} \
+  -v $XSOCK:$XSOCK -v $XAUTH:$XAUTH \
+  -v /home/chaconmo/Documents/:/home/rstudio/Documents \
+  -v /home/chaconmo/.ssh:/home/rstudio/.ssh \
+  -v /home/chaconmo/.gitconfig:/home/rstudio/.gitconfig \
+  -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
+  --rm -it my-r bash
+}
 
+  # docker run --user rstudio --name ${1:global-docker} \
+  # -v /home/chaconmo/Documents/:/home/rstudio/Documents \
+  # -v /home/chaconmo/.ssh:/home/rstudio/.ssh \
+  # -v /home/chaconmo/.gitconfig:/home/rstudio/.gitconfig \
+  # --rm -it -e "TERM=xterm-256color-italic" my-r bash
 
 # alias vm="docker exec -ti global-docker nvim"
-alias R="docker exec -ti global-docker R"
+# alias R="docker exec -ti global-docker R"
 
 alias cdre='cd ~/Documents/Repositories'
 alias cdno='cd ~/Documents/NotesCodes'
