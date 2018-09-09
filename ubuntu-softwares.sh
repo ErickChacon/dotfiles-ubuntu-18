@@ -84,6 +84,8 @@ sudo apt-get -y install python-gpg
 sudo apt-get install nautilus-dropbox -y
 
 # Gitkraken
+
+sudo apt-get install -y libgnome-keyring0
 wget https://release.gitkraken.com/linux/gitkraken-amd64.deb
 sudo dpkg -i gitkraken-amd64.deb
 
