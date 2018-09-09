@@ -126,20 +126,23 @@ USER root
 
 # Additional R packages {{{1
 
-# RUN installGithub.r jalvesaq/colorout && \
-#   install2.r --error --deps TRUE languageserver \
-#   RcppArmadillo
+RUN \
+  # gui tools
+  installGithub.r jalvesaq/colorout && \
+  install2.r --error --deps TRUE languageserver && \
+  # tidyverse related
+  install2.r --error --deps TRUE purrrlyr && \
+  # cpp
+  install2.r --error --deps TRUE RcppArmadillo \
+  # visualization
+  installGithub.r ggobi/ggally clauswilke/ggridges ggrepel && \
+  install2.r --error --deps TRUE ggmap && \
+  # model
+  install2.r --error --deps TRUE lme4 gamlss R2BayesX coda MBA spam && \
+  install2.r --error --deps TRUE --repos http://R-Forge.R-project.org bamlss && \
+  # spatial
+  install2.r --error --deps TRUE fields
 
-# RUN install2.r --error --deps TRUE purrrlyr ggrepel && \
-#   installGithub.r jalvesaq/colorout && \
-#   # visualization
-#   installGithub.r ggobi/ggally clauswilke/ggridges && \
-#   install2.r --error --deps TRUE ggmap && \
-#   # model
-#   install2.r --error --deps TRUE lme4 gamlss R2BayesX coda MBA spam && \
-#   install2.r --error --deps TRUE --repos http://R-Forge.R-project.org bamlss
-#   # spatial
-#   # install2.r --error --deps TRUE fields
 
 # sudo apt-get install -y r-cran-rjava
 # echo "install.packages(\"OpenStreetMap\")" > r-packages.R
