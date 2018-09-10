@@ -133,10 +133,10 @@ RUN \
   # tidyverse related
   install2.r --error --deps TRUE purrrlyr && \
   # cpp
-  install2.r --error --deps TRUE RcppArmadillo \
+  install2.r --error --deps TRUE RcppArmadillo && \
   # visualization
-  installGithub.r ggobi/ggally clauswilke/ggridges ggrepel && \
-  install2.r --error --deps TRUE ggmap && \
+  installGithub.r ggobi/ggally clauswilke/ggridges && \
+  install2.r --error --deps TRUE ggrepel ggmap && \
   # model
   install2.r --error --deps TRUE lme4 gamlss R2BayesX coda MBA spam && \
   install2.r --error --deps TRUE --repos http://R-Forge.R-project.org bamlss && \
