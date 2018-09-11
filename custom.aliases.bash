@@ -13,12 +13,12 @@ pwd_short() {
 }
 
 # create docker container
-my-docker() {
+start-docker() {
   local current=$(pwd_short)
   XSOCK=/tmp/.X11-unix && \
   XAUTH=/tmp/.docker.xauth && \
   xauth nlist :0 | sed -e "s/^..../ffff/" | xauth -f $XAUTH nmerge - && \
-  docker run --user rstudio --name ${1:-global-docker} \
+  docker run -d --user rstudio --name ${1:-global-docker} \
   -v $XSOCK:$XSOCK -v $XAUTH:$XAUTH \
   -v /home/chaconmo/Documents/:/home/rstudio/Documents \
   -v /home/chaconmo/Dropbox/:/home/rstudio/Dropbox \
@@ -28,6 +28,10 @@ my-docker() {
   -w /home/rstudio$current \
   -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
   --rm -it my-r bash
+}
+
+stop-docker() {
+docker stop ${1:-global-docker}
 }
 
 # execute bash on container
