@@ -38,7 +38,8 @@ RUN apt-get install -y cmake libopenblas-dev liblapack-dev libarpack2-dev && \
 RUN tlmgr update --self && \
   tlmgr install fancyhdr titlesec pgf xcolor tcolorbox environ trimspaces float \
   doublestroke algorithms algorithmicx appendix multirow ctable tablefootnote xifthen \
-  ifmtarg && \
+  ifmtarg anyfontsize todonotes enumitem bbm bbm-macros babel-portuges type1cm ec \
+  collection-fontsrecommended && \
   tlmgr update --self -all && \
   tlmgr path add && \
   fmtutil-sys -all
@@ -50,6 +51,48 @@ RUN sudo apt-get install -y \
   libopenblas-base libopenblas-dev \
   # rstan requirements
   build-essential g++ libssl-dev
+
+# Additional R packages {{{1
+
+RUN \
+  # gui tools
+  installGithub.r jalvesaq/colorout && \
+  install2.r --error --deps TRUE languageserver && \
+  # tidyverse related
+  install2.r --error --deps TRUE purrrlyr && \
+  # cpp
+  install2.r --error --deps TRUE RcppArmadillo && \
+  # visualization
+  installGithub.r ggobi/ggally clauswilke/ggridges && \
+  install2.r --error --deps TRUE ggrepel ggmap && \
+  # model
+  install2.r --error --deps TRUE lme4 gamlss R2BayesX coda MBA spam && \
+  install2.r --error --deps TRUE --repos http://R-Forge.R-project.org bamlss && \
+  # spatial
+  install2.r --error --deps TRUE fields
+
+
+# sudo apt-get install -y r-cran-rjava
+# echo "install.packages(\"OpenStreetMap\")" > r-packages.R
+# R CMD BATCH r-packages.R
+
+# # spatial related packages
+# echo "install.packages(\"pdist\")" > r-packages.R
+# R CMD BATCH r-packages.R
+
+# echo "install.packages(\"rbenchmark\")" >> r-packages.R
+
+# echo "install.packages(\"rredis\")" > r-packages.R
+
+
+# # web and markdown
+# echo "install.packages(\"blogdown\")" > r-packages.R
+# echo "blogdown::install_hugo()" >> r-packages.R
+# echo "install.packages(\"formatR\")" >> r-packages.R
+# R CMD BATCH r-packages.R
+
+
+
 
 # Tmux {{{1
 
@@ -123,54 +166,4 @@ COPY --chown=rstudio .Rprofile /home/$user1/
 # Change to root for permissions {{{1
 
 USER root
-
-# Additional R packages {{{1
-
-RUN \
-  # gui tools
-  installGithub.r jalvesaq/colorout && \
-  install2.r --error --deps TRUE languageserver && \
-  # tidyverse related
-  install2.r --error --deps TRUE purrrlyr && \
-  # cpp
-  install2.r --error --deps TRUE RcppArmadillo && \
-  # visualization
-  installGithub.r ggobi/ggally clauswilke/ggridges && \
-  install2.r --error --deps TRUE ggrepel ggmap && \
-  # model
-  install2.r --error --deps TRUE lme4 gamlss R2BayesX coda MBA spam && \
-  install2.r --error --deps TRUE --repos http://R-Forge.R-project.org bamlss && \
-  # spatial
-  install2.r --error --deps TRUE fields
-
-
-# sudo apt-get install -y r-cran-rjava
-# echo "install.packages(\"OpenStreetMap\")" > r-packages.R
-# R CMD BATCH r-packages.R
-
-# # spatial related packages
-# echo "install.packages(\"pdist\")" > r-packages.R
-# R CMD BATCH r-packages.R
-
-# echo "install.packages(\"rbenchmark\")" >> r-packages.R
-
-# echo "install.packages(\"rredis\")" > r-packages.R
-
-
-# # web and markdown
-# echo "install.packages(\"blogdown\")" > r-packages.R
-# echo "blogdown::install_hugo()" >> r-packages.R
-# echo "install.packages(\"formatR\")" >> r-packages.R
-# R CMD BATCH r-packages.R
-
-
-# Latex packages {{{1
-
-RUN tlmgr update --self && \
-  tlmgr install anyfontsize todonotes enumitem bbm bbm-macros babel-portuges type1cm ec \
-  collection-fontsrecommended && \
-  tlmgr update --self -all && \
-  tlmgr path add && \
-  fmtutil-sys -all
-
 
