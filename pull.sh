@@ -14,3 +14,6 @@ cp custom.aliases.bash ~/.bash_it/aliases/custom.aliases.bash
 # Unison
 mkdir -p ~/.unison
 cp default.prf ~/.unison/default.prf
+
+# Tmux commands
+cp -r .tmux ~/.tmux

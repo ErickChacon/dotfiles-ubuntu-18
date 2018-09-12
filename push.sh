@@ -13,3 +13,6 @@ cp ~/.bash_it/aliases/custom.aliases.bash custom.aliases.bash
 
 # Unison
 cp ~/.unison/default.prf default.prf
+
+# Tmux commands
+cp -r ~/.tmux .tmux
