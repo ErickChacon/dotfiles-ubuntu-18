@@ -164,3 +164,13 @@ RUN \
 # R CMD BATCH r-packages.R
 
 
+# Latex packages {{{1
+
+RUN tlmgr update --self && \
+  tlmgr install anyfontsize todonotes enumitem bbm bbm-macros babel-portuges type1cm ec \
+  collection-fontsrecommended && \
+  tlmgr update --self -all && \
+  tlmgr path add && \
+  fmtutil-sys -all
+
+
