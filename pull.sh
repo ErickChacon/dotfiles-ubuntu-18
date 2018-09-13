@@ -16,4 +16,4 @@ mkdir -p ~/.unison
 cp default.prf ~/.unison/default.prf
 
 # Tmux commands
-cp -r .tmux ~/.tmux
+cp -r .tmux ~/
