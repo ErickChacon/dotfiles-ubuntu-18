@@ -11,7 +11,7 @@ alias txk='tmux kill-session -t'
 
 txo() {
   # echo '.tmux/proj-'$1
-  ./.tmux/proj-$1 $2
+  ~/.tmux/proj-$1 $2
 }
 
 

@@ -24,8 +24,8 @@ start-docker() {
   -v /home/chaconmo/Dropbox/:/home/rstudio/Dropbox \
   -v /home/chaconmo/.ssh:/home/rstudio/.ssh \
   -v /home/chaconmo/.gitconfig:/home/rstudio/.gitconfig \
-  -v /home/chaconmo/.bash_it:/home/rstudio/.bash-it \
   -v /home/chaconmo/.tmux:/home/rstudio/.tmux \
+  -v /home/chaconmo/Documents/Repositories/dotfiles-ubuntu-18/docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash\
   -w /home/rstudio$current \
   -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
   --rm -it my-r bash
@@ -38,7 +38,7 @@ docker stop ${1:-global-docker}
 # execute bash on container
 bs() {
   local current=$(pwd_short)
-  docker exec -it -w /home/rstudio$current global-docker bash
+  docker exec -it -w /home/rstudio$current ${1:-global-docker} bash
 }
 
 # execute nvim on container
@@ -53,15 +53,17 @@ tx() {
   docker exec -it -w /home/rstudio$current global-docker tmux
 }
 
+# open tmux projects on container
+txo() {
+  local current=$(pwd_short)
+  docker exec -it -w /home/rstudio$current global-docker /home/rstudio/.tmux/proj-$1 $2
+}
+
+
 # execute R on container
 R() {
   local current=$(pwd_short)
   docker exec -it -w /home/rstudio$current global-docker R
-}
-
-txo() {
-  # echo '.tmux/proj-'$1
-  ./.tmux/proj-$1 $2
 }
 
   # docker run --user rstudio --name ${1:global-docker} \
