@@ -25,6 +25,7 @@ start-docker() {
   -v /home/chaconmo/.ssh:/home/rstudio/.ssh \
   -v /home/chaconmo/.gitconfig:/home/rstudio/.gitconfig \
   -v /home/chaconmo/.bash_it:/home/rstudio/.bash-it \
+  -v /home/chaconmo/.tmux:/home/rstudio/.tmux \
   -w /home/rstudio$current \
   -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
   --rm -it my-r bash
