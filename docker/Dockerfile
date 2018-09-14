@@ -155,10 +155,6 @@ RUN nvim --headless +PlugInstall +UpdateRemotePlugins +qall
 RUN mkdir .cache && \
   nvim plop.R --headless '+call StartR("R")' +qall
 
-# Terminal software {{{1
-
-RUN apt-get install -y silversearcher-ag
-
 # Dotfiles {{{1
 
 COPY --chown=rstudio custom.aliases.bash $home_user1/.bash_it/aliases/
@@ -170,4 +166,8 @@ COPY --chown=rstudio .Rprofile /home/$user1/
 # Change to root for permissions {{{1
 
 USER root
+
+# Terminal software {{{1
+
+RUN apt-get install -y silversearcher-ag
 
