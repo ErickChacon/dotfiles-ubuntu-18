@@ -171,3 +171,8 @@ USER root
 
 RUN apt-get install -y silversearcher-ag
 
+# Additional R packages {{{1
+RUN \
+  # applied regression
+  install2.r --error --deps TRUE car
+
