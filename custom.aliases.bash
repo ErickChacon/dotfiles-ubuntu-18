@@ -66,23 +66,15 @@ R() {
   docker exec -it -w /home/rstudio$current global-docker R
 }
 
-  # docker run --user rstudio --name ${1:global-docker} \
-  # -v /home/chaconmo/Documents/:/home/rstudio/Documents \
-  # -v /home/chaconmo/.ssh:/home/rstudio/.ssh \
-  # -v /home/chaconmo/.gitconfig:/home/rstudio/.gitconfig \
-  # --rm -it -e "TERM=xterm-256color-italic" my-r bash
 
-# alias vm="docker exec -ti global-docker nvim"
-# alias R="docker exec -ti global-docker R"
-
-# alias tx='docker exec -ti global-docker tmux'
-alias txl='tmux ls'
-alias txn='tmux new -s'
-alias txa='tmux a -t'
-alias txk='tmux kill-session -t'
+# alias txl='tmux ls'
+# alias txn='tmux new -s'
+# alias txa='tmux a -t'
+# alias txk='tmux kill-session -t'
 # alias txo='.tmux/proj-$1'
 
 
+# alias for directories
 alias cdre='cd ~/Documents/Repositories'
 alias cdno='cd ~/Documents/NotesCodes'
 alias cdf='cd ~/Documents/Projects/FoodSecurity'
