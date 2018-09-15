@@ -15,6 +15,7 @@ pwd_short() {
 # create docker container
 start-docker() {
   local current=$(pwd_short)
+  local dot_dir="/home/chaconmo/Documents/Repositories/dotfiles-ubuntu-18"
   XSOCK=/tmp/.X11-unix && \
   XAUTH=/tmp/.docker.xauth && \
   xauth nlist :0 | sed -e "s/^..../ffff/" | xauth -f $XAUTH nmerge - && \
@@ -25,7 +26,8 @@ start-docker() {
   -v /home/chaconmo/.ssh:/home/rstudio/.ssh \
   -v /home/chaconmo/.gitconfig:/home/rstudio/.gitconfig \
   -v /home/chaconmo/.tmux:/home/rstudio/.tmux \
-  -v /home/chaconmo/Documents/Repositories/dotfiles-ubuntu-18/docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash\
+  -v $dot_dir/docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash \
+  -v $dot_dir/docker/.tmux.conf:/home/rstudio/.tmux.conf \
   -w /home/rstudio$current \
   -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
   --rm -it my-r bash
