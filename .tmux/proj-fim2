@@ -47,6 +47,13 @@ else
     tmux send-keys "nvim" C-m
   fi
 
+  if [[ "$1" == *repo* ]]; then
+    # window: repositories
+    tmux new-window -c "$HOME/Documents/Repositories"
+    tmux rename-window "Repos"
+    tmux send-keys "nvim" C-m
+  fi
+
   if [[ "$1" == *paper* ]]; then
     # window: paper
     tmux new-window -c "$proj/7.Writing/paper"

@@ -174,5 +174,20 @@ RUN apt-get install -y silversearcher-ag
 # Additional R packages {{{1
 RUN \
   # applied regression
-  install2.r --error --deps TRUE car
+  install2.r --error --deps TRUE car \
+  # spatial modelling
+  spBayes \
+  # categorical data
+  vcd
+
+RUN \
+  # applied regression
+  install2.r --error --deps TRUE psych
+
+RUN \
+  # my repositories
+  installGithub.r ErickChacon/day2day
+
+
+
 

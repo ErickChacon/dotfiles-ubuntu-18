@@ -28,6 +28,7 @@ start-docker() {
   -v /home/chaconmo/.tmux:/home/rstudio/.tmux \
   -v $dot_dir/docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash \
   -v $dot_dir/docker/.tmux.conf:/home/rstudio/.tmux.conf \
+  -v $dot_dir/R/Makevars:/home/rstudio/.R/Makevars \
   -w /home/rstudio$current \
   -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
   --rm -it my-r bash
