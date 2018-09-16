@@ -38,7 +38,7 @@ curl -OL \
 # MANAGMENT AND SYSTEM SOFTWARE {{{1
 
 # tweak-tool
-sudo apt-get install gnome-tweak-tool -y
+sudo apt-get install -y gnome-tweak-tool chrome-gnome-shell
 
 # synaptic
 sudo apt-get install synaptic -y
