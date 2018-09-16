@@ -1,15 +1,16 @@
-# !/bin/bash
+#!/bin/bash
+project_name='Organizer'
 
 function has-session {
-  tmux has-session -t 'Organizer'  2>/dev/null
+  tmux has-session -t $project_name  2>/dev/null
 }
 
 if has-session ; then
-  tmux a -t 'Organizer'
-  # echo "Session already exists"
+  tmux a -t $project_name
 else
+
   # main work directory:
-  proj="/home/chaconmo/Documents/Nvim/Vimwiki/"
+  proj="$HOME/Documents/Nvim/Vimwiki/"
   tmux new-session -d -c $proj -s 'Organizer'
   # window 1: vimwiki
   tmux rename-window "Notes"

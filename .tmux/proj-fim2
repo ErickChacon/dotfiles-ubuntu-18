@@ -5,7 +5,7 @@ function has-session {
   tmux has-session -t $project_name 2>/dev/null
 }
 
-if  has-session ; then
+if has-session ; then
   tmux a -t $project_name
 else
 

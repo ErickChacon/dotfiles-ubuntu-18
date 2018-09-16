@@ -188,6 +188,14 @@ RUN \
   # my repositories
   installGithub.r ErickChacon/day2day
 
+RUN \
+  # correlation visualization
+  install2.r --error --deps TRUE corrplot
+
+
+
+
+
 
 
 
