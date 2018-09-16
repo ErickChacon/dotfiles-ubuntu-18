@@ -10,7 +10,8 @@ if  has-session ; then
 else
 
   # main work directory:
-  proj="$HOME/Documents/Projects/FoodSecurity/5.Studies/MapFoodInse-Cities"
+  bigproj="$HOME/Documents/Projects/FoodSecurity"
+  proj="$bigproj/5.Studies/MapFoodInse-Cities"
   tmux new-session -d -c $proj -s $project_name
 
   # window: notes
@@ -18,15 +19,21 @@ else
   tmux send-keys \
     'nvim ~/Documents/Nvim/Vimwiki/FI\ Mapping\ using\ Census\ Data.wiki' C-m
 
-  if [[ "$1" == *paper* ]]; then
-    # window: paper
-    tmux new-window -c "$proj/7.Writing/paper"
-    tmux rename-window "Paper"
-    tmux send-keys "nvim 00-paper.tex" C-m
-    # window: outline
-    tmux new-window -c "$proj/7.Writing/paper"
-    tmux rename-window "Outline"
-    tmux send-keys "nvim outline_erick.Rmd" C-m
+  if [[ "$1" == *clean* ]]; then
+    clean_path="$bigproj/3.CleanScripts"
+    # window: cleaning
+    tmux new-window -c $clean_path
+    tmux rename-window "Cleaning"
+    tmux send-keys "nvim" C-m
+  fi
+
+  if [[ "$1" == *ana* ]]; then
+    aux_path="$HOME/Documents/Repositories/Food-Security-Amazonia"
+    aux_path+="/8.Analysis/7.FoodInsMapping"
+    # window: data analysis
+    tmux new-window -c $aux_path
+    tmux rename-window "Analysis"
+    tmux send-keys "nvim" C-m
   fi
 
   if [[ "$1" == *dev* ]]; then
@@ -40,13 +47,22 @@ else
     tmux send-keys "nvim" C-m
   fi
 
-  if [[ "$1" == *ana* ]]; then
-    aux_path="$HOME/Documents/Repositories/Food-Security-Amazonia"
-    aux_path+="/8.Analysis/5.FoodInsMapping/"
-    # window: data analysis
-    tmux new-window -c $aux_path
-    tmux rename-window "Analysis"
+  if [[ "$1" == *repo* ]]; then
+    # window: repositories
+    tmux new-window -c "$HOME/Documents/Repositories"
+    tmux rename-window "Repos"
     tmux send-keys "nvim" C-m
+  fi
+
+  if [[ "$1" == *paper* ]]; then
+    # window: paper
+    tmux new-window -c "$proj/7.Writing/paper"
+    tmux rename-window "Paper"
+    tmux send-keys "nvim 00-paper.tex" C-m
+    # window: outline
+    tmux new-window -c "$proj/7.Writing/paper"
+    tmux rename-window "Outline"
+    tmux send-keys "nvim outline_erick.Rmd" C-m
   fi
 
   # focus on window:
