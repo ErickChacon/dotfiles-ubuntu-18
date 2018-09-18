@@ -38,5 +38,6 @@ ignore = Name .git
 # igone repositories
 ignore = Path Repositories/*
 ignore = Path Projects/FoodSecurity/5.Studies/MapFoodInse/7.Writing/paper-spmirt/*
+ignore = Path texmf/tex/latex/*
 ignorenot = Path Repositories/repos.ecm
 

@@ -15,6 +15,7 @@ pwd_short() {
 # create docker container
 start-docker() {
   local current=$(pwd_short)
+  local repo_dir="/home/chaconmo/Documents/Repositories"
   local dot_dir="/home/chaconmo/Documents/Repositories/dotfiles-ubuntu-18"
   XSOCK=/tmp/.X11-unix && \
   XAUTH=/tmp/.docker.xauth && \
@@ -29,10 +30,14 @@ start-docker() {
   -v $dot_dir/docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash \
   -v $dot_dir/docker/.tmux.conf:/home/rstudio/.tmux.conf \
   -v $dot_dir/R/Makevars:/home/rstudio/.R/Makevars \
+  -v /home/chaconmo/Documents/texmf:/home/rstudio/.TinyTeX/texmf-home \
   -w /home/rstudio$current \
   -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
   --rm -it my-r bash
 }
+
+  # -v /home/chaconmo/texmf:/home/rstudio/.TinyTex/texmf-home \
+  # -v $repo_dir/reserch-notes:/usr/local/lib/R/share/texmf
 
 stop-docker() {
 docker stop ${1:-global-docker}

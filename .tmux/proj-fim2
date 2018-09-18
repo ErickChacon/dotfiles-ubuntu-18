@@ -2,7 +2,7 @@
 project_name='FI-Mapping2'
 
 function has-session {
-  tmux has-session -t $project_name 2>/dev/null
+  tmux has-session -t=$project_name 2>/dev/null
 }
 
 if has-session ; then
@@ -56,13 +56,13 @@ else
 
   if [[ "$1" == *paper* ]]; then
     # window: paper
-    tmux new-window -c "$proj/7.Writing/paper"
+    tmux new-window -c "$proj/7.Writing/paper-map-fi"
     tmux rename-window "Paper"
-    tmux send-keys "nvim 00-paper.tex" C-m
+    tmux send-keys "nvim 01-paper.tex" C-m
     # window: outline
-    tmux new-window -c "$proj/7.Writing/paper"
+    tmux new-window -c "$proj/7.Writing/paper-map-fi"
     tmux rename-window "Outline"
-    tmux send-keys "nvim outline_erick.Rmd" C-m
+    tmux send-keys "nvim 00-outline.Rmd" C-m
   fi
 
   # focus on window:
