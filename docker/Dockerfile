@@ -60,28 +60,30 @@ RUN \
   install2.r --error --deps TRUE languageserver && \
   # tidyverse related
   install2.r --error --deps TRUE purrrlyr && \
-  # cpp
-  install2.r --error --deps TRUE RcppArmadillo && \
+  # cpp and benchmark
+  install2.r --error --deps TRUE RcppArmadillo rbenchmark && \
   # visualization
   installGithub.r ggobi/ggally clauswilke/ggridges && \
-  install2.r --error --deps TRUE ggrepel ggmap && \
-  # model
-  install2.r --error --deps TRUE lme4 gamlss R2BayesX coda MBA spam && \
+  install2.r --error --deps TRUE ggrepel ggmap corrplot && \
+  # spatial related
+  install2.r --error --deps TRUE pdist fields && \
+  # modelling
+  install2.r --error --deps TRUE lme4 gamlss R2BayesX coda MBA spam spBayes && \
   install2.r --error --deps TRUE --repos http://R-Forge.R-project.org bamlss && \
-  # spatial
-  install2.r --error --deps TRUE fields
-
+  # applied regression
+  install2.r --error --deps TRUE car \
+  # categorical data
+  vcd \
+  # applied regression
+  psych && \
+  # my repositories
+  installGithub.r ErickChacon/day2day
 
 # sudo apt-get install -y r-cran-rjava
 # echo "install.packages(\"OpenStreetMap\")" > r-packages.R
 # R CMD BATCH r-packages.R
 
-# # spatial related packages
-# echo "install.packages(\"pdist\")" > r-packages.R
-# R CMD BATCH r-packages.R
-
-# echo "install.packages(\"rbenchmark\")" >> r-packages.R
-
+# rclient for redis
 # echo "install.packages(\"rredis\")" > r-packages.R
 
 
@@ -90,9 +92,6 @@ RUN \
 # echo "blogdown::install_hugo()" >> r-packages.R
 # echo "install.packages(\"formatR\")" >> r-packages.R
 # R CMD BATCH r-packages.R
-
-
-
 
 # Tmux {{{1
 
@@ -157,11 +156,11 @@ RUN mkdir .cache && \
 
 # Dotfiles {{{1
 
-COPY --chown=rstudio custom.aliases.bash $home_user1/.bash_it/aliases/
-COPY --chown=rstudio .bashrc .bash_profile .tmux.conf $home_user1/
+# COPY --chown=rstudio custom.aliases.bash $home_user1/.bash_it/aliases/
+# COPY --chown=rstudio .bashrc .bash_profile .tmux.conf $home_user1/
 # COPY --chown=rstudio .tmux $home_user1/.tmux/
-COPY --chown=rstudio nvim $home_user1/.config/nvim/
-COPY --chown=rstudio .Rprofile /home/$user1/
+# COPY --chown=rstudio nvim $home_user1/.config/nvim/
+# COPY --chown=rstudio .Rprofile /home/$user1/
 
 # Change to root for permissions {{{1
 
@@ -170,32 +169,4 @@ USER root
 # Terminal software {{{1
 
 RUN apt-get install -y silversearcher-ag
-
-# Additional R packages {{{1
-RUN \
-  # applied regression
-  install2.r --error --deps TRUE car \
-  # spatial modelling
-  spBayes \
-  # categorical data
-  vcd
-
-RUN \
-  # applied regression
-  install2.r --error --deps TRUE psych
-
-RUN \
-  # my repositories
-  installGithub.r ErickChacon/day2day
-
-RUN \
-  # correlation visualization
-  install2.r --error --deps TRUE corrplot
-
-
-
-
-
-
-
 

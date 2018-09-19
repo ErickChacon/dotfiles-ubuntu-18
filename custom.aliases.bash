@@ -28,7 +28,12 @@ start-docker() {
   -v /home/chaconmo/.gitconfig:/home/rstudio/.gitconfig \
   -v /home/chaconmo/.tmux:/home/rstudio/.tmux \
   -v $dot_dir/docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash \
+  -v $dot_dir/custom.plugins.bash:/home/rstudio/.bash_it/plugins/custom.plugins.bash \
+  -v $dot_dir/docker/.bashrc:/home/rstudio/.bashrc \
+  -v $dot_dir/docker/.bash_profile:/home/rstudio/.bash_profile \
   -v $dot_dir/docker/.tmux.conf:/home/rstudio/.tmux.conf \
+  -v $dot_dir/docker/.Rprofile:/home/rstudio/.Rprofile \
+  -v $dot_dir/docker/nvim:/home/rstudio/.config/nvim \
   -v $dot_dir/R/Makevars:/home/rstudio/.R/Makevars \
   -v /home/chaconmo/Documents/texmf:/home/rstudio/.TinyTeX/texmf-home \
   -w /home/rstudio$current \
