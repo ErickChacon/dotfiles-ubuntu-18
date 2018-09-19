@@ -24,18 +24,18 @@ start-docker() {
   -v $XSOCK:$XSOCK -v $XAUTH:$XAUTH \
   -v /home/chaconmo/Documents/:/home/rstudio/Documents \
   -v /home/chaconmo/Dropbox/:/home/rstudio/Dropbox \
+  -v /home/chaconmo/Documents/texmf:/home/rstudio/.TinyTeX/texmf-home \
   -v /home/chaconmo/.ssh:/home/rstudio/.ssh \
   -v /home/chaconmo/.gitconfig:/home/rstudio/.gitconfig \
-  -v /home/chaconmo/.tmux:/home/rstudio/.tmux \
-  -v $dot_dir/docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash \
   -v $dot_dir/custom.plugins.bash:/home/rstudio/.bash_it/plugins/custom.plugins.bash \
+  -v $dot_dir/docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash \
   -v $dot_dir/docker/.bashrc:/home/rstudio/.bashrc \
   -v $dot_dir/docker/.bash_profile:/home/rstudio/.bash_profile \
+  -v $dot_dir/docker/.tmux:/home/rstudio/.tmux \
   -v $dot_dir/docker/.tmux.conf:/home/rstudio/.tmux.conf \
   -v $dot_dir/docker/.Rprofile:/home/rstudio/.Rprofile \
   -v $dot_dir/docker/nvim:/home/rstudio/.config/nvim \
-  -v $dot_dir/R/Makevars:/home/rstudio/.R/Makevars \
-  -v /home/chaconmo/Documents/texmf:/home/rstudio/.TinyTeX/texmf-home \
+  -v $dot_dir/docker/R/Makevars:/home/rstudio/.R/Makevars \
   -w /home/rstudio$current \
   -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
   --rm -it my-r bash

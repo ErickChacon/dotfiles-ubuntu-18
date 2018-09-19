@@ -12,6 +12,3 @@ ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/custom.plugins.bash \
 mkdir -p ~/.unison
 ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/default.prf ~/.unison/default.prf
 
-# Tmux commands
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.tmux ~/.tmux
-
