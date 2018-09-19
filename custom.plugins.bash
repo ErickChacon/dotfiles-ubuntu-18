@@ -59,6 +59,7 @@ pull_my_repos() {
 
   for repo in ${repos[@]}; do
     cd $repo
+    echo $repo
     git pull
   done
 
@@ -75,6 +76,7 @@ push_my_repos() {
 
   for repo in ${repos[@]}; do
     cd $repo
+    echo $repo
     git add -A
     git commit -m ${1:-automatic-push}
     git push
