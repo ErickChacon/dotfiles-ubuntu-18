@@ -35,6 +35,7 @@ my_repos() {
 pull_repos() {
   for folder in */ ; do
     cd $folder
+    echo $folder
     git pull
     cd ..
   done
@@ -44,6 +45,7 @@ pull_repos() {
 push_repos() {
   for folder in */ ; do
     cd $folder
+    echo $folder
     git add -A
     git commit -m ${1:-automatic-push}
     git push
