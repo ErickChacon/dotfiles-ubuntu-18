@@ -56,11 +56,11 @@ else
 
   if [[ "$1" == *paper* ]]; then
     # window: paper
-    tmux new-window -c "$proj/7.Writing/paper-map-fi"
+    tmux new-window -c "$proj/7.Writing/paper-mapfi"
     tmux rename-window "Paper"
     tmux send-keys "nvim 01-paper.tex" C-m
     # window: outline
-    tmux new-window -c "$proj/7.Writing/paper-map-fi"
+    tmux new-window -c "$proj/7.Writing/paper-mapfi"
     tmux rename-window "Outline"
     tmux send-keys "nvim 00-outline.Rmd" C-m
   fi
