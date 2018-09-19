@@ -34,6 +34,7 @@ start-docker() {
   -v $dot_dir/docker/.tmux:/home/rstudio/.tmux \
   -v $dot_dir/docker/.tmux.conf:/home/rstudio/.tmux.conf \
   -v $dot_dir/docker/.Rprofile:/home/rstudio/.Rprofile \
+  -v $dot_dir/docker/.ctags:/home/rstudio/.ctags \
   -v $dot_dir/docker/nvim:/home/rstudio/.config/nvim \
   -v $dot_dir/docker/R/Makevars:/home/rstudio/.R/Makevars \
   -w /home/rstudio$current \

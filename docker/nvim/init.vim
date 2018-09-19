@@ -756,8 +756,9 @@ let g:deoplete#enable_at_startup = 1
 " If you want :UltiSnipsEdit to split your window.
 " let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsEditSplit="context"
-let g:UltiSnipsSnippetsDir=$HOME.'/Documents/Nvim/UltiSnips' " where to create my snippets
-let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/Documents/Nvim/UltiSnips'] " It is necessary to define defaults snippets and your directory
+" let g:UltiSnipsSnippetsDir=$HOME.'/Documents/Nvim/UltiSnips' " where to create my snippets
+let g:UltiSnipsSnippetsDir=$HOME.'/Documents/Repositories/dotfiles-ubuntu-18/UltiSnips' " where to create my snippets
+let g:UltiSnipsSnippetDirectories=["UltiSnips", $HOME.'/Documents/Repositories/dotfiles-ubuntu-18/UltiSnips'] " It is necessary to define defaults snippets and your directory
 " Add markdown snippets to vimwiki buffer
 " inoremap <silent><buffer> <expr><Right> pumvisible() ? deoplete#close_popup() : "<CR>"
 let g:UltiSnipsExpandTrigger="nop"
