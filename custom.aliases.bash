@@ -22,11 +22,11 @@ start-docker() {
   xauth nlist :0 | sed -e "s/^..../ffff/" | xauth -f $XAUTH nmerge - && \
   docker run -d --user rstudio --name ${1:-global-docker} \
   -v $XSOCK:$XSOCK -v $XAUTH:$XAUTH \
-  -v /home/chaconmo/Documents/:/home/rstudio/Documents \
-  -v /home/chaconmo/Dropbox/:/home/rstudio/Dropbox \
-  -v /home/chaconmo/Documents/texmf:/home/rstudio/.TinyTeX/texmf-home \
-  -v /home/chaconmo/.ssh:/home/rstudio/.ssh \
-  -v /home/chaconmo/.gitconfig:/home/rstudio/.gitconfig \
+  -v $HOME/Documents/:/home/rstudio/Documents \
+  -v $HOME/Dropbox/:/home/rstudio/Dropbox \
+  -v $HOME/Documents/texmf:/home/rstudio/.TinyTeX/texmf-home \
+  -v $HOME/.ssh:/home/rstudio/.ssh \
+  -v $HOME/.gitconfig:/home/rstudio/.gitconfig \
   -v $dot_dir/custom.plugins.bash:/home/rstudio/.bash_it/plugins/custom.plugins.bash \
   -v $dot_dir/docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash \
   -v $dot_dir/docker/.bashrc:/home/rstudio/.bashrc \
@@ -39,9 +39,8 @@ start-docker() {
   -v $dot_dir/docker/R/Makevars:/home/rstudio/.R/Makevars \
   -w /home/rstudio$current \
   -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
-  --rm -it my-r bash
+  --rm -it erickchacon/stat-toolbox bash
 }
-
   # -v /home/chaconmo/texmf:/home/rstudio/.TinyTex/texmf-home \
   # -v $repo_dir/reserch-notes:/usr/local/lib/R/share/texmf
 

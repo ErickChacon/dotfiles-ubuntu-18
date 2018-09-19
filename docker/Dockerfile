@@ -156,11 +156,11 @@ RUN mkdir .cache && \
 
 # Dotfiles {{{1
 
-# COPY --chown=rstudio custom.aliases.bash $home_user1/.bash_it/aliases/
-# COPY --chown=rstudio .bashrc .bash_profile .tmux.conf $home_user1/
-# COPY --chown=rstudio .tmux $home_user1/.tmux/
-# COPY --chown=rstudio nvim $home_user1/.config/nvim/
-# COPY --chown=rstudio .Rprofile /home/$user1/
+COPY --chown=rstudio custom.aliases.bash $home_user1/.bash_it/aliases/
+COPY --chown=rstudio .bashrc .bash_profile .tmux.conf $home_user1/
+COPY --chown=rstudio .Rprofile /home/$user1/
+COPY --chown=rstudio nvim $home_user1/.config/nvim/
+COPY --chown=rstudio R/Makevars $home_user1/.R/
 
 # Change to root for permissions {{{1
 
@@ -169,4 +169,8 @@ USER root
 # Terminal software {{{1
 
 RUN apt-get install -y silversearcher-ag
+
+# Neovim {{{1
+# RUN \
+#   update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
 

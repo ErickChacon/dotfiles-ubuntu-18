@@ -65,8 +65,8 @@ sudo apt-get install okular -y
 # sudo apt-get update
 # sudo apt-get install atom -y
 
-# vim
-sudo apt-get install vim
+# neovim
+sudo apt-get install -y neovim
 
 
 # SYNC SOFTWARE {{{1
