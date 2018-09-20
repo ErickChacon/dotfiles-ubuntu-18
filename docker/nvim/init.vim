@@ -212,14 +212,19 @@ let g:neodark#italics = 1
 " let g:airline_theme='twofirewatch'
 " colorscheme nefertiti
 
+autocmd VimLeave * call
+      \ system('head ' . $HOME . '/Documents/.nvim_active.vim -n -1 > temp.vim; ' .
+      \ 'mv temp.vim ' . $HOME . '/Documents/.nvim_active.vim')
+
 let g:nvim_id = system("pgrep -x 'nvim' | sed -n 1p")
-" echo g:nvim_id
+call writefile([g:nvim_id], $HOME.'/Documents/.nvim_active.vim', 'a')
+let g:nvim_id1 = readfile($HOME.'/Documents/.nvim_active.vim', '', 1)[0]
 
 function! Random()
 python3 << EOF
 import random
 import vim
-random.seed(int(vim.eval("g:nvim_id")))
+random.seed(int(vim.eval("g:nvim_id1")))
 freq = [4, 4, 1, 1, 1, 2, 1, 4]
 total = sum(freq)
 ids_freq = [[i+1] * freq[i] for i in range(len(freq))]
@@ -358,8 +363,8 @@ call system('dconf write /org/gnome/terminal/legacy/profiles:/:' . g:profile_id 
 let g:my_colors = [g:nvim_background, g:nvim_foreground, g:COLOR_01, g:COLOR_02, g:COLOR_03,
       \ g:COLOR_04, g:COLOR_05, g:COLOR_06, g:COLOR_07, g:COLOR_08, g:COLOR_09, g:COLOR_10,
       \ g:COLOR_11, g:COLOR_12, g:COLOR_13, g:COLOR_14, g:COLOR_15, g:COLOR_16]
-call system('touch ' . $HOME . '/Documents/colors.vim')
-call writefile(g:my_colors, $HOME.'/Documents/colors.vim', 'b')
+call system('touch ' . $HOME . '/Documents/.nvim_colors.vim')
+call writefile(g:my_colors, $HOME.'/Documents/.nvim_colors.vim', 'b')
 
 
 " Toggle background colors
