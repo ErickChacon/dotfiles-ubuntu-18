@@ -169,8 +169,3 @@ USER root
 # Terminal software {{{1
 
 RUN apt-get install -y silversearcher-ag
-
-# Neovim {{{1
-# RUN \
-#   update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
-

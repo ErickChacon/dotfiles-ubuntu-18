@@ -220,7 +220,12 @@ python3 << EOF
 import random
 import vim
 random.seed(int(vim.eval("g:nvim_id")))
-value = random.randrange(1, 9)
+freq = [4, 4, 1, 1, 1, 2, 1, 4]
+total = sum(freq)
+ids_freq = [[i+1] * freq[i] for i in range(len(freq))]
+ids_freq = [item for sublist in ids_freq for item in sublist]
+value = random.randrange(1, total)
+value = ids_freq[value]
 vim.command("let g:random_number = %s"% value)
 EOF
 endfunction
@@ -247,7 +252,7 @@ else
     hi Conceal guibg=NONE guifg=#F77669 gui=none
   elseif g:random_number == 4
     colorscheme deus
-  hi texBeginEnd gui=bold,italic guifg=#ffffff
+    hi texBeginEnd gui=bold,italic guifg=#ffffff
   elseif g:random_number == 5
     let g:one_allow_italics = 1
     colorscheme one
@@ -270,10 +275,10 @@ else
     hi Folded gui=none
     hi Comment gui=italic guifg=#2A6B74
   " elseif g:random_number == 9
-  "   colorscheme challenger_deep
-  "   hi Conceal guibg=none guifg=#ff5458
-  "   hi Folded gui=none guibg=#100e23 guifg=#767676
-  "   hi SpellBad guibg=none guifg=none gui=underline
+    " colorscheme challenger_deep
+    " hi Conceal guibg=none guifg=#ff5458
+    " hi Folded gui=none guibg=#100e23 guifg=#767676
+    " hi SpellBad guibg=none guifg=none gui=underline
   endif
 endif
 
@@ -322,9 +327,11 @@ let g:COLOR_11 = synIDattr(synIDtrans(hlID('Define')), 'fg', 'gui') " chaconmo
 let g:COLOR_12 = synIDattr(synIDtrans(hlID('CursorLineNr')), 'fg', 'gui')
 " let g:COLOR_12 = synIDattr(synIDtrans(hlID('Search')), 'fg', 'gui')
 let g:COLOR_13 = synIDattr(synIDtrans(hlID('Number')), 'fg', 'gui')
-let g:COLOR_14 = synIDattr(synIDtrans(hlID('DiffChange')), 'fg', 'gui')
+" let g:COLOR_14 = synIDattr(synIDtrans(hlID('DiffChange')), 'fg', 'gui')
+let g:COLOR_14 = synIDattr(synIDtrans(hlID('String')), 'fg', 'gui')
 let g:COLOR_15 = synIDattr(synIDtrans(hlID('Function')), 'fg', 'gui')
 let g:COLOR_16 = synIDattr(synIDtrans(hlID('TypeDef')), 'fg', 'gui')
+
 
 " let g:COLOR_01 = "#ffffff"
 " let g:COLOR_02 = "#ffffff" " na and git files
@@ -347,6 +354,12 @@ let g:COLOR_16 = synIDattr(synIDtrans(hlID('TypeDef')), 'fg', 'gui')
 " let g:COLOR_16 = "#ffffff"
 
 call system('dconf write /org/gnome/terminal/legacy/profiles:/:' . g:profile_id . '/palette "[' . "'" . g:COLOR_01 . "', '" . g:COLOR_02 . "', '" . g:COLOR_03 . "', '" . g:COLOR_04 . "', '" . g:COLOR_05 . "', '" . g:COLOR_06 . "', '" . g:COLOR_07 . "', '" . g:COLOR_08 . "', '" . g:COLOR_09 . "', '" . g:COLOR_10 . "', '" . g:COLOR_11 . "', '" . g:COLOR_12 . "', '" . g:COLOR_13 . "', '" . g:COLOR_14 . "', '" . g:COLOR_15 . "', '" . g:COLOR_16 . "'" . ']"')
+
+let g:my_colors = [g:nvim_background, g:nvim_foreground, g:COLOR_01, g:COLOR_02, g:COLOR_03,
+      \ g:COLOR_04, g:COLOR_05, g:COLOR_06, g:COLOR_07, g:COLOR_08, g:COLOR_09, g:COLOR_10,
+      \ g:COLOR_11, g:COLOR_12, g:COLOR_13, g:COLOR_14, g:COLOR_15, g:COLOR_16]
+call system('touch ' . $HOME . '/Documents/colors.vim')
+call writefile(g:my_colors, $HOME.'/Documents/colors.vim', 'b')
 
 
 " Toggle background colors

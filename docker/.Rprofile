@@ -3,9 +3,9 @@ if (interactive()) {
   grDevices::X11.options(width = 16, height = 16, pointsize = 24)
 
   library(colorout)
-  setOutputColors(normal = 2, negnum = 0, zero = 3, number = 3, date = 3,
-    string = 6, const = 1, false = c(3, 10, 0), true = c(1, 0, 2), infinite = 5,
-    stderror = 4, warn = c(4, 0, 7), error = c(1, 0, 1), verbose = FALSE,
+  setOutputColors(normal = NA, negnum = 2, zero = 3, number = 3, date = 2,
+    string = 6, const = 1, false = c(1, NA, 2), true = c(1, NA, 1), infinite = 5,
+    stderror = 4, warn = c(1, NA, 1), error = c(1, NA, 1), verbose = FALSE,
     zero.limit = NA)
 
   setHook(packageEvent("grDevices", "onLoad"),
@@ -16,9 +16,9 @@ if (interactive()) {
     quit(save = save, ...)
   }
 
-  # if (!nzchar(Sys.getenv("RSTUDIO_USER_IDENTITY"))) {
-  #   options(width = system("tput cols", intern = TRUE))
-  # }
+  if (!nzchar(Sys.getenv("RSTUDIO_USER_IDENTITY"))) {
+    options(width = system("tput cols", intern = TRUE))
+  }
 
   # openblas.set.num.threads <- inline::cfunction(signature(ipt = "integer"),
   #   body = "openblas_set_num_threads(*ipt);",
