@@ -147,6 +147,7 @@ RUN curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # install plugins for neovim
+RUN mkdir $home_user1/.config
 COPY nvim/plugins.vim $home_user1/.config/nvim/init.vim
 RUN nvim --headless +PlugInstall +UpdateRemotePlugins +qall
 
@@ -169,3 +170,4 @@ USER root
 # Terminal software {{{1
 
 RUN apt-get install -y silversearcher-ag
+# RUN apt-get install -y ranger

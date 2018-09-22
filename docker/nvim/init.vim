@@ -65,7 +65,7 @@ set mouse=a
 
 " Make it obvious where 100 characters is
 set textwidth=85
-set formatoptions=cqt " it changes depending of the filetype
+set formatoptions=cqt " text wraping: it changes depending of the filetype
 " set wrapmargin=0
 " set formatoptions=cq
 " set formatoptions=qrn1

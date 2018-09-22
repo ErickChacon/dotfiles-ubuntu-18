@@ -116,4 +116,8 @@ Plug 'tomtom/tcomment_vim' " easy comment: nice for rmd
 " Plug 'scrooloose/nerdcommenter'
 Plug 'godlygeek/tabular'
 
+" Terminal file manager
+" Plug 'francoiscabrol/ranger.vim'
+" Plug 'rbgrouleff/bclose.vim'
+
 call plug#end()
