@@ -225,7 +225,7 @@ python3 << EOF
 import random
 import vim
 random.seed(int(vim.eval("g:nvim_id1")))
-freq = [4, 4, 1, 1, 1, 2, 1, 4]
+freq = [4, 4, 1, 1, 1, 2, 1, 2]
 total = sum(freq)
 ids_freq = [[i+1] * freq[i] for i in range(len(freq))]
 ids_freq = [item for sublist in ids_freq for item in sublist]
