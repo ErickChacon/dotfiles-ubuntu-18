@@ -69,10 +69,9 @@ sudo apt-get install okular -y
 sudo apt-get install -y neovim
 
 # ranger file explorer
-sudo apt-get install -y ranger
+sudo apt-get install -y ranger caca-utils highlight atool w3m poppler-utils mediainfo
 # ranger --copy-config=all
 # ext pdf, has okular,   X, flag f = okular -- "$@"
-
 
 # SYNC SOFTWARE {{{1
 
