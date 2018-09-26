@@ -12,3 +12,10 @@ ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/custom.plugins.bash \
 mkdir -p ~/.unison
 ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/default.prf ~/.unison/default.prf
 
+# Neovim
+mkdir -p ~/.config/nvim
+ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/nvim/init.vim ~/.config/nvim/init.vim
+
+# Ranger
+mkdir -p ~/.config/ranger
+ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/rc.conf ~/.config/ranger/rc.conf
