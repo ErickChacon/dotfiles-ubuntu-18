@@ -70,6 +70,7 @@ export CPLUS_INCLUDE_PATH=/usr/share/R/include
 export CPLUS_INCLUDE_PATH="$HOME/R/x86_64-pc-linux-gnu-library/3.4/Rcpp/include":"$HOME/R/x86_64-pc-linux-gnu-library/3.4/RcppArmadillo/include":"$HOME/R/x86_64-pc-linux-gnu-library/3.4/RcppTN/include":"/usr/share/R/include"
 # export GCC_INCLUDE_DIR=/usr/share/R/include
 
+
 # Load Bash It
 source $BASH_IT/bash_it.sh
 
@@ -78,3 +79,5 @@ set -o vi
 
 # Fuzzy search for terminal: fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export EDITOR="nvim"
+source ~/.shortcuts

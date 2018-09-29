@@ -19,3 +19,11 @@ ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/nvim/init.vim ~/.config/nvim/i
 # Ranger
 mkdir -p ~/.config/ranger
 ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/rc.conf ~/.config/ranger/rc.conf
+
+# .scripts
+ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.scripts ~/.scripts
+
+# # Profile
+# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.profile ~/.profile
+
+

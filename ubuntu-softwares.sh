@@ -70,7 +70,13 @@ sudo apt-get install -y neovim
 
 # ranger file explorer
 sudo apt-get install -y ranger caca-utils highlight atool w3m poppler-utils mediainfo
-# ranger --copy-config=all
+ranger --copy-config=all
+
+# Devicon plugin
+cd && git clone --depth 1 https://github.com/alexanderjeurissen/ranger_devicons.git && \
+  cd ranger_devicons && make install && cd .. && \
+  rm -rf ranger_devicons
+
 # ext pdf, has okular,   X, flag f = okular -- "$@"
 
 # SYNC SOFTWARE {{{1
