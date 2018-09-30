@@ -1,0 +1,5 @@
+cff       ~/.scripts/folders
+cfc       ~/.scripts/configs
+cfb       ~/.bashrc
+# cfv       ~/.config/nvim/init.vim
+# cfr       ~/.config/ranger/rc.conf

@@ -1,0 +1,18 @@
+h       ~/
+d       ~/Documents
+re      ~/Documents/Repositories
+no      ~/Documents/NotesCodes
+bo      ~/Documents/Books
+f       ~/Documents/Projects/FoodSecurity
+bw      ~/Documents/Projects/FoodSecurity/5.Studies/Birthweight
+cpp     ~/Documents/SelfLearning/Programming/cpp
+pa      ~/Documents/Papers/
+D       ~/Downloads
+m       ~/Music
+pp      ~/Pictures
+wa      ~/Pictures/wallpapers
+# vv      ~/Videos
+s       ~/Documents/Repositories/dotfiles-ubuntu-18/.scripts
+cf      ~/.config
+ic      ~/.icons
+

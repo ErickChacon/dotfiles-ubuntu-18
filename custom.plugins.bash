@@ -108,3 +108,10 @@ cf() {
   cd $(ls | fzf)
 }
 
+# update my shortcuts
+shortcuts() {
+  wget -O - \
+    https://raw.githubusercontent.com/LukeSmithxyz/voidrice/master/.scripts/shortcuts.sh \
+    | bash
+}
+
