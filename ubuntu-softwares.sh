@@ -79,6 +79,35 @@ cd && git clone --depth 1 https://github.com/alexanderjeurissen/ranger_devicons.
 
 # ext pdf, has okular,   X, flag f = okular -- "$@"
 
+# # emacs
+# sudo apt-get install -y emacs
+# sudo apt-get install -y ess
+
+
+# i3-gaps {{{1
+
+# requirements
+sudo apt-get install -y libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm0 libxcb-xrm-dev automake
+
+cd /tmp
+
+# clone the repository
+git clone https://www.github.com/Airblader/i3 i3-gaps
+cd i3-gaps
+
+# compile & install
+autoreconf --force --install
+rm -rf build/
+mkdir -p build && cd build/
+
+# Disabling sanitizers is important for release versions!
+# The prefix and sysconfdir are, obviously, dependent on the distribution.
+../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+make
+sudo make install
+
+cat > /etc/ld.so.conf.d/i3.conf
+
 # SYNC SOFTWARE {{{1
 
 # unison for bidirectional sync
@@ -138,3 +167,10 @@ docker run hello-world
 sudo apt-get install libxss1 libappindicator1 libindicator7 -y
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome*.deb
+
+# CUSTOM {{{1
+
+# numix
+sudo add-apt-repository ppa:numix/ppa && \
+  sudo apt-get update && \
+  sudo apt-get install -y numix-gtk-theme numix-icon-theme-circle
