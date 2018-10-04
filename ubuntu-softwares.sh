@@ -88,6 +88,7 @@ cd && git clone --depth 1 https://github.com/alexanderjeurissen/ranger_devicons.
 
 # requirements
 sudo apt-get install -y libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm0 libxcb-xrm-dev automake
+sudo apt-get install -y i3status
 
 cd /tmp
 
@@ -107,6 +108,20 @@ make
 sudo make install
 
 cat > /etc/ld.so.conf.d/i3.conf
+
+# configure with gnome
+sudo apt-get install -y gnome-flashback
+git clone https://github.com/csxr/i3-gnome.git
+cd i3-gnome
+sudo make install
+# install -m0644 -D session/i3-gnome-xsession.desktop //usr/share/xsessions/i3-gnome.desktop
+# install -m0644 -D session/i3-gnome.desktop //usr/share/applications/i3-gnome.desktop
+# install -m0644 -D session/i3-gnome.session //usr/share/gnome-session/sessions/i3-gnome.session
+# install -m0755 -D session/i3-gnome //usr/bin/i3-gnome
+# install -m0755 -D session/gnome-session-i3 //usr/bin/gnome-session-i3
+
+# for wallpaper
+sudo apt-get install -y feh
 
 # SYNC SOFTWARE {{{1
 

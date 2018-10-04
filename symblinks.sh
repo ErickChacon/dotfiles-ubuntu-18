@@ -26,4 +26,8 @@ ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.scripts ~/.scripts
 # # Profile
 # ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.profile ~/.profile
 
+# i3 config
+ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3-config.sh ~/.config/i3/config
+
+
 
