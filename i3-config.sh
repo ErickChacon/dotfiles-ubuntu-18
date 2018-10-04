@@ -190,8 +190,8 @@ exec --no-startup-id gnome-flashback
 ##############################################################################
 
 exec --no-startup-id feh --bg-fill "$HOME/.config/wall.png"
-for_window [class=".*"] border pixel 0
-hide_edge_borders both
+for_window [class=".*"] border pixel 2
+# hide_edge_borders both
 
 # Fix feh background if screen size/arangement has changed.
 # feh --bg-scale "$HOME/.config/wall.png"
@@ -207,3 +207,25 @@ gaps outer 10
 # set $touchpad DLL06E5:01 06CB:7A13 Touchpad
 # exec --no-startup-id xinput set-prop "$touchpad" "libinput Tapping Enabled" 1
 # exec xinput set-prop "$touchpad" "libinput Tapping Enabled" 1
+
+# ######################################
+# # class                 border  backgr. text    indicator child_border
+# client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+# client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+# client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+# client.urgent           #2f343a #900000 #ffffff #900000   #900000
+# client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+# client.background       #ffffff
+
+set $transparent #00000000
+set $focused #00000000
+# class                 border  backgr. text    indicator child_border
+client.focused          #C5423A #C5423A #C5423A #C5423A   #C5423A
+# client.focused          $transparent $transparent $transparent $transparent   $transparent
+# client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+# client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+# client.urgent           #2f343a #900000 #ffffff #900000   #900000
+# client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+# client.background       #ffffff
+
+bindsym $mod+Ctrl+c exec "killall -q gpick && gpick -p && killall -q gpick"
