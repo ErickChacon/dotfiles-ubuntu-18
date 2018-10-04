@@ -107,7 +107,10 @@ mkdir -p build && cd build/
 make
 sudo make install
 
-cat > /etc/ld.so.conf.d/i3.conf
+# cat > /etc/ld.so.conf.d/i3.conf
+
+# for dmenu
+sudo apt install suckless-tools
 
 # configure with gnome
 sudo apt-get install -y gnome-flashback
