@@ -203,7 +203,7 @@ for_window [class=".*"] border pixel 2
 ##############################################################################
 #
 gaps inner 10
-gaps outer 10
+gaps outer 0
 # # xinput list-props "DLL06E5:01 06CB:7A13 Touchpad"
 # #
 # # xinput set-prop  "DLL06E5:01 06CB:7A13 Touchpad" "libinput Tapping Enabled" 1

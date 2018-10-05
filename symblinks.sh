@@ -33,5 +33,6 @@ ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3-config.sh ~/.config/i3/conf
 # polybar
 ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/launch.sh ~/.config/polybar/launch.sh
 ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar-config.sh ~/.config/polybar/config
+# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar-weather ~/.config/polybar/weather
 
 

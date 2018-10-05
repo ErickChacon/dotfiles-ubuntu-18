@@ -127,7 +127,12 @@ sudo make install
 sudo apt-get install -y feh
 
 # polybar
-sudo apt-get install -y cmake xcb-proto libxcb-randr0-dev libxcb-ewmh-dev python-xcbgen
+sudo apt-get install -y cmake xcb-proto libxcb-randr0-dev libxcb-ewmh-dev python-xcbgen \
+  wireless-tools
+
+# modules
+sudo apt-get install -y libxcb-xkb-dev libdssialsacompat0 libdssialsacompat-dev libpulse-dev \
+  libjsoncpp-dev libmpdclient-dev libmpdclient2 libcurl4 libnl-genl-3-dev
 
 git clone --branch 3.2 --recursive https://github.com/jaagr/polybar
 mkdir polybar/build
@@ -136,6 +141,10 @@ cmake ..
 sudo make install
 make userconfig
 polybar example
+
+# font-awesome
+sudo apt-get install -y fonts-font-awesome
+sudo apt-get install -y gucharmap
 
 # SYNC SOFTWARE {{{1
 
