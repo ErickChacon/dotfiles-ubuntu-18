@@ -166,9 +166,12 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-}
+# bar {
+#         # height 50
+#         # status_command i3status
+#         # i3bar_command i3bar -t
+#         output primary
+# }
 
 ##############################################################################
 
@@ -219,8 +222,10 @@ gaps outer 10
 
 set $transparent #00000000
 set $focused #00000000
+set $col_border #FFB52A
 # class                 border  backgr. text    indicator child_border
-client.focused          #C5423A #C5423A #C5423A #C5423A   #C5423A
+# client.focused          #C5423A #C5423A #C5423A #C5423A   #C5423A
+client.focused          $col_border $col_border $col_border $col_border $col_border $col_border
 # client.focused          $transparent $transparent $transparent $transparent   $transparent
 # client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 # client.unfocused        #333333 #222222 #888888 #292d2e   #222222
@@ -229,3 +234,8 @@ client.focused          #C5423A #C5423A #C5423A #C5423A   #C5423A
 # client.background       #ffffff
 
 bindsym $mod+Ctrl+c exec "killall -q gpick && gpick -p && killall -q gpick"
+
+##############################################################################
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+

@@ -30,5 +30,8 @@ ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.scripts ~/.scripts
 mkdir -p ~/.config/i3/
 ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3-config.sh ~/.config/i3/config
 
+# polybar
+ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/launch.sh ~/.config/polybar/launch.sh
+ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar-config.sh ~/.config/polybar/config
 
 

@@ -126,6 +126,17 @@ sudo make install
 # for wallpaper
 sudo apt-get install -y feh
 
+# polybar
+sudo apt-get install -y cmake xcb-proto libxcb-randr0-dev libxcb-ewmh-dev python-xcbgen
+
+git clone --branch 3.2 --recursive https://github.com/jaagr/polybar
+mkdir polybar/build
+cd polybar/build
+cmake ..
+sudo make install
+make userconfig
+polybar example
+
 # SYNC SOFTWARE {{{1
 
 # unison for bidirectional sync
