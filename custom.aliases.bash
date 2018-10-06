@@ -27,6 +27,7 @@ start-docker() {
   -v $HOME/Documents/texmf:/home/rstudio/.TinyTeX/texmf-home \
   -v $HOME/.ssh:/home/rstudio/.ssh \
   -v $HOME/.gitconfig:/home/rstudio/.gitconfig \
+  -v $HOME/.shortcuts:/home/rstudio/.shortcuts \
   -v $dot_dir/custom.plugins.bash:/home/rstudio/.bash_it/plugins/custom.plugins.bash \
   -v $dot_dir/docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash \
   -v $dot_dir/docker/.bashrc:/home/rstudio/.bashrc \

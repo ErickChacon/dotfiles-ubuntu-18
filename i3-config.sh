@@ -168,9 +168,9 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 # bar {
 #         # height 50
-#         # status_command i3status
+#         status_command i3status
 #         # i3bar_command i3bar -t
-#         output primary
+#         # output primary
 # }
 
 ##############################################################################

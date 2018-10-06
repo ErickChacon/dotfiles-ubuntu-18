@@ -37,7 +37,7 @@ height = 47
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 6.0
-fixed-center = false
+fixed-center = true
 bottom = true
 
 background = ${colors.background}
@@ -69,11 +69,12 @@ font-2 = siji:pixelsize=20;1
 ; label-active-font = 1
 
 ; modules-left = bspwm i3
-modules-left = i3 xwindow
+modules-left = powermenu i3 xwindow
 ; modules-center = networkspeedup networkspeeddown
-modules-center = pulseaudio mpd
+modules-center = cpu
+; mpd
 ; modules-right = filesystem xbacklight xkeyboard memory cpu battery temperature date powermenu
-modules-right = cpu memory battery wlan temperature date
+modules-right = pulseaudio memory battery wlan temperature date
 
 tray-position = right
 tray-padding = 0
@@ -235,7 +236,7 @@ card = intel_backlight
 type = internal/cpu
 interval = 0.5
 format = <label> <ramp-coreload>
-label = CPU
+label = 
 
 ramp-coreload-0 = ▁
 ramp-coreload-0-font = 2
@@ -277,7 +278,8 @@ interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
-label-connected = %essid%
+label-connected = %downspeed:9%
+; label-connected = %essid%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -489,6 +491,41 @@ ramp-foreground = ${colors.foreground-alt}
 ; label = "  %date% %time%"
 ; ; label = "  hila"
 ;
+;
+; [module/powermenu]
+; type = custom/menu
+;
+; format-padding = 5
+;
+; label-open = 
+; label-close = 
+;
+; menu-0-0 = Terminate WM
+; menu-0-0-foreground = #fba922
+; menu-0-0-exec = bspc quit -1
+; menu-0-1 = Reboot
+; menu-0-1-foreground = #fba922
+; menu-0-1-exec = menu_open-1
+; menu-0-2 = Power off
+; menu-0-2-foreground = #fba922
+; menu-0-2-exec = menu_open-2
+;
+; menu-1-0 = Cancel
+; menu-1-0-foreground = #fba922
+; menu-1-0-exec = menu_open-0
+; menu-1-1 = Reboot
+; menu-1-1-foreground = #fba922
+; menu-1-1-exec = sudo reboot
+;
+; menu-2-0 = Power off
+; menu-2-0-foreground = #fba922
+; menu-2-0-exec = sudo poweroff
+; menu-2-1 = Cancel
+; menu-2-1-foreground = #fba922
+; menu-2-1-exec = menu_open-0
+
+
+
 [module/powermenu]
 type = custom/menu
 
@@ -496,27 +533,27 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
+label-open = 
+label-open-foreground = ${colors.foreground}
+label-close = 
+label-close-foreground = ${colors.foreground-alt}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
 menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
+menu-0-0-exec = reboot
 menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+menu-0-1-exec = poweroff
+;
+; menu-1-0 = cancel
+; menu-1-0-exec = menu-open-0
+; menu-1-1 = reboot
+; menu-1-1-exec = sudo reboot
+;
+; menu-2-0 = power off
+; menu-2-0-exec = sudo poweroff
+; menu-2-1 = cancel
+; menu-2-1-exec = menu-open-0
 
 [settings]
 screenchange-reload = true
