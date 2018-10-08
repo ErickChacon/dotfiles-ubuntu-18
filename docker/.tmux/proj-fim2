@@ -58,11 +58,11 @@ else
     # window: paper
     tmux new-window -c "$proj/7.Writing/paper-mapfi"
     tmux rename-window "Paper"
-    tmux send-keys "nvim 01-paper.tex" C-m
+    tmux send-keys "nvim 00-paper.tex" C-m
     # window: outline
     tmux new-window -c "$proj/7.Writing/paper-mapfi"
     tmux rename-window "Outline"
-    tmux send-keys "nvim 00-outline.Rmd" C-m
+    tmux send-keys "nvim README.md" C-m
   fi
 
   # focus on window:
