@@ -1,38 +1,26 @@
-;==========================================================
-;
-;
-;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
-;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
-;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
-;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
-;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
-;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
-;
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/jaagr/polybar
-;
-;   The README contains alot of information
-;
-;==========================================================
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
+background = ${neovim.nvim_background}
 ; background-alt = #444
-background-alt = #222
+; background-alt = #222
+background-alt = ${neovim.nvim_background}
 ;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
-foreground-alt = #7b7b7b
+foreground = ${neovim.nvim_foreground}
+; foreground-alt = #7b7b7b
+foreground-alt = ${neovim.nvim_foreground}
 ; foreground-alt = #555
 ; primary = #ffb52a
-primary = #aaff77
-secondary = #e60053
-alert = #bd2c40
+; primary = #aaff77
+primary = ${neovim.color_11}
+; secondary = #e60053
+secondary = ${neovim.color_03}
+; alert = #bd2c40
+alert = ${neovim.color_12}
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
-; monitor = ${env:MONITOR:}
+monitor = ${env:MONITOR:}
 width = 100%
 height = 47
 ;offset-x = 1%
@@ -164,13 +152,15 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+; label-focused = %index%
+label-focused = %name%
 label-focused-background = ${colors.background-alt}
 label-focused-underline = ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+; label-unfocused = %index%
+label-unfocused = %name%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
@@ -268,7 +258,8 @@ type = internal/memory
 interval = 2
 format-prefix = "RAM "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+; format-underline = #4bffdc
+format-underline = ${neovim.color_02}
 ; label = %percentage_used%%
 
 [module/wlan]
@@ -277,7 +268,8 @@ interface = wlp2s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
+; format-connected-underline = #9f78e1
+format-connected-underline = ${neovim.color_06}
 label-connected = %downspeed:9%
 ; label-connected = %essid%
 
@@ -323,7 +315,8 @@ time-alt = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+; format-underline = #0a6cf5
+format-underline = ${neovim.color_10}
 
 label = "  %date% %time%"
 
@@ -339,13 +332,14 @@ label-muted = 
 label-muted-foreground = #666
 
 bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
+; bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-0 = ${neovim.color_11}
+; bar-volume-foreground-1 = #55aa55
+; bar-volume-foreground-2 = #55aa55
+; bar-volume-foreground-3 = #55aa55
+; bar-volume-foreground-4 = #55aa55
+; bar-volume-foreground-5 = #f5a70a
+; bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
@@ -422,7 +416,8 @@ adapter = AC
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+; format-charging-underline = #ffb52a
+format-charging-underline = ${neovim.color_05}
 
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
@@ -460,7 +455,8 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
+; format-underline = #f50a4d
+format-underline = ${neovim.color_14}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 

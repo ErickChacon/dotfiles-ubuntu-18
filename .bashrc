@@ -81,3 +81,4 @@ set -o vi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export EDITOR="nvim"
 source ~/.shortcuts
+# export col=#aaff77

@@ -115,3 +115,23 @@ shortcuts() {
     | bash
 }
 
+# creeate i3 config file
+i3_config() {
+
+  colors="$HOME/Documents/.nvim_colors.vim"
+  colors_name="$HOME/Documents/.nvim_colors_name.vim"
+  colors_i3="$HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config.colors1.sh"
+  colors_polybar="$HOME/Documents/Repositories/dotfiles-ubuntu-18/polybar/config.colors1.sh"
+  paste $colors_name $colors | awk '{print "set $" $1 " " $2}' > $colors_i3
+  paste $colors_name $colors | awk '{print $1 " = " $2}' > $colors_polybar
+
+  cat $HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config.base.sh \
+    $HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config.colors1.sh \
+    $HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config.colors2.sh > \
+    $HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config
+
+  cat $HOME/Documents/Repositories/dotfiles-ubuntu-18/polybar/config.colors0.sh \
+    $HOME/Documents/Repositories/dotfiles-ubuntu-18/polybar/config.colors1.sh \
+    $HOME/Documents/Repositories/dotfiles-ubuntu-18/polybar/config.main.sh > \
+    $HOME/Documents/Repositories/dotfiles-ubuntu-18/polybar/config
+}

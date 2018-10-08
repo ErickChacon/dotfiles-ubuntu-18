@@ -28,11 +28,11 @@ ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.scripts ~/.scripts
 
 # i3 config
 mkdir -p ~/.config/i3/
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3-config.sh ~/.config/i3/config
+ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3/config ~/.config/i3/config
 
 # polybar
 ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/launch.sh ~/.config/polybar/launch.sh
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar-config.sh ~/.config/polybar/config
+ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar/config ~/.config/polybar/config
 # ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar-weather ~/.config/polybar/weather
 
 
