@@ -29,16 +29,17 @@ height = 27
 radius = 6.0
 fixed-center = true
 bottom = true
-pin-workspaces = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
-line-color = #f00
+line-color = ${colors.background}
+; #f00
 
 border-size = 4
-border-color = #00000000
+border-color = ${colors.background}
+; #00000000
 
 padding-left = 0
 padding-right = 2
@@ -155,7 +156,7 @@ index-sort = true
 wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000
@@ -176,7 +177,7 @@ label-unfocused = %name%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %name%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${neovim.nvim_foreground}
 ; ${self.label-focused-underline}
@@ -542,6 +543,7 @@ expand-right = true
 format-spacing = 1
 
 label-open = 
+; label-open-foreground = ${colors.foreground}
 label-open-foreground = ${colors.foreground}
 label-close = 
 label-close-foreground = ${colors.foreground-alt}

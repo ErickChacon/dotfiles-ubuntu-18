@@ -71,12 +71,10 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
-line-color = ${colors.background}
-; #f00
+line-color = #f00
 
 border-size = 4
-border-color = ${colors.background}
-; #00000000
+border-color = #00000000
 
 padding-left = 0
 padding-right = 2
@@ -214,7 +212,7 @@ label-unfocused = %name%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %name%
+label-visible = %index%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${neovim.nvim_foreground}
 ; ${self.label-focused-underline}
@@ -580,7 +578,6 @@ expand-right = true
 format-spacing = 1
 
 label-open = 
-; label-open-foreground = ${colors.foreground}
 label-open-foreground = ${colors.foreground}
 label-close = 
 label-close-foreground = ${colors.foreground-alt}
