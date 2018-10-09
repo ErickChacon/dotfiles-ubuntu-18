@@ -1,3 +1,40 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;==========================================================
+
+[neovim]
+nvim_background = #32302f
+nvim_foreground = #ebdbb2
+color_01 = #665c54
+color_02 = #fabd2f
+color_03 = #83a598
+color_04 = #d3869b
+color_05 = #d3869b
+color_06 = #83a598
+color_07 = #b8bb26
+color_08 = #fe8019
+color_09 = #665c54
+color_10 = #fb4934
+color_11 = #8ec07c
+color_12 = #fabd2f
+color_13 = #d3869b
+color_14 = #b8bb26
+color_15 = #8ec07c
+color_16 = #fabd2f
 
 [colors]
 ;background = ${xrdb:color0:#222}
@@ -34,12 +71,10 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
-line-color = ${colors.background}
-; #f00
+line-color = #f00
 
 border-size = 4
-border-color = ${colors.background}
-; #00000000
+border-color = #00000000
 
 padding-left = 0
 padding-right = 2
@@ -177,7 +212,7 @@ label-unfocused = %name%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %name%
+label-visible = %index%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${neovim.nvim_foreground}
 ; ${self.label-focused-underline}
@@ -543,7 +578,6 @@ expand-right = true
 format-spacing = 1
 
 label-open = 
-; label-open-foreground = ${colors.foreground}
 label-open-foreground = ${colors.foreground}
 label-close = 
 label-close-foreground = ${colors.foreground-alt}
