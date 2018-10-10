@@ -22,8 +22,8 @@ alert = ${neovim.color_12}
 ;monitor = ${env:MONITOR:HDMI-1}
 monitor = ${env:MONITOR:eDP-1 }
 width = 100%
-; height = 47
-height = 27
+height = 47
+; height = 27
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 6.0
@@ -59,13 +59,13 @@ module-margin-right = 2
 ; label-active-font = 1
 ;
 
-; font-0 = "FontAwesome:size=20;0"
-; font-1 = "DroidSansMono Nerd Font Mono:size=20;0"
-; font-2 = siji:pixelsize=20;1
+font-0 = "FontAwesome:size=20;0"
+font-1 = "DroidSansMono Nerd Font:size=20;0"
+font-2 = siji:pixelsize=20;1
 
-font-0 = "FontAwesome:size=10;0"
-font-1 = "DroidSansMono Nerd Font Mono:size=10;0"
-font-2 = siji:pixelsize=10;1
+; font-0 = "FontAwesome:size=10;0"
+; font-1 = "DroidSansMono Nerd Font Mono:size=10;0"
+; font-2 = siji:pixelsize=10;1
 
 
 modules-left = powermenu i3 xwindow
@@ -278,8 +278,8 @@ format-underline = ${neovim.color_02}
 
 [module/wlan]
 type = internal/network
-; interface = wlp2s0
-interface = wlp6s0
+interface = wlp2s0
+; interface = wlp6s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -328,12 +328,12 @@ date = %b %d -
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
+format-prefix = "  "
 format-prefix-foreground = ${colors.foreground-alt}
 ; format-underline = #0a6cf5
 format-underline = ${neovim.color_10}
 
-label = "  %date% %time%"
+label = %date% %time%
 
 
 [module/pulseaudio]

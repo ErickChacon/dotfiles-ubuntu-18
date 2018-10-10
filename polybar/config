@@ -17,24 +17,24 @@
 ;==========================================================
 
 [neovim]
-nvim_background = #282A36
-nvim_foreground = #F8F8F2
-color_01 = #44475A
-color_02 = #8BE9FD
-color_03 = #F8F8F2
-color_04 = #BD93F9
-color_05 = #BD93F9
-color_06 = #F8F8F2
-color_07 = #F1FA8C
-color_08 = #FF79C6
-color_09 = #44475A
-color_10 = #FF79C6
-color_11 = #FF79C6
-color_12 = #F1FA8C
-color_13 = #BD93F9
-color_14 = #F1FA8C
-color_15 = #50FA7B
-color_16 = #FF79C6
+nvim_background = #282c34
+nvim_foreground = #abb2bf
+color_01 = #3e4452
+color_02 = #e5c07b
+color_03 = #e06c75
+color_04 = #d19a66
+color_05 = #d19a66
+color_06 = #e06c75
+color_07 = #98c379
+color_08 = #61afef
+color_09 = #3e4452
+color_10 = #c678dd
+color_11 = #c678dd
+color_12 = #abb2bf
+color_13 = #d19a66
+color_14 = #98c379
+color_15 = #61afef
+color_16 = #e5c07b
 
 [colors]
 ;background = ${xrdb:color0:#222}
@@ -59,8 +59,8 @@ alert = ${neovim.color_12}
 ;monitor = ${env:MONITOR:HDMI-1}
 monitor = ${env:MONITOR:eDP-1 }
 width = 100%
-; height = 47
-height = 27
+height = 47
+; height = 27
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 6.0
@@ -96,13 +96,13 @@ module-margin-right = 2
 ; label-active-font = 1
 ;
 
-; font-0 = "FontAwesome:size=20;0"
-; font-1 = "DroidSansMono Nerd Font Mono:size=20;0"
-; font-2 = siji:pixelsize=20;1
+font-0 = "FontAwesome:size=20;0"
+font-1 = "DroidSansMono Nerd Font:size=20;0"
+font-2 = siji:pixelsize=20;1
 
-font-0 = "FontAwesome:size=10;0"
-font-1 = "DroidSansMono Nerd Font Mono:size=10;0"
-font-2 = siji:pixelsize=10;1
+; font-0 = "FontAwesome:size=10;0"
+; font-1 = "DroidSansMono Nerd Font Mono:size=10;0"
+; font-2 = siji:pixelsize=10;1
 
 
 modules-left = powermenu i3 xwindow
@@ -315,8 +315,8 @@ format-underline = ${neovim.color_02}
 
 [module/wlan]
 type = internal/network
-; interface = wlp2s0
-interface = wlp6s0
+interface = wlp2s0
+; interface = wlp6s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -365,12 +365,12 @@ date = %b %d -
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
+format-prefix = "  "
 format-prefix-foreground = ${colors.foreground-alt}
 ; format-underline = #0a6cf5
 format-underline = ${neovim.color_10}
 
-label = "  %date% %time%"
+label = %date% %time%
 
 
 [module/pulseaudio]
