@@ -96,23 +96,38 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1 "
-set $ws2 "2  | "
-# set $ws3 "3  |  "
-set $ws3 "3 "
-set $ws4 "4  | "
-set $ws5 "5 "
-set $ws6 "6 "
-set $ws7 "7 "
-set $ws8 "8 "
-set $ws9 "9 "
-set $ws10 "0 "
+set $ws1 "1  | "
+set $ws2 "2  | "
+set $ws3 "3  | "
+set $ws4 "4  |  "
+set $ws5 "5  | "
+set $ws6 "6 "
+set $ws7 "7  | "
+set $ws8 "8  | "
+set $ws9 "9  | "
+set $ws10 "10  | "
 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+#  
+# 
 #  
 # 
 # 
 # 
 # 
+# 
 # 
 # 
 # 
@@ -239,6 +254,7 @@ smart_borders on
 
 bindsym $mod+Ctrl+c exec "killall -q gpick && gpick -p && killall -q gpick"
 
+bindsym $mod+Ctrl+l exec $HOME/.scripts/i3lock.sh
 ##############################################################################
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

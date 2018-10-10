@@ -21,7 +21,7 @@ convert -font Droid-Sans-Mono-Nerd-Font-Complete -pointsize 72 \
   -border 4 -bordercolor $(sed -n '13p' ~/Documents/.nvim_colors.vim) \
   -background $(sed -n '1p' ~/Documents/.nvim_colors.vim) \
   -fill $(sed -n '2p' ~/Documents/.nvim_colors.vim) \
-  label:'|  |  |  | R |  |  |   |  |  |' miff:- | \
+  label:'|  |  |  | R |  |  |  |   |  |  |' miff:- | \
   composite -gravity north -geometry +0+200 \
   - $PICTURE $PICTURE
 i3lock -i $PICTURE
