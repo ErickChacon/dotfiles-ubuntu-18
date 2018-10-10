@@ -4,7 +4,8 @@ PICTURE=/tmp/i3lock.png
 SCREENSHOT="scrot $PICTURE"
 
 # BLUR="5x4"
-BLUR="20x16"
+BLUR="10x8"
+# BLUR="20x16"
 
 $SCREENSHOT
 convert $PICTURE -blur $BLUR $PICTURE
@@ -17,12 +18,14 @@ convert $PICTURE -blur $BLUR $PICTURE
 #   -gravity north  -annotate +0+200 ' |  |  | R |  |  |   |  | '\
 #   $PICTURE
 
-convert -font Droid-Sans-Mono-Nerd-Font-Complete -pointsize 72 \
-  -border 4 -bordercolor $(sed -n '13p' ~/Documents/.nvim_colors.vim) \
-  -background $(sed -n '1p' ~/Documents/.nvim_colors.vim) \
-  -fill $(sed -n '2p' ~/Documents/.nvim_colors.vim) \
-  label:'|  |  |  | R |  |  |  |   |  |  |' miff:- | \
-  composite -gravity north -geometry +0+200 \
-  - $PICTURE $PICTURE
+  # label:'|  |  |  | R |  |  |  |   |  |  |' miff:- | \
+
+# convert -font Droid-Sans-Mono-Nerd-Font-Complete -pointsize 72 \
+#   -border 4 -bordercolor $(sed -n '13p' ~/Documents/.nvim_colors.vim) \
+#   -background $(sed -n '1p' ~/Documents/.nvim_colors.vim) \
+#   -fill $(sed -n '2p' ~/Documents/.nvim_colors.vim) \
+#   label:' ' miff:- | \
+#   composite -gravity north -geometry +0+200 \
+#   - $PICTURE $PICTURE
 i3lock -i $PICTURE
 rm $PICTURE

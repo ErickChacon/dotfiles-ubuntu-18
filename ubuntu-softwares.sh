@@ -23,7 +23,7 @@ cd && git clone --depth 1 https://github.com/powerline/fonts.git && \
   fonts/install.sh && \
   rm -rf fonts
 
-# Devicon font
+# Devicon font (this is very slow)
 cd && git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git && \
   cd nerd-fonts && ./install.sh DroidSansMono && cd .. && \
   rm -rf nerd-fonts
@@ -148,6 +148,7 @@ sudo apt-get install -y gucharmap
 
 # i3 locks
 sudo apt-get install -y i3lock imagemagick scrot
+
 
 # SYNC SOFTWARE {{{1
 
