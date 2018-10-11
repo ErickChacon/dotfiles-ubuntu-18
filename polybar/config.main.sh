@@ -20,10 +20,9 @@ alert = ${neovim.color_12}
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
-monitor = ${env:MONITOR:eDP-1 }
+monitor = ${env:MONITOR:eDP-1}
 width = 100%
-; height = 47
-height = 27
+height = ${env:HEIGHT:47}
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 6.0
@@ -47,26 +46,9 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-
-; font-0 = fixed:pixelsize=20;1
-; font-0 = NotoSans-Regular:size=20;0
-; font-0 = "Inconsolata for Powerline:size=20;0"
-; font-0 = "DroidSansMono Nerd Font Mono:size=20;0"
-; font-1 = unifont:fontformat=truetype:size=15:antialias=false;0
-; font-1 = fontawesome-refular:size=15:0
-; font-1 = "DroidSansMono Nerd Font Mono":size=20;0
-; font-2 = NotoMono-Regular:size=20;0
-; label-active-font = 1
-;
-
-; font-0 = "FontAwesome:size=20;0"
-; font-1 = "DroidSansMono Nerd Font:size=20;0"
-; font-2 = siji:pixelsize=20;1
-
-font-0 = "FontAwesome:size=10;0"
-font-1 = "DroidSansMono Nerd Font Mono:size=10;0"
-font-2 = siji:pixelsize=10;1
-
+font-0 = ${env:FONT0}
+font-1 = ${env:FONT1}
+font-2 = ${env:FONT2}
 
 modules-left = powermenu i3 xwindow
 ; modules-center = networkspeedup networkspeeddown
@@ -278,8 +260,7 @@ format-underline = ${neovim.color_02}
 
 [module/wlan]
 type = internal/network
-interface = wlp2s0
-; interface = wlp6s0
+interface = ${env:WLAN_INTERFACE}
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>

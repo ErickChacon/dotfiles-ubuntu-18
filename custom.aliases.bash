@@ -89,7 +89,7 @@ R() {
 # alias txo='.tmux/proj-$1'
 
 # alias
-alias col='i3_config && cols && i3-msg reload'
+alias col='i3_config && cols && i3-msg reload && i3-msg restart'
 
 # # alias for directories
 # alias cdre='cd ~/Documents/Repositories'
