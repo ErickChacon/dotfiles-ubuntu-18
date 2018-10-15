@@ -17,24 +17,24 @@
 ;==========================================================
 
 [neovim]
-nvim_background = #282c34
-nvim_foreground = #abb2bf
-color_01 = #3e4452
-color_02 = #e5c07b
-color_03 = #e06c75
-color_04 = #d19a66
-color_05 = #d19a66
-color_06 = #e06c75
-color_07 = #98c379
-color_08 = #61afef
-color_09 = #3e4452
-color_10 = #c678dd
-color_11 = #c678dd
-color_12 = #abb2bf
-color_13 = #d19a66
-color_14 = #98c379
-color_15 = #61afef
-color_16 = #e5c07b
+nvim_background = #32302f
+nvim_foreground = #ebdbb2
+color_01 = #665c54
+color_02 = #fabd2f
+color_03 = #83a598
+color_04 = #d3869b
+color_05 = #d3869b
+color_06 = #83a598
+color_07 = #b8bb26
+color_08 = #fe8019
+color_09 = #665c54
+color_10 = #fb4934
+color_11 = #8ec07c
+color_12 = #fabd2f
+color_13 = #d3869b
+color_14 = #b8bb26
+color_15 = #8ec07c
+color_16 = #fabd2f
 
 [colors]
 ;background = ${xrdb:color0:#222}
