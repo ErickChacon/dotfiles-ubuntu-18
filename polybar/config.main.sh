@@ -80,7 +80,7 @@ cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
-; label = %title:0:30:...%
+label = %title:0:60:...%
 format-foreground = ${colors.foreground-alt}
 
 [module/xkeyboard]

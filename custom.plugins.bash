@@ -135,3 +135,8 @@ i3_config() {
     $HOME/Documents/Repositories/dotfiles-ubuntu-18/polybar/config.main.sh > \
     $HOME/Documents/Repositories/dotfiles-ubuntu-18/polybar/config
 }
+
+vpn() {
+  nmcli --ask con up id "Lancaster University VPN"
+}
+
