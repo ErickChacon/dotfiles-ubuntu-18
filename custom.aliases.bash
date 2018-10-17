@@ -14,6 +14,7 @@ pwd_short() {
 
 # create docker container
 start-docker() {
+  mkdir -p /tmp/local
   local current=$(pwd_short)
   local repo_dir="/home/chaconmo/Documents/Repositories"
   local dot_dir="/home/chaconmo/Documents/Repositories/dotfiles-ubuntu-18"
@@ -28,6 +29,7 @@ start-docker() {
   -v $HOME/.ssh:/home/rstudio/.ssh \
   -v $HOME/.gitconfig:/home/rstudio/.gitconfig \
   -v $HOME/.shortcuts:/home/rstudio/.shortcuts \
+  -v /tmp/local:/tmp/local \
   -v $dot_dir/custom.plugins.bash:/home/rstudio/.bash_it/plugins/custom.plugins.bash \
   -v $dot_dir/docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash \
   -v $dot_dir/docker/.bashrc:/home/rstudio/.bashrc \
@@ -75,7 +77,7 @@ txo() {
 
 
 # execute R on container
-R() {
+R2() {
   local current=$(pwd_short)
   docker exec -it -w /home/rstudio$current global-docker R
 }

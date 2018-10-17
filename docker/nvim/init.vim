@@ -212,13 +212,25 @@ let g:neodark#italics = 1
 " let g:airline_theme='twofirewatch'
 " colorscheme nefertiti
 
-autocmd VimLeave * call
-      \ system('head ' . $HOME . '/Documents/.nvim_active.vim -n -1 > temp.vim; ' .
-      \ 'mv temp.vim ' . $HOME . '/Documents/.nvim_active.vim')
+" let g:nvim_active_file = $HOME.'/Documents/.nvim_active.vim'
+let g:nvim_active_file = '/tmp/local/.nvim_active.vim'
+" let g:nvim_active_file = '/tmp/.nvim_active.vim'
 
-let g:nvim_id = system("pgrep -x 'nvim' | sed -n 1p")
-call writefile([g:nvim_id], $HOME.'/Documents/.nvim_active.vim', 'a')
-let g:nvim_id1 = readfile($HOME.'/Documents/.nvim_active.vim', '', 1)[0]
+" function! WriteActive()
+"   let nr_nvim = str2nr(system('pgrep -x nvim | wc -l')) - 1
+"   let nvim_id = repeat([readfile(g:nvim_active_file, '', 1)[0]], nr_nvim)
+"   call writefile(nvim_id, g:nvim_active_file)
+" endfunction
+"
+" autocmd VimLeave * call WriteActive()
+
+autocmd VimLeave * call
+      \ system('head ' . g:nvim_active_file . ' -n -1 > temp.vim; ' .
+      \ 'mv temp.vim ' . g:nvim_active_file)
+
+let g:nvim_id = system("pgrep -x nvim | sed -n 1p")
+call writefile([g:nvim_id], g:nvim_active_file, 'a')
+let g:nvim_id1 = readfile(g:nvim_active_file, '', 1)[0]
 
 function! Random()
 python3 << EOF
@@ -363,9 +375,13 @@ call system('dconf write /org/gnome/terminal/legacy/profiles:/:' . g:profile_id 
 let g:my_colors = [g:nvim_background, g:nvim_foreground, g:COLOR_01, g:COLOR_02, g:COLOR_03,
       \ g:COLOR_04, g:COLOR_05, g:COLOR_06, g:COLOR_07, g:COLOR_08, g:COLOR_09, g:COLOR_10,
       \ g:COLOR_11, g:COLOR_12, g:COLOR_13, g:COLOR_14, g:COLOR_15, g:COLOR_16]
-call system('touch ' . $HOME . '/Documents/.nvim_colors.vim')
-call writefile(g:my_colors, $HOME.'/Documents/.nvim_colors.vim', 'b')
 
+" let g:nvim_colors_file = $HOME . '/Documents/.nvim_colors.vim'
+" let g:nvim_colors_file = '/tmp/.nvim_colors.vim'
+let g:nvim_colors_file = '/tmp/local/.nvim_colors.vim'
+
+call system('touch ' . g:nvim_colors_file)
+call writefile(g:my_colors, g:nvim_colors_file, 'b')
 
 " Toggle background colors
 " nnoremap <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR> \| :hi! link FoldColumn GruvboxRed<CR> \| :hi! link Folded GruvboxYellowSign<CR>

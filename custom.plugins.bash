@@ -92,7 +92,8 @@ push_my_repos() {
 cols() {
   local profile=$(dconf read /org/gnome/terminal/legacy/profiles:/default)
   local full_profile=/org/gnome/terminal/legacy/profiles:/:${profile//\'/}
-  IFS=$'\r\n' GLOBIGNORE='*' command eval  'XYZ=($(cat $HOME/Documents/.nvim_colors.vim))'
+  # IFS=$'\r\n' GLOBIGNORE='*' command eval  'XYZ=($(cat $HOME/Documents/.nvim_colors.vim))'
+  IFS=$'\r\n' GLOBIGNORE='*' command eval  'XYZ=($(cat /tmp/local/.nvim_colors.vim))'
   dconf write $full_profile/background-color "'"${XYZ[0]}"'"
   dconf write $full_profile/foreground-color "'"${XYZ[1]}"'"
   dconf write $full_profile/palette "[ \
@@ -118,12 +119,18 @@ shortcuts() {
 # creeate i3 config file
 i3_config() {
 
-  colors="$HOME/Documents/.nvim_colors.vim"
-  colors_name="$HOME/Documents/.nvim_colors_name.vim"
+  colors="/tmp/local/.nvim_colors.vim"
+  # colors_name="$HOME/Documents/.nvim_colors_name.vim"
+  colors_name=(nvim_background nvim_foreground color_01 color_02 color_03 color_04 \
+    color_05 color_06 color_07 color_08 color_09 color_10 color_11 color_12 color_13 \
+    color_14 color_15 color_16)
   colors_i3="$HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config.colors1.sh"
   colors_polybar="$HOME/Documents/Repositories/dotfiles-ubuntu-18/polybar/config.colors1.sh"
-  paste $colors_name $colors | awk '{print "set $" $1 " " $2}' > $colors_i3
-  paste $colors_name $colors | awk '{print $1 " = " $2}' > $colors_polybar
+
+  printf "%s\n" "${colors_name[@]}" | paste - $colors | \
+    awk '{print "set $" $1 " " $2}' > $colors_i3
+  printf "%s\n" "${colors_name[@]}" | paste - $colors | \
+    awk '{print $1 " = " $2}' > $colors_polybar
 
   cat $HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config.base.sh \
     $HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config.colors1.sh \

@@ -31,6 +31,18 @@ sudo apt-get install libjpeg62 -y
 sudo dpkg -i $rstudio_deb
 rm $rstudio_deb
 
+# openblas for multi-thread (speed-up R)
+sudo apt-get install -y libopenblas-base libopenblas-dev
+
+# Manage repositories
+libloc=$(echo 'cat(Sys.getenv("R_LIBS_USER"), "\n")' | r)
+echo 'LIBLOC = '$libloc | tee ~/.Renviron
+
+&& \
+
+RETICULATE_PYTHON = /usr/local/bin/python3
+Sys.getenv("LIBLOC")
+
 
 # # devtools
 # echo "
@@ -97,6 +109,3 @@ rm $rstudio_deb
 # # R CMD INSTALL colorout
 # # rm -rf colorout
 #
-# # # openblas for multi-thread
-# # sudo apt-get update && sudo apt-get install -y libopenblas-base libopenblas-dev
-# #
