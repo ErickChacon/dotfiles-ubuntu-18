@@ -90,9 +90,16 @@ push_my_repos() {
 
 # colors
 cols() {
+
+  # remove lines when excedding the number of nvim processes
+  local nr_nvim=$(pgrep -x nvim | wc -l)
+  local nvim_active_file="/tmp/local/.nvim_active.vim"
+  head $nvim_active_file -n $nr_nvim > temp.vim
+  mv temp.vim $nvim_active_file
+
+  # set up the terminal colors
   local profile=$(dconf read /org/gnome/terminal/legacy/profiles:/default)
   local full_profile=/org/gnome/terminal/legacy/profiles:/:${profile//\'/}
-  # IFS=$'\r\n' GLOBIGNORE='*' command eval  'XYZ=($(cat $HOME/Documents/.nvim_colors.vim))'
   IFS=$'\r\n' GLOBIGNORE='*' command eval  'XYZ=($(cat /tmp/local/.nvim_colors.vim))'
   dconf write $full_profile/background-color "'"${XYZ[0]}"'"
   dconf write $full_profile/foreground-color "'"${XYZ[1]}"'"
