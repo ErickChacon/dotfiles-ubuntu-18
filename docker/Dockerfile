@@ -171,3 +171,11 @@ USER root
 
 RUN apt-get install -y silversearcher-ag
 # RUN apt-get install -y ranger
+
+# lates {{{1
+RUN tlmgr update --self && \
+  tlmgr install setspace && \
+  tlmgr update --self -all && \
+  tlmgr path add && \
+  fmtutil-sys -all
+
