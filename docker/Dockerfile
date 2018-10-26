@@ -172,9 +172,12 @@ USER root
 RUN apt-get install -y silversearcher-ag
 # RUN apt-get install -y ranger
 
-# lates {{{1
+# latex {{{1
 RUN tlmgr update --self && \
+  # for double space
   tlmgr install setspace && \
+  # for moderncv
+  tlmgr install moderncv colortbl microtype fontawesome && \
   tlmgr update --self -all && \
   tlmgr path add && \
   fmtutil-sys -all
