@@ -182,3 +182,9 @@ RUN tlmgr update --self && \
   tlmgr path add && \
   fmtutil-sys -all
 
+
+RUN tlmgr update --self && \
+  tlmgr install setspace moderncv colortbl microtype fontawesome && \
+  tlmgr update --self -all && \
+  tlmgr path add && \
+  fmtutil-sys -all
