@@ -83,6 +83,14 @@ cd && git clone --depth 1 https://github.com/alexanderjeurissen/ranger_devicons.
 # sudo apt-get install -y emacs
 # sudo apt-get install -y ess
 
+# qgis
+echo -e "\n## Mirror for qgis" | sudo tee -a /etc/apt/sources.list && \
+  sudo add-apt-repository "deb https://qgis.org/ubuntu bionic main"
+wget -O - https://qgis.org/downloads/qgis-2017.gpg.key | gpg --import
+gpg --export --armor CAEB3DC3BDF7FB45 | sudo apt-key add -
+sudo apt-get update && \
+  sudo apt-get install -y qgis python-qgis qgis-plugin-grass
+
 
 # i3-gaps {{{1
 
