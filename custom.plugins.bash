@@ -5,7 +5,8 @@ about-plugin 'my custom functions'
 my_repos() {
 
   # define repositories
-  local path_proj_fi=~/Documents/Projects/FoodSecurity/5.Studies
+  local path_proj=~/Documents/Projects
+  local path_proj_fi=$path_proj/FoodSecurity/5.Studies
   local path_repos=~/Documents/Repositories
   local path_latex=~/Documents/texmf/tex/latex
   local \
@@ -16,8 +17,10 @@ my_repos() {
   $path_repos/dotfiles-ubuntu-18 \
   $path_repos/Food-Security-Amazonia \
   $path_repos/git-commands \
+  $path_repos/resume \
   $path_latex/research-notes \
   $path_latex/tex-commands \
+  $path_proj/TrafficAccidents/AT2018 \
     )
 
   # print nicely if yes or as an array otherwise
