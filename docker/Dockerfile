@@ -188,3 +188,11 @@ RUN tlmgr update --self && \
   tlmgr update --self -all && \
   tlmgr path add && \
   fmtutil-sys -all
+
+
+# r {{{1
+
+RUN \
+  # networks
+  install2.r --error --deps TRUE shp2graph
+
