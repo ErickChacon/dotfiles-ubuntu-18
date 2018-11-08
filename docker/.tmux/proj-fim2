@@ -38,11 +38,11 @@ else
 
   if [[ "$1" == *dev* ]]; then
     # window: package
-    tmux new-window -c "$HOME/Documents/Repositories/spmirt"
+    tmux new-window -c "$HOME/Documents/Repositories/spifa"
     tmux rename-window "Package"
     tmux send-keys "nvim" C-m
     # window: package test
-    tmux new-window -c "$HOME/Documents/Repositories/spmirt/demos"
+    tmux new-window -c "$HOME/Documents/Repositories/spifa/demos"
     tmux rename-window "PackageDemos"
     tmux send-keys "nvim" C-m
   fi
