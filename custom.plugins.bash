@@ -14,6 +14,7 @@ my_repos() {
   $path_proj_fi/MapFoodInse/7.Writing/paper-spmirt \
   $path_proj_fi/MapFoodInse-Cities/7.Writing/paper-mapfi \
   $path_repos/day2day \
+  $path_repos/spifa \
   $path_repos/dotfiles-ubuntu-18 \
   $path_repos/Food-Security-Amazonia \
   $path_repos/git-commands \
