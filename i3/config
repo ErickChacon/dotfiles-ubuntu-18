@@ -260,24 +260,24 @@ bindsym $mod+Ctrl+l exec $HOME/.scripts/i3lock.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 ##############################################################################
-set $nvim_background #2C323B
-set $nvim_foreground #ebdbb2
-set $color_01 #665c54
-set $color_02 #fabd2f
-set $color_03 #83a598
-set $color_04 #C678DD
-set $color_05 #C678DD
-set $color_06 #83a598
-set $color_07 #98C379
-set $color_08 #fe8019
-set $color_09 #665c54
-set $color_10 #fb4934
-set $color_11 #8ec07c
-set $color_12 #ebdab2
-set $color_13 #C678DD
-set $color_14 #98C379
-set $color_15 #98C379
-set $color_16 #fabd2f
+set $nvim_background #1F2F38
+set $nvim_foreground #AABBC4
+set $color_01 #475C69
+set $color_02 #D4B261
+set $color_03 #4BB1A7
+set $color_04 #DC657D
+set $color_05 #DC657D
+set $color_06 #4BB1A7
+set $color_07 #E18254
+set $color_08 #E69CA0
+set $color_09 #475C69
+set $color_10 #84B97C
+set $color_11 #B888E2
+set $color_12 #72C7D1
+set $color_13 #DC657D
+set $color_14 #E18254
+set $color_15 #639EE4
+set $color_16 #D4B261
 
 
 # ######################################

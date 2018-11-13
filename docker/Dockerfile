@@ -194,5 +194,8 @@ RUN tlmgr update --self && \
 
 RUN \
   # networks
-  install2.r --error --deps TRUE shp2graph
+  install2.r --error --deps TRUE shp2graph && \
+  # distributions
+  installGithub.r olmjo/RcppTN
+
 
