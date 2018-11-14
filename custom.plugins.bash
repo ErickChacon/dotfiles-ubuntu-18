@@ -21,8 +21,9 @@ my_repos() {
   $path_repos/resume \
   $path_latex/research-notes \
   $path_latex/tex-commands \
-  $path_proj/TrafficAccidents/AT2018 \
     )
+
+  # $path_proj/TrafficAccidents/AT2018 \
 
   # print nicely if yes or as an array otherwise
   local print=${1:-yes}
