@@ -41,7 +41,7 @@ ignore = Path Projects/FoodSecurity/5.Studies/MapFoodInse/7.Writing/paper-spmirt
 ignore = Path Projects/FoodSecurity/5.Studies/MapFoodInse-Cities/7.Writing/paper-mapfi/*
 ignore = Path texmf/tex/latex/*
 ignorenot = Path Repositories/repos.ecm
-ignore = Path Projects/TrafficAccidents/AT2018/*
+ignore = Path Projects/TrafficAccidents/AT2018
 ignorenot = Path Projects/TrafficAccidents/AT2018/2.Data
 ignorenot = Path Projects/TrafficAccidents/AT2018/9.Datasheets
 

@@ -181,6 +181,12 @@ sudo apt-get install -y libgnome-keyring0
 wget https://release.gitkraken.com/linux/gitkraken-amd64.deb
 sudo dpkg -i gitkraken-amd64.deb
 
+# teamviewer
+
+wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+sudo dpkg -i teamviewer_amd64.deb
+rm teamviewer_amd64.deb
+
 # ENTERTAINMENT SOFTWARE {{{1
 
 # spotify
