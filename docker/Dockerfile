@@ -198,4 +198,10 @@ RUN \
   # distributions
   installGithub.r olmjo/RcppTN
 
+RUN \
+  # inla
+  install2.r -e -d TRUE -r https://inla.r-inla-download.org/R/stable INLA
+
+
+
 
