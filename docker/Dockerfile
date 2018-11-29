@@ -202,6 +202,7 @@ RUN \
   # inla
   install2.r -e -d TRUE -r https://inla.r-inla-download.org/R/stable INLA
 
-
-
+RUN \
+  # ggplot adds
+  installGithub.r thomasp85/patchwork
 
