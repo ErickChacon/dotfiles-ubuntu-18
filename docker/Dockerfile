@@ -206,3 +206,12 @@ RUN \
   # ggplot adds
   installGithub.r thomasp85/patchwork
 
+# latex {{{1
+RUN tlmgr update --self && \
+  tlmgr install beamer translator beamertheme-metropolis pgfopts fira mweights fontaxes && \
+  tlmgr update --self -all && \
+  tlmgr path add && \
+  fmtutil-sys -all
+
+
+
