@@ -16,9 +16,9 @@ if (interactive()) {
     quit(save = save, ...)
   }
 
-  if (!nzchar(Sys.getenv("RSTUDIO_USER_IDENTITY"))) {
-    options(width = system("tput cols", intern = TRUE))
-  }
+  # if (!nzchar(Sys.getenv("RSTUDIO_USER_IDENTITY"))) {
+  #   options(width = system("tput cols", intern = TRUE))
+  # }
 
   # openblas.set.num.threads <- inline::cfunction(signature(ipt = "integer"),
   #   body = "openblas_set_num_threads(*ipt);",
