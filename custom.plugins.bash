@@ -117,9 +117,9 @@ cols() {
 
 # fzf
 
-cf() {
-  cd $(ls | fzf)
-}
+# cf() {
+#   cd $(ls | fzf)
+# }
 
 # update my shortcuts
 shortcuts() {
@@ -147,12 +147,8 @@ i3_config() {
   cat $HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config.base.sh \
     $HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config.colors1.sh \
     $HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config.colors2.sh > \
-    $HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config
+    $HOME/.config/i3/config
 
-  cat $HOME/Documents/Repositories/dotfiles-ubuntu-18/polybar/config.colors0.sh \
-    $HOME/Documents/Repositories/dotfiles-ubuntu-18/polybar/config.colors1.sh \
-    $HOME/Documents/Repositories/dotfiles-ubuntu-18/polybar/config.main.sh > \
-    $HOME/Documents/Repositories/dotfiles-ubuntu-18/polybar/config
 }
 
 vpn() {
