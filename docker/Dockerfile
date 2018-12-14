@@ -33,66 +33,6 @@ RUN apt-get install -y cmake libopenblas-dev liblapack-dev libarpack2-dev && \
   cd .. && \
   rm -rf ${arma_version}.tar.xz ${arma_version}
 
-# Latex packages {{{1
-
-RUN tlmgr update --self && \
-  tlmgr install fancyhdr titlesec pgf xcolor tcolorbox environ trimspaces float \
-  doublestroke algorithms algorithmicx appendix multirow ctable tablefootnote xifthen \
-  ifmtarg anyfontsize todonotes enumitem bbm bbm-macros babel-portuges type1cm ec \
-  collection-fontsrecommended && \
-  tlmgr update --self -all && \
-  tlmgr path add && \
-  fmtutil-sys -all
-
-# Complementary software for R {{{1
-
-RUN sudo apt-get install -y \
-  # openblas for multi-thread
-  libopenblas-base libopenblas-dev \
-  # rstan requirements
-  build-essential g++ libssl-dev
-
-# Additional R packages {{{1
-
-RUN \
-  # gui tools
-  installGithub.r jalvesaq/colorout && \
-  install2.r --error --deps TRUE languageserver && \
-  # tidyverse related
-  install2.r --error --deps TRUE purrrlyr && \
-  # cpp and benchmark
-  install2.r --error --deps TRUE RcppArmadillo rbenchmark && \
-  # visualization
-  installGithub.r ggobi/ggally clauswilke/ggridges && \
-  install2.r --error --deps TRUE ggrepel ggmap corrplot && \
-  # spatial related
-  install2.r --error --deps TRUE pdist fields && \
-  # modelling
-  install2.r --error --deps TRUE lme4 gamlss R2BayesX coda MBA spam spBayes && \
-  install2.r --error --deps TRUE --repos http://R-Forge.R-project.org bamlss && \
-  # applied regression
-  install2.r --error --deps TRUE car \
-  # categorical data
-  vcd \
-  # applied regression
-  psych && \
-  # my repositories
-  installGithub.r ErickChacon/day2day
-
-# sudo apt-get install -y r-cran-rjava
-# echo "install.packages(\"OpenStreetMap\")" > r-packages.R
-# R CMD BATCH r-packages.R
-
-# rclient for redis
-# echo "install.packages(\"rredis\")" > r-packages.R
-
-
-# # web and markdown
-# echo "install.packages(\"blogdown\")" > r-packages.R
-# echo "blogdown::install_hugo()" >> r-packages.R
-# echo "install.packages(\"formatR\")" >> r-packages.R
-# R CMD BATCH r-packages.R
-
 # Tmux {{{1
 
 RUN apt-get install -y \
@@ -106,7 +46,7 @@ RUN apt-get install -y \
   make install && \
   cd .. && \
   rm -rf tmux-2.7 && \
-# italic and true color
+  # italic and true color
   curl -OL \
   https://github.com/ErickChacon/dotfiles-ubuntu-18/raw/master/docker/xterm-256color-italic.terminfo && \
   tic xterm-256color-italic.terminfo && \
@@ -128,6 +68,83 @@ RUN \
   apt-get install -y exuberant-ctags && \
   # install
   apt-get -t stretch-backports -y install "neovim"
+
+# Complementary software for R {{{1
+
+RUN sudo apt-get install -y \
+  # openblas for multi-thread
+  libopenblas-base libopenblas-dev \
+  # rstan requirements
+  build-essential g++ libssl-dev
+
+
+# Terminal software {{{1
+
+RUN apt-get install -y silversearcher-ag
+# RUN apt-get install -y ranger
+
+
+# Latex packages {{{1
+
+RUN tlmgr update --self && \
+  # researchnotes
+  tlmgr install fancyhdr titlesec pgf xcolor tcolorbox environ trimspaces float \
+  doublestroke algorithms algorithmicx appendix multirow ctable tablefootnote xifthen \
+  ifmtarg anyfontsize todonotes enumitem bbm bbm-macros babel-portuges type1cm ec \
+  collection-fontsrecommended && \
+  # double space
+  tlmgr install setspace && \
+  # moderncv
+  tlmgr install moderncv colortbl microtype fontawesome && \
+  # beamer
+  tlmgr install beamer translator beamertheme-metropolis pgfopts fira mweights fontaxes && \
+  tlmgr update --self -all && \
+  tlmgr path add && \
+  fmtutil-sys -all
+
+# Additional R packages {{{1
+
+RUN \
+  # gui tools
+  installGithub.r jalvesaq/colorout r-lib/styler && \
+  install2.r --error --deps TRUE languageserver && \
+  # tidyverse related
+  install2.r --error --deps TRUE purrrlyr && \
+  # cpp and benchmark
+  install2.r --error --deps TRUE RcppArmadillo rbenchmark && \
+  # visualization
+  installGithub.r ggobi/ggally clauswilke/ggridges thomasp85/patchwork && \
+  install2.r --error --deps TRUE ggrepel ggmap corrplot && \
+  # visualization categorical data
+  install2.r --error --deps TRUE vcd && \
+  # spatial
+  install2.r --error --deps TRUE pdist fields && \
+  # modelling
+  install2.r --error --deps TRUE lme4 gamlss R2BayesX coda MBA spam spBayes && \
+  install2.r --error --deps TRUE --repos http://R-Forge.R-project.org bamlss && \
+  install2.r -e -d TRUE -r https://inla.r-inla-download.org/R/stable INLA && \
+  install2.r -e -d TRUE psych && \
+  # networks, dags
+  install2.r --error --deps TRUE shp2graph && \
+  # diagnostics and summary
+  install2.r --error --deps TRUE car && \
+  # distributions
+  installGithub.r olmjo/RcppTN && \
+  # my repositories
+  installGithub.r ErickChacon/day2day
+
+# sudo apt-get install -y r-cran-rjava
+# echo "install.packages(\"OpenStreetMap\")" > r-packages.R
+# R CMD BATCH r-packages.R
+
+# rclient for redis
+# echo "install.packages(\"rredis\")" > r-packages.R
+
+# # web and markdown
+# echo "install.packages(\"blogdown\")" > r-packages.R
+# echo "blogdown::install_hugo()" >> r-packages.R
+# echo "install.packages(\"formatR\")" >> r-packages.R
+# R CMD BATCH r-packages.R
 
 # Add my user {{{1
 
@@ -167,51 +184,4 @@ COPY --chown=rstudio R/Makevars $home_user1/.R/
 
 USER root
 
-# Terminal software {{{1
-
-RUN apt-get install -y silversearcher-ag
-# RUN apt-get install -y ranger
-
-# latex {{{1
-RUN tlmgr update --self && \
-  # for double space
-  tlmgr install setspace && \
-  # for moderncv
-  tlmgr install moderncv colortbl microtype fontawesome && \
-  tlmgr update --self -all && \
-  tlmgr path add && \
-  fmtutil-sys -all
-
-
-RUN tlmgr update --self && \
-  tlmgr install setspace moderncv colortbl microtype fontawesome && \
-  tlmgr update --self -all && \
-  tlmgr path add && \
-  fmtutil-sys -all
-
-
-# r {{{1
-
-RUN \
-  # networks
-  install2.r --error --deps TRUE shp2graph && \
-  # distributions
-  installGithub.r olmjo/RcppTN
-
-RUN \
-  # inla
-  install2.r -e -d TRUE -r https://inla.r-inla-download.org/R/stable INLA
-
-RUN \
-  # ggplot adds
-  installGithub.r thomasp85/patchwork
-
-# latex {{{1
-RUN tlmgr update --self && \
-  tlmgr install beamer translator beamertheme-metropolis pgfopts fira mweights fontaxes && \
-  tlmgr update --self -all && \
-  tlmgr path add && \
-  fmtutil-sys -all
-
-
-
+# debconf: delaying package configuration, since apt-utils is not installed

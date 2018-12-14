@@ -57,7 +57,8 @@ Plug 'hkupty/iron.nvim' " Interactive Repls Over Neovim
 Plug 'SirVer/ultisnips' " snippets
 Plug 'honza/vim-snippets' " snippets scripts
 " Plug 'roxma/nvim-completion-manager'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " completion
+Plug 'Shougo/deoplete.nvim', {'commit': '3e3b762', 'do': ':UpdateRemotePlugins' } " completion
+
 " Plug 'autozimu/LanguageClient-neovim', {
 "     \ 'branch': 'next',
 "     \ 'do': 'bash install.sh',
@@ -92,6 +93,7 @@ endfunction
 Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 Plug 'cespare/vim-toml' " toml: syntax highlight
 Plug 'jalvesaq/Nvim-R' " R: run code, rmarkdown, help and more
+" Plug 'jalvesaq/Nvim-R', {'commit': '511ac10'} " R: run code, rmarkdown, help and more
 Plug 'tpope/vim-fugitive' " git: wrapper
 Plug 'airblade/vim-gitgutter' " git: shows added and remove lines of git
 Plug 'mhinz/vim-signify'

@@ -1,0 +1,32 @@
+# Download base image goespatial {{{1
+
+FROM rocker/geospatial
+
+# Software for installation {{{1
+
+RUN apt-get install -y git curl wget
+
+# Neovim {{{1
+
+RUN \
+  # backport mirror for neovim > 2.0.0
+  echo "deb http://ftp.debian.org/debian stretch-backports main" | \
+  tee -a /etc/apt/sources.list && \
+  # requirements
+  apt-get update && \
+  apt-get install -y python-pip python3-pip && \
+  pip2 install neovim && \
+  pip3 install neovim && \
+  apt-get install -y ruby ruby-dev && \
+  gem install neovim && \
+  apt-get install -y exuberant-ctags && \
+  # install
+  apt-get -t stretch-backports -y install "neovim"
+
+# Add my user {{{1
+
+ARG user1=rstudio
+ENV home_user1=/home/$user1
+USER $user1
+WORKDIR $home_user1
+

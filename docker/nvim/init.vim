@@ -968,6 +968,7 @@ let g:pandoc#syntax#conceal#use = 1 " pretty highlight
 
 let g:pandoc#hypertext#use_default_mappings=0
 " let g:pandoc#filetypes#pandoc_markdown=0
+
 let g:pandoc#modules#disabled = ["folding"]
 
 " let hostname = substitute(system('hostname'), '\n', '', '')
@@ -1007,7 +1008,8 @@ let R_pdfviewer = "evince"
 " Highlighting
 " let R_start_libs = "base,stats,graphics,grDevices,utils,methods"
 " let R_hi_fun = 0 " 0 to not Highlight functions, problem with ROnJobStdout
-let R_hi_fun_paren = 1 " only highlight if ( is typed
+" let R_hi_fun_paren = 1 " only highlight if ( is typed: do not use, too slow
+
 " }}}
 " PROGRAMS: LATEX {{{
 let g:airline#extensions#vimtex#enabled = 0 " unable extension because is failing
