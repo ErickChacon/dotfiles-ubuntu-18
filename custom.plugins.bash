@@ -136,17 +136,14 @@ i3_config() {
   colors_name=(nvim_background nvim_foreground color_01 color_02 color_03 color_04 \
     color_05 color_06 color_07 color_08 color_09 color_10 color_11 color_12 color_13 \
     color_14 color_15 color_16)
-  colors_i3="$HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config.colors1.sh"
-  colors_polybar="$HOME/Documents/Repositories/dotfiles-ubuntu-18/polybar/config.colors1.sh"
+  colors_i3="$HOME/.config/i3/config-colors1.sh"
 
   printf "%s\n" "${colors_name[@]}" | paste - $colors | \
     awk '{print "set $" $1 " " $2}' > $colors_i3
-  printf "%s\n" "${colors_name[@]}" | paste - $colors | \
-    awk '{print $1 " = " $2}' > $colors_polybar
 
-  cat $HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config.base.sh \
-    $HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config.colors1.sh \
-    $HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config.colors2.sh > \
+  cat $HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config-base.sh \
+    $colors_i3 \
+    $HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config-colors2.sh > \
     $HOME/.config/i3/config
 
 }
