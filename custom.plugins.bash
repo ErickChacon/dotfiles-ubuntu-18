@@ -142,10 +142,11 @@ i3_config() {
     awk '{print "set $" $1 " " $2}' > $colors_i3
 
   cat $HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config-base.sh \
-    $colors_i3 \
+    $HOME/.config/i3/config-colors1.sh \
     $HOME/Documents/Repositories/dotfiles-ubuntu-18/i3/config-colors2.sh > \
     $HOME/.config/i3/config
 
+    # $colors_i3 \
 }
 
 vpn() {
