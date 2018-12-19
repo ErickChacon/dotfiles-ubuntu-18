@@ -91,6 +91,9 @@ gpg --export --armor CAEB3DC3BDF7FB45 | sudo apt-key add -
 sudo apt-get update && \
   sudo apt-get install -y qgis python-qgis qgis-plugin-grass
 
+# diconnected islands plugin requirements
+pip3 install networkx --user
+
 
 # i3-gaps {{{1
 
