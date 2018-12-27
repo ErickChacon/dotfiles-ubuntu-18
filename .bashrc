@@ -82,3 +82,4 @@ set -o vi
 export EDITOR="nvim"
 source ~/.shortcuts
 # export col=#aaff77
+source /home/chaconmo/.shortcuts

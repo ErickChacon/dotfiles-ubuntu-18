@@ -260,3 +260,32 @@ bindsym $mod+Ctrl+l exec $HOME/.scripts/i3lock.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 ##############################################################################
+
+# workspace $ws1
+
+# exec --no-startup-id i3-msg 'workspace 1:Web; exec /usr/bin/firefox'
+
+# assign [class="firefox"] $ws5
+
+exec --no-startup-id i3-msg 'workspace $ws1; exec i3-sensible-terminal -e start-docker plop; bash'
+exec --no-startup-id i3-msg 'workspace $ws1; exec i3-sensible-terminal -e start-docker'
+exec --no-startup-id i3-msg 'workspace $ws2; exec i3-sensible-terminal'
+exec --no-startup-id i3-msg 'workspace $ws3; exec i3-sensible-terminal'
+exec --no-startup-id i3-msg 'workspace $ws4; exec i3-sensible-terminal -e ranger; bash'
+exec --no-startup-id i3-msg 'workspace $ws5; exec firefox'
+exec --no-startup-id i3-msg 'workspace $ws9; exec firefox'
+exec --no-startup-id i3-msg 'workspace $ws10; exec spotify'
+
+# # exec nvim
+# workspace $ws1 output eDP-1
+# exec start-docker
+# exec i3-sensible-terminal -e start-docker
+
+# workspace $ws2 output eDP-1
+# exec firefox
+# workspace $ws3 output eDP-1
+# exec firefox
+# workspace $ws4 output eDP-1
+# exec firefox
+# workspace $ws9 output eDP-1
+

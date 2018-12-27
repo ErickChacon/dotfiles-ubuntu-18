@@ -17,24 +17,24 @@
 ;==========================================================
 
 [neovim]
-nvim_background = ${env:NVIM_BACKGROUND}
-nvim_foreground = ${env:NVIM_FOREGROUND}
-color_01 = ${env:COLOR_01}
-color_02 = ${env:COLOR_02}
-color_03 = ${env:COLOR_03}
-color_04 = ${env:COLOR_04}
-color_05 = ${env:COLOR_05}
-color_06 = ${env:COLOR_06}
-color_07 = ${env:COLOR_07}
-color_08 = ${env:COLOR_08}
-color_09 = ${env:COLOR_09}
-color_10 = ${env:COLOR_10}
-color_11 = ${env:COLOR_11}
-color_12 = ${env:COLOR_12}
-color_13 = ${env:COLOR_13}
-color_14 = ${env:COLOR_14}
-color_15 = ${env:COLOR_15}
-color_16 = ${env:COLOR_16}
+nvim_background = ${env:NVIM_BACKGROUND:#32302f}
+nvim_foreground = ${env:NVIM_FOREGROUND:#ebdbb2}
+color_01 = ${env:COLOR_01:#282A36:#665c54}
+color_02 = ${env:COLOR_02:#fabd2f}
+color_03 = ${env:COLOR_03:#83a598}
+color_04 = ${env:COLOR_04:#d3869b}
+color_05 = ${env:COLOR_05:#d3869b}
+color_06 = ${env:COLOR_06:#83a598}
+color_07 = ${env:COLOR_07:#b8bb26}
+color_08 = ${env:COLOR_08:#fe8019}
+color_09 = ${env:COLOR_09:#665c54}
+color_10 = ${env:COLOR_10:#fb4934}
+color_11 = ${env:COLOR_11:#8ec07c}
+color_12 = ${env:COLOR_12:#fabd2f}
+color_13 = ${env:COLOR_13:#d3869b}
+color_14 = ${env:COLOR_14:#b8bb26}
+color_15 = ${env:COLOR_15:#8ec07c}
+color_16 = ${env:COLOR_16:#fabd2f}
 
 [colors]
 ;background = ${xrdb:color0:#222}
@@ -560,10 +560,10 @@ type = custom/menu
 expand-right = true
 format-spacing = 1
 
-label-open = 
+label-open = "  "
 ; label-open-foreground = ${colors.foreground}
 label-open-foreground = ${colors.foreground}
-label-close = 
+label-close = "  "
 label-close-foreground = ${colors.foreground-alt}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
