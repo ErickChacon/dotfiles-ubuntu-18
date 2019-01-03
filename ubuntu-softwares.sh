@@ -60,6 +60,9 @@ sudo apt install inkscape -y
 # pdf viewer
 sudo apt-get install okular -y
 
+# pdfunite and pdfseparate
+sudo apt-get install poppler-utils -y
+
 # # atom
 # sudo add-apt-repository ppa:webupd8team/atom -y
 # sudo apt-get update

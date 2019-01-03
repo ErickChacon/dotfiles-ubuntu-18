@@ -267,8 +267,9 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # assign [class="firefox"] $ws5
 
-exec --no-startup-id i3-msg 'workspace $ws1; exec i3-sensible-terminal -e start-docker plop; bash'
-exec --no-startup-id i3-msg 'workspace $ws1; exec i3-sensible-terminal -e start-docker'
+# exec --no-startup-id i3-msg 'workspace $ws1; exec i3-sensible-terminal -e start-docker plop; bash'
+# exec --no-startup-id i3-msg 'workspace $ws1; exec i3-sensible-terminal -e start-docker'
+exec --no-startup-id i3-msg 'workspace $ws1; exec i3-sensible-terminal'
 exec --no-startup-id i3-msg 'workspace $ws2; exec i3-sensible-terminal'
 exec --no-startup-id i3-msg 'workspace $ws3; exec i3-sensible-terminal'
 exec --no-startup-id i3-msg 'workspace $ws4; exec i3-sensible-terminal -e ranger; bash'

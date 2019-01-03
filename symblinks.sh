@@ -18,7 +18,8 @@ ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/nvim/init.vim ~/.config/nvim/i
 
 # Ranger
 mkdir -p ~/.config/ranger
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/rc.conf ~/.config/ranger/rc.conf
+ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/ranger/rc.conf ~/.config/ranger/rc.conf
+ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/ranger/rifle.conf ~/.config/ranger/rifle.conf
 
 # .scripts
 ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.scripts ~/.scripts
@@ -35,5 +36,6 @@ ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar/launch.sh ~/.config/po
 # ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/launch.sh ~/.config/polybar/launch.sh
 ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar/config ~/.config/polybar/config
 # ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar-weather ~/.config/polybar/weather
+
 
 
