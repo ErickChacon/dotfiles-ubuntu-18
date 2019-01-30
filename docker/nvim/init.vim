@@ -93,13 +93,13 @@ au BufReadPost *
   \ endif
 
 
-ino " ""<left>
-autocmd FileType r,python inoremap ' ''<left>
+" ino " ""<left>
+" autocmd FileType r,python inoremap ' ''<left>
 ino ( ()<left>
 ino [ []<left>
 ino { {}<left>
-autocmd FileType tex,pandoc inoremap $ $$<left>
-ino {<CR> {<CR>}<ESC>O
+" autocmd FileType tex,pandoc inoremap $ $$<left>
+" ino {<CR> {<CR>}<ESC>O
 
 
 " Disable Arrow keys in Escape mode

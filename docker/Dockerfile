@@ -185,3 +185,22 @@ COPY --chown=rstudio R/Makevars $home_user1/.R/
 USER root
 
 # debconf: delaying package configuration, since apt-utils is not installed
+
+# Latex packages {{{1
+
+RUN tlmgr update --self && \
+  # tikzposter
+  tlmgr install tikzposter xstring extsizes a0poster && \
+  # update after install
+  tlmgr update --self -all && \
+  tlmgr path add && \
+  fmtutil-sys -all
+
+
+RUN tlmgr update --self && \
+  # upgrade report
+  tlmgr install tocloft breakcites adjustbox collectbox babel-english && \
+  # update after install
+  tlmgr update --self -all && \
+  tlmgr path add && \
+  fmtutil-sys -all
