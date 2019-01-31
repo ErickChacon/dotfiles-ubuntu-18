@@ -1,13 +1,13 @@
 h       ~/
-dd       ~/Documents
+do      ~/Documents
+dw      ~/Downloads
+dx      ~/Dropbox
 re      ~/Documents/Repositories
 pr      ~/Documents/Projects
 no      ~/Documents/NotesCodes
 bo      ~/Documents/Books
 cpp     ~/Documents/SelfLearning/Programming/cpp
-D       ~/Downloads
-dr      ~/Dropbox
-m       ~/Music
+ms      ~/Music
 pp      ~/Pictures
 wa      ~/Pictures/wallpapers
 # vv      ~/Videos

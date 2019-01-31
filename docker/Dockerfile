@@ -204,3 +204,11 @@ RUN tlmgr update --self && \
   tlmgr update --self -all && \
   tlmgr path add && \
   fmtutil-sys -all
+
+RUN tlmgr update --self && \
+  # upgrade report
+  tlmgr install collectbox blindtext && \
+  # update after install
+  tlmgr update --self -all && \
+  tlmgr path add && \
+  fmtutil-sys -all
