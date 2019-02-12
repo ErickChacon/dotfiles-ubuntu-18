@@ -98,6 +98,12 @@ RUN tlmgr update --self && \
   tlmgr install moderncv colortbl microtype fontawesome && \
   # beamer
   tlmgr install beamer translator beamertheme-metropolis pgfopts fira mweights fontaxes && \
+  # tikzposter
+  tlmgr install tikzposter xstring extsizes a0poster && \
+  # upgrade report
+  tlmgr install tocloft breakcites adjustbox collectbox babel-english && \
+  # unithesis
+  tlmgr install collectbox blindtext && \
   tlmgr update --self -all && \
   tlmgr path add && \
   fmtutil-sys -all
@@ -185,30 +191,21 @@ COPY --chown=rstudio R/Makevars $home_user1/.R/
 USER root
 
 # debconf: delaying package configuration, since apt-utils is not installed
-
 # Latex packages {{{1
 
 RUN tlmgr update --self && \
-  # tikzposter
-  tlmgr install tikzposter xstring extsizes a0poster && \
-  # update after install
-  tlmgr update --self -all && \
-  tlmgr path add && \
-  fmtutil-sys -all
-
-
-RUN tlmgr update --self && \
-  # upgrade report
-  tlmgr install tocloft breakcites adjustbox collectbox babel-english && \
-  # update after install
+  # bibliography styles
+  tlmgr install cite chicago && \
+  # author
+  tlmgr install preprint && \
   tlmgr update --self -all && \
   tlmgr path add && \
   fmtutil-sys -all
 
 RUN tlmgr update --self && \
-  # upgrade report
-  tlmgr install collectbox blindtext && \
-  # update after install
+  # imprt
+  tlmgr install import && \
   tlmgr update --self -all && \
   tlmgr path add && \
   fmtutil-sys -all
+

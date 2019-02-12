@@ -10,17 +10,54 @@ if has-session ; then
 else
 
   # main work directory:
-  bigproj="$HOME/Documents/Projects/FoodSecurity/5.Studies/"
+  bigproj="$HOME/Documents/Projects/FoodSecurity/5.Studies"
   proj="$bigproj/Thesis"
+  path_texmf="$HOME/Documents/texmf/tex/latex"
   tmux new-session -d -c $proj -s $project_name
 
   # window: notes
   tmux rename-window "Notes"
   tmux send-keys 'nvim README.md' C-m
 
-  # window: paper
+  # window: thesis
   tmux new-window -c $proj
-  tmux rename-window "Intro"
+  tmux rename-window "Thesis"
+  tmux send-keys "nvim" C-m
+
+  # window: paper mbspi
+  path_mbspi="$proj/paper-mbspi"
+  tmux new-window -c $path_mbspi
+  tmux rename-window "Mbspi"
+  tmux send-keys "nvim" C-m
+
+  # window: paper bw
+  path_bw="$proj/paper-bw"
+  tmux new-window -c $path_bw
+  tmux rename-window "Birth"
+  tmux send-keys "nvim" C-m
+
+  # window: paper spifa
+  path_spifa="$proj/paper-spifa"
+  tmux new-window -c $path_spifa
+  tmux rename-window "Spifa"
+  tmux send-keys "nvim" C-m
+
+  # window: paper mapfi
+  path_mapfi="$proj/paper-mapfi"
+  tmux new-window -c $path_mapfi
+  tmux rename-window "Mapfi"
+  tmux send-keys "nvim" C-m
+
+  # window: SimpleThesis class
+  path_simple_thesis="$path_texmf/simple-thesis"
+  tmux new-window -c $path_simple_thesis
+  tmux rename-window "SimThe"
+  tmux send-keys "nvim" C-m
+
+  # window: SimpleNotes class
+  path_simple_notes="$path_texmf/research-notes"
+  tmux new-window -c $path_simple_notes
+  tmux rename-window "SimNot"
   tmux send-keys "nvim" C-m
 
   # if [[ "$1" == *clean* ]]; then

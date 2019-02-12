@@ -1,17 +1,18 @@
 h       ~/
-do      ~/Documents
-dw      ~/Downloads
-dx      ~/Dropbox
-re      ~/Documents/Repositories
-pr      ~/Documents/Projects
-no      ~/Documents/NotesCodes
-bo      ~/Documents/Books
-cpp     ~/Documents/SelfLearning/Programming/cpp
-ms      ~/Music
+dd      ~/Documents
+do      ~/Downloads
+dr      ~/Dropbox
+mm      ~/Music
 pp      ~/Pictures
-wa      ~/Pictures/wallpapers
-# vv      ~/Videos
-s       ~/Documents/Repositories/dotfiles-ubuntu-18/.scripts
 cf      ~/.config
 ic      ~/.icons
+vv      ~/Videos
+bo      ~/Documents/Books
+no      ~/Documents/NotesCodes
+pr      ~/Documents/Projects
+re      ~/Documents/Repositories
+s       ~/Documents/Repositories/dotfiles-ubuntu-18/.scripts
+la      ~/Documents/texmf/tex/latex/
+cpp     ~/Documents/SelfLearning/Programming/cpp
+wa      ~/Pictures/wallpapers
 
