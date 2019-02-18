@@ -24,10 +24,10 @@ else
   tmux rename-window "Thesis"
   tmux send-keys "nvim" C-m
 
-  # window: paper mbspi
-  path_mbspi="$proj/paper-mbspi"
-  tmux new-window -c $path_mbspi
-  tmux rename-window "Mbspi"
+  # window: paper mbpi
+  path_mbsi="$proj/paper-mbsi"
+  tmux new-window -c $path_mbsi
+  tmux rename-window "Mbsi"
   tmux send-keys "nvim" C-m
 
   # window: paper bw

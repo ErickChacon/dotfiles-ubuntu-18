@@ -209,3 +209,9 @@ RUN tlmgr update --self && \
   tlmgr path add && \
   fmtutil-sys -all
 
+# Additional R packages {{{1
+
+RUN \
+  # my repositories
+  installGithub.r ErickChacon/mbsi
+
