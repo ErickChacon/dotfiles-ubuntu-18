@@ -1,16 +1,18 @@
-# !/bin/bash
+#!/bin/bash
+
+proj_name='Birth-weight'
 
 function has-session {
-  tmux has-session -t 'bw'  2>/dev/null
+  tmux has-session -t=$proj_name 2>/dev/null
 }
 
 if has-session ; then
-  tmux a -t 'bw'
-  # echo "Session already exists"
+  tmux a -t $proj_name
 else
+
   # main work directory:
   # cd ~/Documents/Projects/FoodSecurity/5.Studies/Birthweight
-  proj="/home/chaconmo/Documents/Projects/FoodSecurity/5.Studies/Birthweight/"
+  proj="$HOME/Documents/Projects/FoodSecurity/5.Studies/Birthweight/"
   # window 1: cleaning
   tmux new-session -d -c $proj"../../3.CleanScripts" -s 'bw'
   tmux rename-window "Cleaning"
