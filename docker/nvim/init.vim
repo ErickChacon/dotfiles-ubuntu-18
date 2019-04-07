@@ -352,13 +352,8 @@ else
 endif
 
 
-let g:profile_id = system('dconf read /org/gnome/terminal/legacy/profiles:/default')
-let g:profile_id = substitute(g:profile_id, "\n", "", "g")
-let g:profile_id = substitute(g:profile_id, "'", "", "g")
 let g:nvim_background = synIDattr(synIDtrans(hlID('Normal')), 'bg', 'gui')
 let g:nvim_foreground = synIDattr(synIDtrans(hlID('Normal')), 'fg', 'gui')
-call system('dconf write /org/gnome/terminal/legacy/profiles:/:' . g:profile_id . '/background-color ' . "'".'"' . g:nvim_background . '"'."'")
-call system('dconf write /org/gnome/terminal/legacy/profiles:/:' . g:profile_id . '/foreground-color ' . "'".'"' . g:nvim_foreground . '"'."'")
 
 let g:COLOR_01 = synIDattr(synIDtrans(hlID('Visual')), 'bg', 'gui')
 " let g:COLOR_02 = synIDattr(synIDtrans(hlID('WarningMsg')), 'fg', 'gui')
@@ -423,7 +418,6 @@ let g:COLOR_16 = synIDattr(synIDtrans(hlID('TypeDef')), 'fg', 'gui')
 " let g:COLOR_15 = "#ffffff"
 " let g:COLOR_16 = "#ffffff"
 
-call system('dconf write /org/gnome/terminal/legacy/profiles:/:' . g:profile_id . '/palette "[' . "'" . g:COLOR_01 . "', '" . g:COLOR_02 . "', '" . g:COLOR_03 . "', '" . g:COLOR_04 . "', '" . g:COLOR_05 . "', '" . g:COLOR_06 . "', '" . g:COLOR_07 . "', '" . g:COLOR_08 . "', '" . g:COLOR_09 . "', '" . g:COLOR_10 . "', '" . g:COLOR_11 . "', '" . g:COLOR_12 . "', '" . g:COLOR_13 . "', '" . g:COLOR_14 . "', '" . g:COLOR_15 . "', '" . g:COLOR_16 . "'" . ']"')
 
 let g:my_colors = [g:nvim_background, g:nvim_foreground, g:COLOR_01, g:COLOR_02, g:COLOR_03,
       \ g:COLOR_04, g:COLOR_05, g:COLOR_06, g:COLOR_07, g:COLOR_08, g:COLOR_09, g:COLOR_10,
