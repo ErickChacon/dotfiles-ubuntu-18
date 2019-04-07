@@ -24,12 +24,18 @@ ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/ranger/rifle.conf ~/.config/ra
 # .scripts
 ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.scripts ~/.scripts
 
+# .palettes
+ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.palettes ~/.palettes
+
+
 # # Profile
 # ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.profile ~/.profile
 
 # i3 config
 mkdir -p ~/.config/i3/
 ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3/config ~/.config/i3/config
+ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3/config-base.sh ~/.config/i3/config-base.sh
+ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3/config-colors.sh ~/.config/i3/config-colors.sh
 
 # polybar
 ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar/launch.sh ~/.config/polybar/launch.sh

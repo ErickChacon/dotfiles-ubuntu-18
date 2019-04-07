@@ -249,42 +249,94 @@ endfunction
 
 call Random()
 " echo g:random_number
+"
 
+let g:path_palname = $HOME.'/.palette-name.vim'
+let g:scheme_name = substitute(readfile(g:path_palname, '', 1)[0], ".vim$", "", "")
+
+
+" if exists("g:gui_oni")
+"   colorscheme nord
+"   " colorscheme material-theme
+"   " colorscheme gruvbox
+" else
+"   if g:random_number == 1
+"     colorscheme nord
+"     hi Conceal guibg=NONE guifg=#8be9fd gui=none
+"     hi Folded gui=none guibg=#3b4252 guifg=#7b88a1
+"     hi Title gui=bold guifg=#d8dee9
+"   elseif g:random_number == 2
+"     colorscheme gruvbox
+"     hi link Function GruvboxAqua
+"   elseif g:random_number == 3
+"     colorscheme material-theme
+"     hi Conceal guibg=NONE guifg=#F77669 gui=none
+"   elseif g:random_number == 4
+"     colorscheme deus
+"     hi texBeginEnd gui=bold,italic guifg=#ffffff
+"   elseif g:random_number == 5
+"     let g:one_allow_italics = 1
+"     colorscheme one
+"     call one#highlight('Folded', '5c6370', '2c323c', 'italic')
+"     " call one#highlight('Conceal', '5c6370', '2c323c')
+"     hi Conceal guibg=NONE guifg=#e5c07b gui=none
+"   elseif g:random_number == 6
+"     colorscheme dracula
+"     hi Conceal guibg=NONE guifg=#8be9fd gui=none
+"     hi Folded guibg=#333333 guifg=#6272a4 gui=none
+"   elseif g:random_number == 7
+"     colorscheme neodark
+"     hi SpellBad guibg=none guifg=none gui=underline
+"     hi Folded guibg=#263a45 guifg=#658595
+"   elseif g:random_number == 8
+"     colorscheme space-vim-dark
+"     hi Conceal guibg=none guifg=#2aa1ae
+"     hi SpellBad guibg=none guifg=none gui=underline
+"     hi Function gui=none
+"     hi Folded gui=none
+"     hi Comment gui=italic guifg=#2A6B74
+"   " elseif g:random_number == 9
+"     " colorscheme challenger_deep
+"     " hi Conceal guibg=none guifg=#ff5458
+"     " hi Folded gui=none guibg=#100e23 guifg=#767676
+"     " hi SpellBad guibg=none guifg=none gui=underline
+"   endif
+" endif
 
 if exists("g:gui_oni")
   colorscheme nord
   " colorscheme material-theme
   " colorscheme gruvbox
 else
-  if g:random_number == 1
+  if g:scheme_name == "nord"
     colorscheme nord
     hi Conceal guibg=NONE guifg=#8be9fd gui=none
     hi Folded gui=none guibg=#3b4252 guifg=#7b88a1
     hi Title gui=bold guifg=#d8dee9
-  elseif g:random_number == 2
+  elseif g:scheme_name == "gruvbox"
     colorscheme gruvbox
     hi link Function GruvboxAqua
-  elseif g:random_number == 3
+  elseif g:scheme_name == "material-theme"
     colorscheme material-theme
     hi Conceal guibg=NONE guifg=#F77669 gui=none
-  elseif g:random_number == 4
+  elseif g:scheme_name == "deus"
     colorscheme deus
     hi texBeginEnd gui=bold,italic guifg=#ffffff
-  elseif g:random_number == 5
+  elseif g:scheme_name == "one"
     let g:one_allow_italics = 1
     colorscheme one
     call one#highlight('Folded', '5c6370', '2c323c', 'italic')
     " call one#highlight('Conceal', '5c6370', '2c323c')
     hi Conceal guibg=NONE guifg=#e5c07b gui=none
-  elseif g:random_number == 6
+  elseif g:scheme_name == "dracula"
     colorscheme dracula
     hi Conceal guibg=NONE guifg=#8be9fd gui=none
     hi Folded guibg=#333333 guifg=#6272a4 gui=none
-  elseif g:random_number == 7
+  elseif g:scheme_name == "neodark"
     colorscheme neodark
     hi SpellBad guibg=none guifg=none gui=underline
     hi Folded guibg=#263a45 guifg=#658595
-  elseif g:random_number == 8
+  elseif g:scheme_name == "space-vim-dark"
     colorscheme space-vim-dark
     hi Conceal guibg=none guifg=#2aa1ae
     hi SpellBad guibg=none guifg=none gui=underline
@@ -298,6 +350,7 @@ else
     " hi SpellBad guibg=none guifg=none gui=underline
   endif
 endif
+
 
 let g:profile_id = system('dconf read /org/gnome/terminal/legacy/profiles:/default')
 let g:profile_id = substitute(g:profile_id, "\n", "", "g")

@@ -24,8 +24,14 @@ font0="FontAwesome:size=${fontsize:-20};0"
 font1="DroidSansMono Nerd Font:size=${fontsize:-20};0"
 font2="siji:pixelsize=${fontsize:-20};1"
 
-colors_file="/tmp/local/.nvim_colors.vim"
-IFS=$'\r\n' GLOBIGNORE='*' command eval  'colors=($(cat $colors_file))'
+# select a random palette
+path_pals="$HOME/.palettes"
+path_palname="$HOME/.palette-name.vim"
+pal=$(cat $path_palname)
+path_colors=$path_pals/$pal
+
+# path_colors="/tmp/local/.nvim_colors.vim"
+IFS=$'\r\n' GLOBIGNORE='*' command eval  'colors=($(cat $path_colors))'
 nvim_background=${colors[0]}
 nvim_foreground=${colors[1]}
 color_01=${colors[2]}

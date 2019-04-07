@@ -10,6 +10,16 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+########################################
+
+for_window [class=".*"] border pixel 4
+# hide_edge_borders both
+gaps inner 10
+gaps outer 0
+smart_borders on
+
+########################################
+
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -38,7 +48,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec dmenu_run -nb '#1e1e1e' -sf '#1e1e1e' -sb '#f4800d' -nf '#F4800d'
+# bindsym $mod+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#2aa198' -sb '#2aa198' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -232,7 +244,7 @@ exec --no-startup-id gnome-flashback
 ##############################################################################
 
 exec --no-startup-id feh --bg-fill "$HOME/.config/wall.png"
-for_window [class=".*"] border pixel 2
+# for_window [class=".*"] border pixel 2
 # hide_edge_borders both
 
 # Fix feh background if screen size/arangement has changed.
@@ -241,9 +253,9 @@ for_window [class=".*"] border pixel 2
 
 ##############################################################################
 #
-gaps inner 10
-gaps outer 0
-smart_borders on
+# gaps inner 10
+# gaps outer 0
+# smart_borders on
 # # xinput list-props "DLL06E5:01 06CB:7A13 Touchpad"
 # #
 # # xinput set-prop  "DLL06E5:01 06CB:7A13 Touchpad" "libinput Tapping Enabled" 1
@@ -256,6 +268,8 @@ bindsym $mod+Ctrl+c exec "killall -q gpick && gpick -p && killall -q gpick"
 
 bindsym $mod+Ctrl+l exec $HOME/.scripts/i3lock.sh
 ##############################################################################
+
+exec_always --no-startup-id $HOME/.scripts/colors-terminal.sh
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 

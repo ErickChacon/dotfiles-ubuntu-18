@@ -29,11 +29,14 @@ start-docker() {
   -v $HOME/.ssh:/home/rstudio/.ssh \
   -v $HOME/.gitconfig:/home/rstudio/.gitconfig \
   -v $HOME/.shortcuts:/home/rstudio/.shortcuts \
+  -v $HOME/.palette-name.vim:/home/rstudio/.palette-name.vim \
+  -v $HOME/.palettes:/home/rstudio/.palettes \
   -v /tmp/local:/tmp/local \
   -v $dot_dir/custom.plugins.bash:/home/rstudio/.bash_it/plugins/custom.plugins.bash \
   -v $dot_dir/docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash \
   -v $dot_dir/docker/.bashrc:/home/rstudio/.bashrc \
   -v $dot_dir/docker/.bash_profile:/home/rstudio/.bash_profile \
+  -v $dot_dir/docker/.scripts:/home/rstudio/.scripts \
   -v $dot_dir/docker/.tmux:/home/rstudio/.tmux \
   -v $dot_dir/docker/.tmux.conf:/home/rstudio/.tmux.conf \
   -v $dot_dir/docker/.Rprofile:/home/rstudio/.Rprofile \
@@ -82,6 +85,12 @@ R2() {
   docker exec -it -w /home/rstudio$current global-docker R
 }
 
+newcol() {
+  bash $HOME/.scripts/colors-i3-config.sh
+  i3-msg reload
+  i3-msg restart
+}
+
 
 
 # alias txl='tmux ls'
@@ -92,6 +101,7 @@ R2() {
 
 # alias
 alias col='i3_config && cols && i3-msg reload && i3-msg restart'
+# alias col='i3_config && cols && i3-msg reload && i3-msg restart'
 
 # # alias for directories
 # alias cdre='cd ~/Documents/Repositories'
