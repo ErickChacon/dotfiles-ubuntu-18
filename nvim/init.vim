@@ -10,7 +10,8 @@
 " }}}
 " GENERAL SETTING {{{
 
-" syntax enable
+" set termguicolors
+syntax enable
 " let mapleader = " " " Leader - ( Spacebar ) \ by default
 let maplocalleader = "\\"
 set backspace=2 " Backspace deletes like most programs in insert mode

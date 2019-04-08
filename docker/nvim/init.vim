@@ -359,18 +359,22 @@ let g:COLOR_01 = synIDattr(synIDtrans(hlID('Visual')), 'bg', 'gui')
 " let g:COLOR_02 = synIDattr(synIDtrans(hlID('WarningMsg')), 'fg', 'gui')
 " let g:COLOR_02 = synIDattr(synIDtrans(hlID('WarningMsg')), 'bg', 'gui')
 " let g:COLOR_02 = synIDattr(synIDtrans(hlID('Statement')), 'fg', 'gui')
-let g:COLOR_02 = synIDattr(synIDtrans(hlID('Type')), 'fg', 'gui')
+" let g:COLOR_02 = synIDattr(synIDtrans(hlID('Type')), 'fg', 'gui')
+let g:COLOR_02 = synIDattr(synIDtrans(hlID('String')), 'fg', 'gui')
 let g:COLOR_03 = synIDattr(synIDtrans(hlID('Identifier')), 'fg', 'gui') " Precision
-" let g:COLOR_03 = synIDattr(synIDtrans(hlID('Function')), 'fg', 'gui') " Precision
+" let g:COLOR_03 = synIDattr(synIDtrans(hlID('Type')), 'fg', 'gui') " Precision
+" let g:COLOR_03 = synIDattr(synIDtrans(hlID('Statement')), 'fg', 'gui') " Precision
+" let g:COLOR_03 = synIDattr(synIDtrans(hlID('Keyword')), 'fg', 'gui') " Precision
 " let g:COLOR_03 = synIDattr(synIDtrans(hlID('Normal')), 'fg', 'gui') " Precision
 " let g:COLOR_03 = synIDattr(synIDtrans(hlID('Comment')), 'fg', 'gui') " Precision
 " let g:COLOR_03 = synIDattr(synIDtrans(hlID('Conceal')), 'fg', 'gui') " Precision
 " let g:COLOR_04 = synIDattr(synIDtrans(hlID('Type')), 'fg', 'gui')
 let g:COLOR_04 = synIDattr(synIDtrans(hlID('Number')), 'fg', 'gui')
-let g:COLOR_05 = synIDattr(synIDtrans(hlID('Number')), 'fg', 'gui')
+" let g:COLOR_05 = synIDattr(synIDtrans(hlID('Number')), 'fg', 'gui')
+let g:COLOR_05 = synIDattr(synIDtrans(hlID('Comment')), 'fg', 'gui')
 let g:COLOR_06 = synIDattr(synIDtrans(hlID('Identifier')), 'fg', 'gui')
 " let g:COLOR_07 = synIDattr(synIDtrans(hlID('DiffAdd')), 'fg', 'gui')
-let g:COLOR_07 = synIDattr(synIDtrans(hlID('String')), 'fg', 'gui')
+let g:COLOR_07 = synIDattr(synIDtrans(hlID('Function')), 'fg', 'gui')
 let g:COLOR_08 = synIDattr(synIDtrans(hlID('Special')), 'fg', 'gui')
 " "
 " let g:COLOR_09 = synIDattr(synIDtrans(hlID('MatchParen')), 'bg', 'gui')
@@ -388,6 +392,7 @@ let g:COLOR_10 = synIDattr(synIDtrans(hlID('Statement')), 'fg', 'gui')
 " let g:COLOR_11 = synIDattr(synIDtrans(hlID('Structure')), 'fg', 'gui') " chaconmo
 " let g:COLOR_11 = synIDattr(synIDtrans(hlID('Include')), 'fg', 'gui') " chaconmo
 let g:COLOR_11 = synIDattr(synIDtrans(hlID('Define')), 'fg', 'gui') " chaconmo
+" let g:COLOR_11 = synIDattr(synIDtrans(hlID('Function')), 'fg', 'gui') " chaconmo
 " let g:COLOR_12 = synIDattr(synIDtrans(hlID('DiffText')), 'fg', 'gui')
 let g:COLOR_12 = synIDattr(synIDtrans(hlID('CursorLineNr')), 'fg', 'gui')
 " let g:COLOR_12 = synIDattr(synIDtrans(hlID('Search')), 'fg', 'gui')
@@ -417,7 +422,6 @@ let g:COLOR_16 = synIDattr(synIDtrans(hlID('TypeDef')), 'fg', 'gui')
 " let g:COLOR_14 = "#ffffff"
 " let g:COLOR_15 = "#ffffff"
 " let g:COLOR_16 = "#ffffff"
-
 
 let g:my_colors = [g:nvim_background, g:nvim_foreground, g:COLOR_01, g:COLOR_02, g:COLOR_03,
       \ g:COLOR_04, g:COLOR_05, g:COLOR_06, g:COLOR_07, g:COLOR_08, g:COLOR_09, g:COLOR_10,
