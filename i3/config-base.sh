@@ -10,15 +10,15 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-########################################
+###############################################################################
+# Borders and gaps of i3 configs
 
 for_window [class=".*"] border pixel 4
-# hide_edge_borders both
 gaps inner 10
-gaps outer 0
+gaps outer 08
 smart_borders on
 
-########################################
+###############################################################################
 
 set $mod Mod4
 
@@ -55,6 +55,11 @@ bindsym $mod+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# bindsym $mod+d exec dmenu_run -nf '$nvim_foreground' -sb '$color_11' -sf '$nvim_background' -fn 'NotoMonoRegular:bold:pixelsize=28'
+# bindsym $mod+d exec dmenu_run -nf '$nvim_foreground' -sb '$color_11' -sf '$nvim_background' -fn 'DejaVu Sans Mono:pixelsize=28'
+bindsym $mod+d exec dmenu_run -nb '$nvim_background' -nf '$nvim_foreground' -sb '$color_11' -sf '$nvim_background' -fn 'Ubuntu Mono derivative Powerline Regular:pixelsize=30'
+# font pango:DejaVu Sans Mono 12
 
 # change focus
 bindsym $mod+h focus left
@@ -224,65 +229,41 @@ bindsym $mod+r mode "resize"
 #         # output primary
 # }
 
-##############################################################################
-
-# exec /usr/bin/gnome-settings-daemon
-# size of letter only work wieht this
-# exec randr --dpi 200
-
-
-##############################################################################
-#
-# GNOME INTEGRATION
-#
+################################################################################
+# Gnome integration
 
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
 exec_always --no-startup-id gnome-power-manager
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id gnome-flashback
 
-##############################################################################
+################################################################################
+# Background image
 
 exec --no-startup-id feh --bg-fill "$HOME/.config/wall.png"
-# for_window [class=".*"] border pixel 2
-# hide_edge_borders both
-
 # Fix feh background if screen size/arangement has changed.
 # feh --bg-scale "$HOME/.config/wall.png"
 
-
-##############################################################################
-#
-# gaps inner 10
-# gaps outer 0
-# smart_borders on
-# # xinput list-props "DLL06E5:01 06CB:7A13 Touchpad"
-# #
-# # xinput set-prop  "DLL06E5:01 06CB:7A13 Touchpad" "libinput Tapping Enabled" 1
-# set $touchpad DLL06E5:01 06CB:7A13 Touchpad
-# exec --no-startup-id xinput set-prop "$touchpad" "libinput Tapping Enabled" 1
-# exec xinput set-prop "$touchpad" "libinput Tapping Enabled" 1
-
+################################################################################
+# Gpick colors
 
 bindsym $mod+Ctrl+c exec "killall -q gpick && gpick -p && killall -q gpick"
 
+################################################################################
+# Screen locjk
+
 bindsym $mod+Ctrl+l exec $HOME/.scripts/i3lock.sh
-##############################################################################
+
+################################################################################
+# Colors for terminal and polybar
 
 exec_always --no-startup-id $HOME/.scripts/colors-terminal.sh
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-##############################################################################
+################################################################################
+# Workspaces startup
 
-# workspace $ws1
-
-# exec --no-startup-id i3-msg 'workspace 1:Web; exec /usr/bin/firefox'
-
-# assign [class="firefox"] $ws5
-
-# exec --no-startup-id i3-msg 'workspace $ws1; exec i3-sensible-terminal -e start-docker plop; bash'
-# exec --no-startup-id i3-msg 'workspace $ws1; exec i3-sensible-terminal -e start-docker'
 exec --no-startup-id i3-msg 'workspace $ws1; exec i3-sensible-terminal'
 exec --no-startup-id i3-msg 'workspace $ws2; exec i3-sensible-terminal'
 exec --no-startup-id i3-msg 'workspace $ws3; exec i3-sensible-terminal'
@@ -291,16 +272,6 @@ exec --no-startup-id i3-msg 'workspace $ws5; exec firefox'
 exec --no-startup-id i3-msg 'workspace $ws9; exec firefox'
 exec --no-startup-id i3-msg 'workspace $ws10; exec spotify'
 
-# # exec nvim
-# workspace $ws1 output eDP-1
-# exec start-docker
-# exec i3-sensible-terminal -e start-docker
-
-# workspace $ws2 output eDP-1
-# exec firefox
-# workspace $ws3 output eDP-1
-# exec firefox
-# workspace $ws4 output eDP-1
-# exec firefox
-# workspace $ws9 output eDP-1
+################################################################################
+# Define colors for i3
 

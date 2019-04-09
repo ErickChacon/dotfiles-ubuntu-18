@@ -69,11 +69,3 @@ if type "xrandr"; then
 else
   polybar --reload example &
 fi
-
-# # Launch bar1 and bar2
-# polybar bar1 &
-# polybar bar2 &
-
-# polybar example
-
-# echo "Bars launched..."

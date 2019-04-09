@@ -12,7 +12,7 @@ echo $pal > $path_pal
 echo $pal
 
 # colors name
-colors_name=(nvim_background nvim_foreground color_01 color_02 color_03 color_04 \
+colors_name=(color_bg color_fg color_01 color_02 color_03 color_04 \
   color_05 color_06 color_07 color_08 color_09 color_10 color_11 color_12 color_13 \
   color_14 color_15 color_16)
 
