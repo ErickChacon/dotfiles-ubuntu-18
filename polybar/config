@@ -45,6 +45,7 @@ background-alt = ${neovim.nvim_background}
 ;foreground = ${xrdb:color7:#222}
 foreground = ${neovim.nvim_foreground}
 ; foreground-alt = #7b7b7b
+; foreground-alt = ${neovim.nvim_foreground}
 foreground-alt = ${neovim.nvim_foreground}
 ; foreground-alt = #555
 ; primary = #ffb52a
@@ -53,7 +54,7 @@ primary = ${neovim.color_11}
 ; secondary = #e60053
 secondary = ${neovim.color_03}
 ; alert = #bd2c40
-alert = ${neovim.color_12}
+alert = ${neovim.color_11}
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -71,6 +72,7 @@ foreground = ${colors.foreground}
 
 line-size = 3
 line-color = ${colors.background}
+; line-color = ${colors.alert}
 ; #f00
 
 border-size = 4
@@ -177,10 +179,9 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
 
-label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${neovim.color_14}
-; ${colors.primary}
+label-mode-padding = 2
 
 ; focused = Active workspace on focused monitor
 ; label-focused = %index%
@@ -203,13 +204,13 @@ label-visible-underline = ${neovim.nvim_foreground}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = %name%
+label-urgent-foreground = ${colors.background}
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 ; Separator in between workspaces
 ; label-separator = |
-
 
 [module/mpd]
 type = internal/mpd

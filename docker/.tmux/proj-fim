@@ -1,23 +1,26 @@
 #!/bin/bash
+project_name='FI-Mapping'
 
 function has-session {
-  tmux has-session -t='FI-Mapping'  2>/dev/null
+  tmux has-session -t=$project_name 2>/dev/null
 }
 
 if  has-session ; then
-  tmux a -t 'FI-Mapping'
+  tmux a -t $project_name
 else
 
   # main work directory:
-  proj="$HOME/Documents/Projects/FoodSecurity/5.Studies/MapFoodInse"
-  tmux new-session -d -c $proj -s 'FI-Mapping'
+  bigproj="$HOME/Documents/Projects/FoodSecurity/5.Studies"
+  proj="$bigproj/MapFoodInse"
+  path_repos="$HOME/Documents/Repositories"
+  tmux new-session -d -c $proj -s $project_name
 
   # window: notes
   tmux rename-window "Notes"
   tmux send-keys \
     'nvim ~/Documents/Nvim/Vimwiki/Food\ Insecurity\ Study\ Notes.wiki' C-m
 
-  if [[ "$1" == *paper* ]]; then
+  if [[ "$1" == *write* ]]; then
     # window: paper
     tmux new-window -c "$proj/7.Writing/paper-spmirt"
     tmux rename-window "Paper"
@@ -25,16 +28,16 @@ else
     # window: outline
     tmux new-window -c "$proj/7.Writing/paper-spmirt"
     tmux rename-window "Outline"
-    tmux send-keys "nvim outline_erick.Rmd" C-m
+    tmux send-keys "nvim README.md" C-m
   fi
 
   if [[ "$1" == *dev* ]]; then
     # window: package
-    tmux new-window -c "$HOME/Documents/Repositories/spmirt"
+    tmux new-window -c "$path_repos/spifa"
     tmux rename-window "Package"
     tmux send-keys "nvim" C-m
     # window: package test
-    tmux new-window -c "$HOME/Documents/Repositories/spmirt/demos"
+    tmux new-window -c "$path_repos/spifa/demos"
     tmux rename-window "PackageDemos"
     tmux send-keys "nvim" C-m
   fi

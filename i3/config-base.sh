@@ -14,8 +14,8 @@
 # Borders and gaps of i3 configs
 
 for_window [class=".*"] border pixel 4
-gaps inner 10
-gaps outer 08
+gaps inner 15
+gaps outer 24
 smart_borders on
 
 ###############################################################################
@@ -48,7 +48,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -nb '$color_bg' -nf '$color_fg' -sb '$color_11' -sf '$color_bg' -fn 'Ubuntu Mono derivative Powerline Regular:pixelsize=30'
+bindsym $mod+d exec dmenu_run -nb '$color_bg' -nf '$color_fg' -sb '$color_11' \
+  -sf '$color_bg' -fn 'Ubuntu Mono derivative Powerline Regular:pixelsize=30'
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -252,8 +253,14 @@ bindsym $mod+Ctrl+l exec $HOME/.scripts/i3lock.sh
 # Colors for terminal and polybar
 
 exec_always --no-startup-id $HOME/.scripts/colors-terminal.sh
-
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+################################################################################
+# docker containers
+
+exec --no-startup-id $HOME/.scripts/start-docker.sh dot
+exec --no-startup-id $HOME/.scripts/start-docker.sh
+# exec --no-startup-id start-docker
 
 ################################################################################
 # Workspaces startup
