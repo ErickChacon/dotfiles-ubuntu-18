@@ -97,6 +97,11 @@ sudo apt-get update && \
 # diconnected islands plugin requirements
 pip3 install networkx --user
 
+# skype
+wget https://go.skype.com/skypeforlinux-64.deb
+# sudo apt-get install -y skypeforlinux-64.deb
+sudo dpkg -i skypeforlinux-64.deb
+
 
 # i3-gaps {{{1
 

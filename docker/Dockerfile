@@ -213,5 +213,6 @@ RUN tlmgr update --self && \
 
 RUN \
   # my repositories
-  installGithub.r ErickChacon/mbsi
-
+  installGithub.r ErickChacon/mbsi ErickChacon/datasim && \
+  # maps visualization
+  install2.r --error --deps TRUE OpenStreetMap osmdata osmplotr
