@@ -1,0 +1,113 @@
+#!/bin/bash
+project_name='Thesis'
+
+function has-session {
+  tmux has-session -t=$project_name 2>/dev/null
+}
+
+if has-session ; then
+  tmux a -t $project_name
+else
+
+  # main work directory:
+  bigproj="$HOME/Documents/Projects/FoodSecurity/5.Studies"
+  proj="$bigproj/Thesis"
+  path_texmf="$HOME/Documents/texmf/tex/latex"
+  tmux new-session -d -c $proj -s $project_name
+
+  # window: notes
+  tmux rename-window "Notes"
+  tmux send-keys 'nvim README.md' C-m
+
+  # window: thesis
+  tmux new-window -c $proj
+  tmux rename-window "Thesis"
+  tmux send-keys "nvim" C-m
+
+  # window: paper mbpi
+  path_mbsi="$proj/paper-mbsi"
+  tmux new-window -c $path_mbsi
+  tmux rename-window "Mbsi"
+  tmux send-keys "nvim" C-m
+
+  # window: paper bw
+  path_bw="$proj/paper-bw"
+  tmux new-window -c $path_bw
+  tmux rename-window "Birth"
+  tmux send-keys "nvim" C-m
+
+  # window: paper spifa
+  path_spifa="$proj/paper-spifa"
+  tmux new-window -c $path_spifa
+  tmux rename-window "Spifa"
+  tmux send-keys "nvim" C-m
+
+  # window: paper mapfi
+  path_mapfi="$proj/paper-mapfi"
+  tmux new-window -c $path_mapfi
+  tmux rename-window "Mapfi"
+  tmux send-keys "nvim" C-m
+
+  # window: SimpleThesis class
+  path_simple_thesis="$path_texmf/simple-thesis"
+  tmux new-window -c $path_simple_thesis
+  tmux rename-window "SimThe"
+  tmux send-keys "nvim" C-m
+
+  # window: SimpleNotes class
+  path_simple_notes="$path_texmf/research-notes"
+  tmux new-window -c $path_simple_notes
+  tmux rename-window "SimNot"
+  tmux send-keys "nvim" C-m
+
+  # if [[ "$1" == *clean* ]]; then
+  #   clean_path="$bigproj/3.CleanScripts"
+  #   # window: cleaning
+  #   tmux new-window -c $clean_path
+  #   tmux rename-window "Cleaning"
+  #   tmux send-keys "nvim" C-m
+  # fi
+
+  # if [[ "$1" == *ana* ]]; then
+  #   aux_path="$HOME/Documents/Repositories/Food-Security-Amazonia"
+  #   aux_path+="/8.Analysis/7.FoodInsMapping"
+  #   # window: data analysis
+  #   tmux new-window -c $aux_path
+  #   tmux rename-window "Analysis"
+  #   tmux send-keys "nvim" C-m
+  # fi
+
+  # if [[ "$1" == *dev* ]]; then
+  #   # window: package
+  #   tmux new-window -c "$HOME/Documents/Repositories/spifa"
+  #   tmux rename-window "Package"
+  #   tmux send-keys "nvim" C-m
+  #   # window: package test
+  #   tmux new-window -c "$HOME/Documents/Repositories/spifa/demos"
+  #   tmux rename-window "PackageDemos"
+  #   tmux send-keys "nvim" C-m
+  # fi
+
+  # if [[ "$1" == *repo* ]]; then
+  #   # window: repositories
+  #   tmux new-window -c "$HOME/Documents/Repositories"
+  #   tmux rename-window "Repos"
+  #   tmux send-keys "nvim" C-m
+  # fi
+
+  # if [[ "$1" == *paper* ]]; then
+  #   # window: paper
+  #   tmux new-window -c "$proj/7.Writing/paper-mapfi"
+  #   tmux rename-window "Paper"
+  #   tmux send-keys "nvim 00-paper.tex" C-m
+  #   # window: outline
+  #   tmux new-window -c "$proj/7.Writing/paper-mapfi"
+  #   tmux rename-window "Outline"
+  #   tmux send-keys "nvim README.md" C-m
+  # fi
+
+  # focus on window:
+  tmux select-window -t "Notes"
+  tmux attach-session -d
+fi
+
