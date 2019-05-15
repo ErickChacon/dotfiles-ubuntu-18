@@ -18,6 +18,23 @@ start-docker() {
   local current=$(pwd_short)
   local repo_dir="/home/chaconmo/Documents/Repositories"
   local dot_dir="/home/chaconmo/Documents/Repositories/dotfiles-ubuntu-18"
+
+  if [ -z "$2" ]; then
+    local dot_docker="$dot_dir/stat-toolbox/3.6.0"
+    echo default
+  elif [ $2 == "latest" ]; then
+    local dot_docker="$dot_dir/stat-toolbox"
+    echo latest
+  elif [ -d "$dot_dir/stat-toolbox/$2" ]; then
+    local dot_docker="$dot_dir/stat-toolbox/$2"
+    echo version
+  else
+    local dot_docker="$dot_dir/stat-toolbox/3.6.0"
+    echo non-existed version
+  fi
+
+  echo $dot_docker
+
   XSOCK=/tmp/.X11-unix && \
   XAUTH=/tmp/.docker.xauth && \
   xauth nlist :0 | sed -e "s/^..../ffff/" | xauth -f $XAUTH nmerge - && \
@@ -33,20 +50,21 @@ start-docker() {
   -v $HOME/.palettes:/home/rstudio/.palettes \
   -v /tmp/local:/tmp/local \
   -v $dot_dir/custom.plugins.bash:/home/rstudio/.bash_it/plugins/custom.plugins.bash \
-  -v $dot_dir/docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash \
-  -v $dot_dir/docker/.bashrc:/home/rstudio/.bashrc \
-  -v $dot_dir/docker/.bash_profile:/home/rstudio/.bash_profile \
-  -v $dot_dir/docker/.scripts:/home/rstudio/.scripts \
-  -v $dot_dir/docker/.tmux:/home/rstudio/.tmux \
-  -v $dot_dir/docker/.tmux.conf:/home/rstudio/.tmux.conf \
-  -v $dot_dir/docker/.Rprofile:/home/rstudio/.Rprofile \
-  -v $dot_dir/docker/.ctags:/home/rstudio/.ctags \
-  -v $dot_dir/docker/nvim:/home/rstudio/.config/nvim \
-  -v $dot_dir/docker/R/Makevars:/home/rstudio/.R/Makevars \
+  -v $dot_docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash \
+  -v $dot_docker/.bashrc:/home/rstudio/.bashrc \
+  -v $dot_docker/.bash_profile:/home/rstudio/.bash_profile \
+  -v $dot_docker/.scripts:/home/rstudio/.scripts \
+  -v $dot_docker/.tmux:/home/rstudio/.tmux \
+  -v $dot_docker/.tmux.conf:/home/rstudio/.tmux.conf \
+  -v $dot_docker/.Rprofile:/home/rstudio/.Rprofile \
+  -v $dot_docker/.ctags:/home/rstudio/.ctags \
+  -v $dot_docker/R/Makevars:/home/rstudio/.R/Makevars \
   -w /home/rstudio$current \
   -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
-  --rm -it erickchacon/stat-toolbox bash
+  --rm -it ${3:-erickchacon/stat-toolbox} bash
 }
+  # -v $dot_docker/nvim:/home/rstudio/.config/nvim \
+
   # -v /home/chaconmo/texmf:/home/rstudio/.TinyTex/texmf-home \
   # -v $repo_dir/reserch-notes:/usr/local/lib/R/share/texmf
 
