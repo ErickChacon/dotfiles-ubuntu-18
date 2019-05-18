@@ -18,6 +18,7 @@ start-docker() {
   local current=$(pwd_short)
   local repo_dir="/home/chaconmo/Documents/Repositories"
   local dot_dir="/home/chaconmo/Documents/Repositories/dotfiles-ubuntu-18"
+  local dot_dir_g="/home/chaconmo/Documents/Repositories/dotfiles-ubuntu-18/stat-toolbox-dotfiles"
 
   if [ -z "$2" ]; then
     local dot_docker="$dot_dir/stat-toolbox/3.6.0"
@@ -53,17 +54,17 @@ start-docker() {
   -v $dot_docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash \
   -v $dot_docker/.bashrc:/home/rstudio/.bashrc \
   -v $dot_docker/.bash_profile:/home/rstudio/.bash_profile \
-  -v $dot_docker/.scripts:/home/rstudio/.scripts \
-  -v $dot_docker/.tmux:/home/rstudio/.tmux \
+  -v $dot_dir_g/.scripts:/home/rstudio/.scripts \
+  -v $dot_docker/nvim:/home/rstudio/.config/nvim \
+  -v $dot_dir_g/.tmux:/home/rstudio/.tmux \
   -v $dot_docker/.tmux.conf:/home/rstudio/.tmux.conf \
   -v $dot_docker/.Rprofile:/home/rstudio/.Rprofile \
   -v $dot_docker/.ctags:/home/rstudio/.ctags \
   -v $dot_docker/R/Makevars:/home/rstudio/.R/Makevars \
   -w /home/rstudio$current \
   -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
-  --rm -it ${3:-erickchacon/stat-toolbox} bash
+  --rm -it ${3:-erickchacon/stat-toolbox:3.6.0} bash
 }
-  # -v $dot_docker/nvim:/home/rstudio/.config/nvim \
 
   # -v /home/chaconmo/texmf:/home/rstudio/.TinyTex/texmf-home \
   # -v $repo_dir/reserch-notes:/usr/local/lib/R/share/texmf
@@ -75,8 +76,13 @@ docker stop ${1:-global-docker}
 # execute bash on container
 bs() {
   local current=$(pwd_short)
-  docker exec -it -w /home/rstudio$current ${1:-global-docker} bash
+  if [[ $# > 1 ]]; then
+    docker exec -it --user $2 -w /home/rstudio$current ${1:-global-docker} bash
+  else
+    docker exec -it -w /home/rstudio$current ${1:-global-docker} bash
+  fi
 }
+# --user ${2:-rstudio}
 
 # execute nvim on container
 vm() {
@@ -93,7 +99,7 @@ tx() {
 # open tmux projects on container
 txo() {
   local current=$(pwd_short)
-  docker exec -it -w /home/rstudio$current global-docker /home/rstudio/.tmux/proj-$1 $2
+  docker exec -it -w /home/rstudio$current ${3:-global-docker} /home/rstudio/.tmux/proj-$1 $2
 }
 
 

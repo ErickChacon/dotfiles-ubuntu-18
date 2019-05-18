@@ -36,6 +36,7 @@ mkdir -p ~/.config/i3/
 ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3/config ~/.config/i3/config
 ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3/config-base.sh ~/.config/i3/config-base.sh
 ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3/config-colors.sh ~/.config/i3/config-colors.sh
+ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3/startup.sh ~/.config/i3/startup.sh
 
 # polybar
 ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar/launch.sh ~/.config/polybar/launch.sh

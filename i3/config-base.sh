@@ -13,9 +13,9 @@
 ###############################################################################
 # Borders and gaps of i3 configs
 
-for_window [class=".*"] border pixel 4
-gaps inner 15
-gaps outer 24
+for_window [class=".*"] border pixel 2
+gaps inner 10
+gaps outer 10
 smart_borders on
 
 ###############################################################################
@@ -196,16 +196,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 05 px or 05 ppt
+        bindsym j resize grow height 05 px or 05 ppt
+        bindsym k resize shrink height 05 px or 05 ppt
+        bindsym l resize grow width 05 px or 05 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 05 px or 05 ppt
+        bindsym Down resize grow height 05 px or 05 ppt
+        bindsym Up resize shrink height 05 px or 05 ppt
+        bindsym Right resize grow width 05 px or 05 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -224,7 +224,7 @@ bindsym $mod+r mode "resize"
 #         # output primary
 # }
 
-################################################################################
+# ################################################################################
 # Gnome integration
 
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
@@ -265,13 +265,17 @@ exec --no-startup-id $HOME/.scripts/start-docker.sh
 ################################################################################
 # Workspaces startup
 
-exec --no-startup-id i3-msg 'workspace $ws1; exec i3-sensible-terminal'
-exec --no-startup-id i3-msg 'workspace $ws2; exec i3-sensible-terminal'
+exec --no-startup-id i3-msg 'workspace $ws1; \
+  exec i3-sensible-terminal -e ./.scripts/i3-ws1-org.sh; \
+  exec i3-sensible-terminal -e ./.scripts/i3-ws1-re.sh'
+exec --no-startup-id i3-msg \
+  'workspace $ws2; exec i3-sensible-terminal -e ./.scripts/i3-ws2-work.sh'
 exec --no-startup-id i3-msg 'workspace $ws3; exec i3-sensible-terminal'
 exec --no-startup-id i3-msg 'workspace $ws4; exec i3-sensible-terminal -e ranger; bash'
-exec --no-startup-id i3-msg 'workspace $ws5; exec firefox'
-exec --no-startup-id i3-msg 'workspace $ws9; exec firefox'
+exec --no-startup-id i3-msg 'workspace $ws5; exec firefox; sleep 2'
+exec --no-startup-id i3-msg 'workspace $ws9; exec firefox; sleep 2'
 exec --no-startup-id i3-msg 'workspace $ws10; exec spotify'
+
 
 ################################################################################
 # Define colors for i3
