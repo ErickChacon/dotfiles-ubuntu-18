@@ -1,0 +1,19 @@
+
+{
+    // stacked split container with 1 children
+    "layout": "hsplit",
+    "percent": 1,
+    "type": "con",
+    "nodes": [
+        {
+            "name": "Spotify",
+            "type": "con",
+            "swallows": [
+                {
+                    "class": "^Spotify$"
+                }
+            ]
+        }
+    ]
+}
+

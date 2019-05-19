@@ -19,6 +19,4 @@ colors_name=(color_bg color_fg color_01 color_02 color_03 color_04 \
 # create i3 config file
 printf "%s\n" "${colors_name[@]}" | paste - $path_colors | \
   awk '{print "set $" $1 " " $2}' | \
-  cat $HOME/.config/i3/config-base.sh - \
-  $HOME/.config/i3/config-colors.sh > \
-  $HOME/.config/i3/config
+  cat $HOME/.config/i3/config-base.sh - > $HOME/.config/i3/config

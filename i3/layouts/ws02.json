@@ -1,0 +1,18 @@
+
+{
+    // stacked split container with 1 children
+    "layout": "hsplit",
+    "percent": 1,
+    "type": "con",
+    "nodes": [
+        {
+            "name": "terminal-work",
+            "type": "con",
+            "swallows": [
+                {
+                    "class": "^Gnome-terminal$"
+                }
+            ]
+        }
+    ]
+}

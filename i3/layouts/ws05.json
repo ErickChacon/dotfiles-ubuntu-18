@@ -1,0 +1,18 @@
+
+{
+    // stacked split container with 1 children
+    "layout": "hsplit",
+    "type": "con",
+    "nodes": [
+        {
+            "name": "Firefox",
+            "type": "con",
+            "swallows": [
+                {
+                    "class": "^Firefox$"
+                }
+            ]
+        }
+    ]
+}
+
