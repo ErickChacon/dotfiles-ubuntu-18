@@ -1,0 +1,19 @@
+
+{
+    // stacked split container with 1 children
+    "layout": "stacked",
+    "percent": 0.6,
+    "type": "con",
+    "nodes": [
+        {
+            "name": "chrome",
+            "type": "con",
+            "swallows": [
+                {
+                    "class": "^R_x11$"
+                }
+            ]
+        }
+    ]
+}
+

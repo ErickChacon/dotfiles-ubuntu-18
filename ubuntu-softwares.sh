@@ -168,7 +168,6 @@ sudo apt-get install -y gucharmap
 # i3 locks
 sudo apt-get install -y i3lock imagemagick scrot
 
-
 # SYNC SOFTWARE {{{1
 
 # unison for bidirectional sync
