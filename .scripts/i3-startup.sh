@@ -39,7 +39,8 @@ i3-msg 'workspace '$ws4'; exec i3-sensible-terminal -e ranger'
 sleep 1
 i3-msg 'workspace '$ws5'; exec firefox --new-window'
 sleep 1
-i3-msg 'workspace '$ws9'; exec firefox --new-window'
+i3-msg 'workspace '$ws9'; exec firefox -url https://outlook.office.com/ https://mail.google.com/'
 sleep 1
 i3-msg 'workspace '$ws10'; exec spotify'
+
 
