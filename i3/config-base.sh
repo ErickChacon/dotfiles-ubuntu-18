@@ -91,7 +91,8 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+# bindsym $mod+w layout tabbed
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -196,10 +197,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 03 px or 03 ppt
+        bindsym h resize shrink width 01 px or 01 ppt
         bindsym j resize grow height 05 px or 05 ppt
         bindsym k resize shrink height 05 px or 05 ppt
-        bindsym l resize grow width 03 px or 03 ppt
+        bindsym l resize grow width 01 px or 01 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 05 px or 05 ppt
@@ -245,7 +246,7 @@ exec --no-startup-id feh --bg-fill "$HOME/.config/wall.png"
 bindsym $mod+Ctrl+c exec "killall -q gpick && gpick -p && killall -q gpick"
 
 ################################################################################
-# Screen locjk
+# Screen lock
 
 bindsym $mod+Ctrl+l exec $HOME/.scripts/i3lock.sh
 
@@ -274,7 +275,7 @@ exec --no-startup-id $HOME/.scripts/i3-startup.sh
 # class                 border    backgr.   text      indicator child_border
 client.focused          $color_11 $color_11 $color_bg $color_11 $color_11
 client.focused_inactive $color_11 $color_11 $color_bg $color_09 $color_bg
-client.unfocused        $color_06 $color_06 $color_fg $color_10 $color_bg
+client.unfocused        $color_06 $color_06 $color_bg $color_10 $color_bg
 client.urgent           #2f343a   #900000   #ffffff   #900000   #900000
 client.placeholder      #000000   #0c0c0c   #ffffff   #000000   #0c0c0c
 client.background       #ffffff

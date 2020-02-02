@@ -1,0 +1,45 @@
+
+{
+    // splitv split container with 2 children
+    "layout": "tabbed",
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+        {
+            "name": "Gmail",
+            "type": "con",
+            "swallows": [
+                {
+                    "class": "^Gnome-terminal$"
+                }
+            ]
+        },
+        {
+            "name": "Office365",
+            "type": "con",
+            "swallows": [
+                {
+                    "class": "^Gnome-terminal$"
+                }
+            ]
+        }
+    ]
+}
+
+{
+    // stacked split container with 1 children
+    "layout": "splith",
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+        {
+            "name": "Firefox",
+            "type": "con",
+            "swallows": [
+                {
+                    "class": "^Firefox$"
+                }
+            ]
+        }
+    ]
+}

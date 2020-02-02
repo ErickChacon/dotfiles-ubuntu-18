@@ -102,6 +102,22 @@ wget https://go.skype.com/skypeforlinux-64.deb
 # sudo apt-get install -y skypeforlinux-64.deb
 sudo dpkg -i skypeforlinux-64.deb
 
+# email client
+sudo apt-get install -y neomutt
+
+# setting up neomutt
+# sudo apt-get install -y isync msmtp pass postfix
+# git clone https://github.com/LukeSmithxyz/mutt-wizard
+# cd mutt-wizard
+# sudo make install
+# mw add
+# pass init eral.th07@gmail.com
+
+# Error in /usr/share/mutt-wizard/mutt-wizard.muttrc, line 48: Function 'goto-parent' not available for menu 'browser'
+# Error in /home/chaconmo/.config/mutt/muttrc, line 2: source: file /usr/share/mutt-wizard/mutt-wizard.muttrc could not be sourced.
+# bind browser h goto-parent
+# Comment following line on /usr/bin/mailsync
+# pgrep -u "$USER" >/dev/null || exit
 
 # i3-gaps {{{1
 
@@ -225,7 +241,7 @@ sudo apt-get install docker-ce -y
 # Add the current user to the docker group
 sudo usermod -a -G docker $USER
 # Verifying installation
-docker run hello-world
+# docker run hello-world
 
 # WEB SOFTWARE {{{1
 

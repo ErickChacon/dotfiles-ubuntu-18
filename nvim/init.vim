@@ -137,3 +137,8 @@ nmap <silent> gl :wincmd l<CR>
 autocmd FilterWritePre * if &diff | setlocal wrap< | endif
 
 " }}}
+
+" hi SpellBad ctermfg=red
+
+hi SpellBad cterm=italic,bold,underline ctermbg=none 
+

@@ -1,25 +1,24 @@
 #!/bin/bash
-project_name='Birth-weight'
+project_name='Food-insecurity'
 
 function has-session {
-  tmux has-session -t=$proj_name 2>/dev/null
+    tmux has-session -t=$project_name 2>/dev/null
 }
 
-if has-session ; then
-    tmux a -t $proj_name
+if  has-session ; then
+    tmux a -t $project_name
 else
-    bigproj="$HOME/Documents/Projects/food-insecurity"
-    proj="$bigproj/70-studies/study-birthweight"
+    proj="$HOME/Documents/Projects/food-insecurity"
     tmux new-session -d -c $proj -s $project_name
 
     # window: notes
     tmux rename-window "Notes"
     tmux send-keys "nvim README.md" C-m
 
-    # window: scripts
+    # windoe: scripts
     tmux new-window -c "$proj/50-scripts"
     tmux rename-window "Scripts"
-    tmux send-keys 'nvim' C-m
+    tmux send-keys "nvim" C-m
 
     # window: makefile
     tmux new-window -c "$proj"
@@ -27,6 +26,7 @@ else
     tmux send-keys "nvim Makefile" C-m
 
     # focus on window:
-    tmux select-window -t "Scripts"
+    tmux select-window -t "Notes"
     tmux attach-session -d
 fi
+

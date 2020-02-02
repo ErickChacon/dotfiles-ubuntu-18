@@ -19,9 +19,6 @@ sudo apt-get install psensor -y
 # redshift
 sudo apt-get install redshift-gtk -y
 
-# evolution
-sudo apt-get install evolution -y
-
 # OFFICE SOFTWARE {{{1
 
 # inkscape

@@ -49,6 +49,7 @@ start-docker() {
   -v $HOME/.shortcuts:/home/rstudio/.shortcuts \
   -v $HOME/.palette-name.vim:/home/rstudio/.palette-name.vim \
   -v $HOME/.palettes:/home/rstudio/.palettes \
+  -v $HOME/.config/mutt:/home/rstudio/.config/mutt \
   -v /tmp/local:/tmp/local \
   -v $dot_dir/custom.plugins.bash:/home/rstudio/.bash_it/plugins/custom.plugins.bash \
   -v $dot_docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash \
@@ -65,6 +66,63 @@ start-docker() {
   -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
   --rm -it ${3:-erickchacon/stat-toolbox:3.6.0} bash
 }
+
+start-docker-rstudio() {
+  mkdir -p /tmp/local
+  local current=$(pwd_short)
+  local repo_dir="/home/chaconmo/Documents/Repositories"
+  local dot_dir="/home/chaconmo/Documents/Repositories/dotfiles-ubuntu-18"
+  local dot_dir_g="/home/chaconmo/Documents/Repositories/dotfiles-ubuntu-18/stat-toolbox-dotfiles"
+
+  if [ -z "$2" ]; then
+    local dot_docker="$dot_dir/stat-toolbox/3.6.0"
+    echo default
+  elif [ $2 == "latest" ]; then
+    local dot_docker="$dot_dir/stat-toolbox"
+    echo latest
+  elif [ -d "$dot_dir/stat-toolbox/$2" ]; then
+    local dot_docker="$dot_dir/stat-toolbox/$2"
+    echo version
+  else
+    local dot_docker="$dot_dir/stat-toolbox/3.6.0"
+    echo non-existed version
+  fi
+
+  echo $dot_docker
+
+  XSOCK=/tmp/.X11-unix && \
+  XAUTH=/tmp/.docker.xauth && \
+  xauth nlist :0 | sed -e "s/^..../ffff/" | xauth -f $XAUTH nmerge - && \
+  docker run --name ${1:-global-docker} \
+  -v $XSOCK:$XSOCK -v $XAUTH:$XAUTH \
+  -v $HOME/Documents/:/home/rstudio/Documents \
+  -v $HOME/Dropbox/:/home/rstudio/Dropbox \
+  -v $HOME/Documents/texmf:/home/rstudio/.TinyTeX/texmf-home \
+  -v $HOME/.ssh:/home/rstudio/.ssh \
+  -v $HOME/.gitconfig:/home/rstudio/.gitconfig \
+  -v $HOME/.shortcuts:/home/rstudio/.shortcuts \
+  -v $HOME/.palette-name.vim:/home/rstudio/.palette-name.vim \
+  -v $HOME/.palettes:/home/rstudio/.palettes \
+  -v $HOME/.config/mutt:/home/rstudio/.config/mutt \
+  -v /tmp/local:/tmp/local \
+  -v $dot_dir/custom.plugins.bash:/home/rstudio/.bash_it/plugins/custom.plugins.bash \
+  -v $dot_docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash \
+  -v $dot_docker/.bashrc:/home/rstudio/.bashrc \
+  -v $dot_docker/.bash_profile:/home/rstudio/.bash_profile \
+  -v $dot_dir_g/.scripts:/home/rstudio/.scripts \
+  -v $dot_docker/nvim:/home/rstudio/.config/nvim \
+  -v $dot_dir_g/.tmux:/home/rstudio/.tmux \
+  -v $dot_docker/.tmux.conf:/home/rstudio/.tmux.conf \
+  -v $dot_docker/.Rprofile:/home/rstudio/.Rprofile \
+  -v $dot_docker/.ctags:/home/rstudio/.ctags \
+  -v $dot_docker/R/Makevars:/home/rstudio/.R/Makevars \
+  -w /home/rstudio$current \
+  -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
+  -p 8787:8787 -e PASSWORD=reproducible \
+  --rm ${3:-erickchacon/stat-toolbox:3.6.0}
+}
+
+
 
   # -v /home/chaconmo/texmf:/home/rstudio/.TinyTex/texmf-home \
   # -v $repo_dir/reserch-notes:/usr/local/lib/R/share/texmf
@@ -110,7 +168,7 @@ R2() {
 }
 
 newcol() {
-  bash $HOME/.scripts/colors-i3-config.sh
+  bash $HOME/.scripts/colors-i3-config.sh ${1:-true}
   i3-msg reload
   i3-msg restart
 }

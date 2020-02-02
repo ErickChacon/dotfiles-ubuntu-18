@@ -1,0 +1,53 @@
+
+# Function
+snippet fun1 Define function in one line
+        ${1:fun} <- function (${2}) ${3}
+
+# Operators
+snippet swi
+abbr switch statement
+options head
+        switch (${1:object},
+                ${2:case} = ${3:action}
+        )
+
+# Timing
+snippet syst Time to run code
+        ${1:ini} <- Sys.time()
+        ${0}
+        print(Sys.time() - $1)
+
+# Manage dataset
+snippet save Save dataset
+        save(${1:data}, file = file.path(${2:path_tidy}, "${3:data}.RData"))
+
+# Information
+snippet ssec Section: Empty
+        # ${0}-----------------------------------------------------------------------------------
+
+snippet ssload Section: Load packages, define paths and read data
+        # LOAD PACKAGES, DEFINE PATHS AND READ DATA -----------------------------------------
+
+# Documentation
+snippet title "Roxygen description" b
+        #' @title ${1:title}
+        #'
+        #' @description
+        #' \code{${2:function}} ${3:description}.
+        #'
+        #' @details
+        #' ${4:details}.
+        #'
+        #' @param ${5:par}.
+        #'
+        #' @return ${6:return}.
+        #'
+        #' @author ${7:Erick A. Chacon-Montalvan}
+        #'
+        #' @examples
+        #'
+        #' ${8}
+        #'
+        #' @export
+
+

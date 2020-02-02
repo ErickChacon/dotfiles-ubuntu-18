@@ -5,9 +5,13 @@ path_pal="$HOME/.palette-name.vim"
 path_pals="$HOME/.palettes"
 path_nvim_colors="/tmp/local/.nvim_colors.vim"
 path_nvim_init="$HOME/.config/nvim/init-pals.vim"
-palettes_name=(gruvbox monokai spacegray NeoSolarized OceanicNext neodark nord \
-  material-theme dracula alduin jellybeans one space-vim-dark tender deus \
-  base16-default-dark)
+palettes_name=(gruvbox monokai NeoSolarized neodark nord \
+  material-theme dracula one space-vim-dark \
+  challenger_deep crunchbang synthwave deep-space \
+  two-firewatch onehalfdark base16-atlas base16-phd)
+# dark background: base16-default-dark hybrid
+# base16-flat OceanicNext alduin jellybeans
+# spacegray deus 
 
 # clean old palettes
 rm $path_pals/*
