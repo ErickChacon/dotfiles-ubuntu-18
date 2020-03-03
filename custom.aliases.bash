@@ -19,20 +19,7 @@ start-docker() {
   local repo_dir="/home/chaconmo/Documents/Repositories"
   local dot_dir="/home/chaconmo/Documents/Repositories/dotfiles-ubuntu-18"
   local dot_dir_g="/home/chaconmo/Documents/Repositories/dotfiles-ubuntu-18/stat-toolbox-dotfiles"
-
-  if [ -z "$2" ]; then
-    local dot_docker="$dot_dir/stat-toolbox/3.6.0"
-    echo default
-  elif [ $2 == "latest" ]; then
-    local dot_docker="$dot_dir/stat-toolbox"
-    echo latest
-  elif [ -d "$dot_dir/stat-toolbox/$2" ]; then
-    local dot_docker="$dot_dir/stat-toolbox/$2"
-    echo version
-  else
-    local dot_docker="$dot_dir/stat-toolbox/3.6.0"
-    echo non-existed version
-  fi
+  local dot_docker="$dot_dir/stat-toolbox"
 
   echo $dot_docker
 
@@ -64,7 +51,7 @@ start-docker() {
   -v $dot_docker/R/Makevars:/home/rstudio/.R/Makevars \
   -w /home/rstudio$current \
   -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
-  --rm -it ${3:-erickchacon/stat-toolbox:3.6.0} bash
+  --rm -it ${3:-erickchacon/stat-toolbox:3.6.2} bash
 }
 
 start-docker-rstudio() {

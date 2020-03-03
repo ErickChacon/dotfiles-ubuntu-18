@@ -28,7 +28,7 @@ i3-msg 'workspace '$ws1'; exec i3-sensible-terminal -e ./.scripts/i3-ws01-re.sh'
 sleep 1
 
 # initialise ws2
-i3-msg 'workspace '$ws2'; exec i3-sensible-terminal -e ./.scripts/i3-ws02-work.sh'
+i3-msg 'workspace '$ws2'; exec i3-sensible-terminal -e ./.scripts/i3-txo-proj1.sh'
 sleep 1
 i3-msg 'workspace '$ws2'; exec i3-sensible-terminal'
 sleep 1
@@ -38,7 +38,8 @@ i3-msg 'workspace '$ws2'; focus up; focus left'
 sleep 1
 
 # initialise ws3
-i3-msg 'workspace '$ws3'; exec i3-sensible-terminal'
+# i3-msg 'workspace '$ws3'; exec i3-sensible-terminal'
+i3-msg 'workspace '$ws2'; exec i3-sensible-terminal -e ./.scripts/i3-txo-proj2.sh'
 sleep 1
 i3-msg 'workspace '$ws3'; exec i3-sensible-terminal'
 sleep 1

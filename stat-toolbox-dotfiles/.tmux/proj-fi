@@ -15,9 +15,14 @@ else
     tmux rename-window "Notes"
     tmux send-keys "nvim README.md" C-m
 
-    # windoe: scripts
+    # window: scripts 1
     tmux new-window -c "$proj/50-scripts"
-    tmux rename-window "Scripts"
+    tmux rename-window "Scripts I"
+    tmux send-keys "nvim" C-m
+
+    # window: scripts 2
+    tmux new-window -c "$proj/50-scripts"
+    tmux rename-window "Scripts II"
     tmux send-keys "nvim" C-m
 
     # window: makefile

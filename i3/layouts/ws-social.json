@@ -6,16 +6,7 @@
     "type": "con",
     "nodes": [
         {
-            "name": "Gmail",
-            "type": "con",
-            "swallows": [
-                {
-                    "class": "^Gnome-terminal$"
-                }
-            ]
-        },
-        {
-            "name": "Office365",
+            "name": "mails",
             "type": "con",
             "swallows": [
                 {

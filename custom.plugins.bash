@@ -158,6 +158,7 @@ printf "%s\n" "${colors_name[@]}" | paste - $colors | \
 }
 
 vpn() {
+  # nm-applet
   nmcli --ask con up id "Lancaster University VPN"
 }
 

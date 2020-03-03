@@ -1,5 +1,5 @@
 #!/bin/bash
-project_name='Dotfiles'
+project_name='Repositories'
 
 function has-session {
   tmux has-session -t=$project_name 2>/dev/null
@@ -10,14 +10,13 @@ if  has-session ; then
 else
 
   # main work directory:
-  bigproj="$HOME/Documents/Repositories"
-  proj="$bigproj/dotfiles-ubuntu-18"
+  proj="$HOME/Documents/Repositories"
   # path_repos="$HOME/Documents/Repositories"
   tmux new-session -d -c $proj -s $project_name
 
-  # window: notes
-  tmux rename-window "Main"
-  tmux send-keys 'nvim' C-m
+#   # window: notes
+#   tmux rename-window "Main"
+#   tmux send-keys 'nvim' C-m
 
   # if [[ "$1" == *docker* ]]; then
   #   aux_path="$HOME/Documents/Repositories/Food-Security-Amazonia"

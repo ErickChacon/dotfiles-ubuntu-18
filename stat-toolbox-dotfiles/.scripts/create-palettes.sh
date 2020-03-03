@@ -11,7 +11,7 @@ palettes_name=(gruvbox monokai NeoSolarized neodark nord \
   two-firewatch onehalfdark base16-atlas base16-phd)
 # dark background: base16-default-dark hybrid
 # base16-flat OceanicNext alduin jellybeans
-# spacegray deus 
+# spacegray deus
 
 # clean old palettes
 rm $path_pals/*

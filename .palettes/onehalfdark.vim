@@ -1,6 +1,6 @@
 #282c34
-#abb2bf
-#2c323c
+#dcdfe4
+
 #98c379
 #e06c75
 #e06c75
@@ -8,11 +8,11 @@
 #e06c75
 #61afef
 #61afef
-#3e4452
-#abb2bf
+#474e5d
+#dcdfe4
 #c678dd
-#abb2bf
-#d19a66
+#dcdfe4
+#e5c07b
 #98c379
 #61afef
 #e5c07b

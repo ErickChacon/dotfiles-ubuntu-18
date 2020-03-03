@@ -19,16 +19,16 @@ dconf write $full_profile/palette "[ \
   '${XYZ[14]}', '${XYZ[15]}', '${XYZ[16]}', '${XYZ[17]}' \
   ]"
 
-# 1 unknown
-# 2 string, bar for error message, zip file ranger
-# 3 keywords, chaconmo-Precicion-5510
+# 1 mutt bg unred messages
+# 2 string, bar for error message, zip file ranger, read email color
+# 3 keywords, chaconmo-Precicion-5510, ranger tab bg
 # 4 unknown: ranger jpg
 # 5 comments
 # 6 parenthesis, objects, some keywords
 # 7 functions in R, object in vim, terminal path
 # 8 unknown
 # 9 unknown
-# 10 git symbol
+# 10 git symbol, unread email sender
 # 11 chaconmo, function, executable files, chaconmo ranger
 # 12 unknown
 # 13 unknown: directories and ~/ ranger

@@ -1,6 +1,6 @@
 #303030
 #bcbcbc
-#5f5f5f
+#3a3a3a
 #d7875f
 #5fafaf
 #5fafaf
@@ -9,7 +9,7 @@
 #5fafd7
 #d7afaf
 #5f5f5f
-#87af87
+#bcbcbc
 #af87d7
 #5fd7d7
 #d75f87
