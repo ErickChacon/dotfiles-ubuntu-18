@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Path to the bash it configuration
-# export BASH_IT="/home/chaconmo/.bash_it"
 export BASH_IT=~/.bash_it
+export BASH_IT_CUSTOM=~/Documents/Repositories/dotfiles-ubuntu-18/.bash_it/custom
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/
@@ -14,6 +14,7 @@ export BASH_IT_THEME='zork'
 # export BASH_IT_THEME='nwinkler_random_colors'
 # export BASH_IT_THEME='powerline-multiline'
 # export BASH_IT_THEME='powerline-naked'
+
 
 # (Advanced): Change this to the name of your remote repo if you
 # cloned bash-it with a remote other than origin such as `bash-it`.
