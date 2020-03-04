@@ -1,72 +1,84 @@
 #!/bin/sh
-repo_dot=$(pwd)
+# This scripts creates symbolinks for the dotfiles.
 
-# Terminal
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.bashrc ~/.bashrc
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.bash_profile ~/.bash_profile
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/custom.aliases.bash \
-  ~/.bash_it/aliases/custom.aliases.bash
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/custom.plugins.bash \
-  ~/.bash_it/plugins/custom.plugins.bash
+path_dotfiles=$(pwd)
 
-# Unison
-mkdir -p ~/.unison
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/default.prf ~/.unison/default.prf
+# bash
 
-# Neovim
-mkdir -p ~/.config/nvim
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/nvim/init.vim ~/.config/nvim/init.vim
+path_bashrc=~/.bashrc
+if [ ! -f $path_bashrc ]; then
+    ln -s $path_dotfiles/.bashrc $path_bashrc
+fi
 
-# Ranger
-mkdir -p ~/.config/ranger
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/ranger/rc.conf ~/.config/ranger/rc.conf
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/ranger/rifle.conf ~/.config/ranger/rifle.conf
+path_bash_prof=~/.bash_profile
+if [ ! -f $path_bash_prof ]; then
+    ln -s $path_dotfiles/.bash_profile $path_bash_prof
+fi
 
-# custom scripts
 path_local_bin=~/.local/bin
 if [ ! -d $local_bin ]; then
     mkdir -p ~/.local
-    ln -s $repo_dot/.local/bin $path_local_bin
+    ln -s $path_dotfiles/.local/bin $path_local_bin
 fi
 
-# palettes
 path_palettes=~/.palettes
 if [ ! -d $path_palettes ]; then
-    ln -s $repo_dot/.palettes $path_palettes
+    ln -s $path_dotfiles/.palettes $path_palettes
 fi
 
-# # Profile
-# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.profile ~/.profile
+# unison
 
-# i3 config
-mkdir -p ~/.config/i3/
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3/config-base.sh ~/.config/i3/config-base.sh
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3/layouts ~/.config/i3/layouts
+path_unison=~/.unison/default.prf
+if [ ! -d $path_unison ]; then
+    mkdir -p ~/.unison
+    ln -s $path_dotfiles/.unison/default.prf $path_unison
+fi
 
-# polybar
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar/launch.sh ~/.config/polybar/launch.sh
-# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/launch.sh ~/.config/polybar/launch.sh
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar/config ~/.config/polybar/config
-# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar-weather ~/.config/polybar/weather
+# neovim
 
+path_nvim=~/.config/nvim
+if [ ! -d $path_nvim ]; then
+    mkdir -p ~/.config/nvim
+    ln -s $path_dotfiles/.config/nvim $path_nvim
+fi
 
-
-
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.palettes 
-
-# # Profile
-# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.profile ~/.profile
-
-# i3 config
-mkdir -p ~/.config/i3/
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3/config-base.sh ~/.config/i3/config-base.sh
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3/layouts ~/.config/i3/layouts
-
-# polybar
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar/launch.sh ~/.config/polybar/launch.sh
-# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/launch.sh ~/.config/polybar/launch.sh
-ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar/config ~/.config/polybar/config
-# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar-weather ~/.config/polybar/weather
-
-
-
+# # Ranger
+# mkdir -p ~/.config/ranger
+# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/ranger/rc.conf ~/.config/ranger/rc.conf
+# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/ranger/rifle.conf ~/.config/ranger/rifle.conf
+#
+# # # Profile
+# # ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.profile ~/.profile
+#
+# # i3 config
+# mkdir -p ~/.config/i3/
+# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3/config-base.sh ~/.config/i3/config-base.sh
+# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3/layouts ~/.config/i3/layouts
+#
+# # polybar
+# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar/launch.sh ~/.config/polybar/launch.sh
+# # ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/launch.sh ~/.config/polybar/launch.sh
+# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar/config ~/.config/polybar/config
+# # ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar-weather ~/.config/polybar/weather
+#
+#
+#
+#
+# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.palettes 
+#
+# # # Profile
+# # ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/.profile ~/.profile
+#
+# # i3 config
+# mkdir -p ~/.config/i3/
+# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3/config-base.sh ~/.config/i3/config-base.sh
+# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3/layouts ~/.config/i3/layouts
+#
+# # polybar
+# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar/launch.sh ~/.config/polybar/launch.sh
+# # ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/launch.sh ~/.config/polybar/launch.sh
+# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar/config ~/.config/polybar/config
+# # ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar-weather ~/.config/polybar/weather
+#
+#
+#
