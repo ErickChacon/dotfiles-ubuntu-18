@@ -81,6 +81,4 @@ set -o vi
 # Fuzzy search for terminal: fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export EDITOR="nvim"
-source ~/.shortcuts
 # export col=#aaff77
-source /home/chaconmo/.shortcuts
