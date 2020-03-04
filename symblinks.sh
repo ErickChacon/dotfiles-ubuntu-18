@@ -14,7 +14,7 @@ path_nvim=~/.config/nvim
 # overwrite dotfiles
 
 overwrite=${1:-false}
-if [[ $overwrite == true ]]; then
+if [ $overwrite = true ]; then
     rm -r $path_bashrc $path_bash_prof $path_local_bin \
         $path_palettes $path_unison $path_nvim
 fi
@@ -40,7 +40,7 @@ fi
 
 # unison
 
-if [ ! -d $path_unison ]; then
+if [ ! -L $path_unison ] && [ ! -f $path_unison ]; then
     mkdir -p ~/.unison
     ln -s $path_dotfiles/.unison/default.prf $path_unison
 fi
