@@ -48,7 +48,7 @@ fi
 # neovim
 
 if [ ! -d $path_nvim ]; then
-    mkdir -p ~/.config/nvim
+    mkdir -p ~/.config
     ln -s $path_dotfiles/.config/nvim $path_nvim
 fi
 
