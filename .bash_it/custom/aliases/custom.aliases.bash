@@ -38,8 +38,7 @@ start-docker() {
   -v $HOME/.palettes:/home/rstudio/.palettes \
   -v $HOME/.config/mutt:/home/rstudio/.config/mutt \
   -v /tmp/local:/tmp/local \
-  -v $dot_dir/.bash_it/custom:/home/rstudio/.bash_it/custom
-    # custom.plugins.bash:/home/rstudio/.bash_it/plugins/custom.plugins.bash \
+  -v $dot_dir/.bash_it/custom:/home/rstudio/.bash_it/custom \
   -v $dot_docker/.bashrc:/home/rstudio/.bashrc \
   -v $dot_docker/.bash_profile:/home/rstudio/.bash_profile \
   -v $dot_dir_g/.scripts:/home/rstudio/.scripts \
@@ -56,6 +55,7 @@ start-docker() {
 
   # -v $dot_dir/custom.plugins.bash:/home/rstudio/.bash_it/plugins/custom.plugins.bash \
   # -v $dot_docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash \
+    # custom.plugins.bash:/home/rstudio/.bash_it/plugins/custom.plugins.bash \
 
 start-docker-rstudio() {
   mkdir -p /tmp/local
