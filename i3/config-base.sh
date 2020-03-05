@@ -259,15 +259,15 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 ################################################################################
 # docker containers
 
-exec --no-startup-id $HOME/.scripts/start-docker.sh dot
-exec --no-startup-id $HOME/.scripts/start-docker.sh
+exec --no-startup-id $HOME/.local/bin/start-docker.sh dot
+exec --no-startup-id $HOME/.local/bin/start-docker.sh
 # exec --no-startup-id start-docker
 
 ################################################################################
 # Workspaces startup
 
 for_window [class="Spotify"] move to workspace $ws10
-exec --no-startup-id $HOME/.scripts/i3-startup.sh
+exec --no-startup-id $HOME/.local/bin/i3-startup.sh
 
 ################################################################################
 # Setup colors for i3
