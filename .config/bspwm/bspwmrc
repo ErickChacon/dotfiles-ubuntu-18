@@ -2,11 +2,12 @@
 
 # Startup applications
 feh --bg-fill "$HOME/.config/wall.png"
-killall -q sxhkd && sxhkd &
+killall -q sxhkd &&
+sxhkd &
 # bash $HOME/.local/bin/colors-terminal.sh
 
-# /usr/lib/gnome-settings-daemon/gsd-xsettings && \
-# gnome-flashback &
+/usr/lib/gnome-settings-daemon/gsd-xsettings &
+gnome-flashback &
 
 # gnome-flashback
 # if ! pgrep -x gsd-xsettings > /dev/null
@@ -21,7 +22,7 @@ elif [ "$HOSTNAME" = "chaconmo-Precision-5510" ]; then
     bspc monitor DP-1-1 -d 1 2 3 4 5
 fi
 
- bash $HOME/.config/polybar/launch.sh
+bash $HOME/.config/polybar/launch.sh
 
 
 # bspc monitor -d 1 2 3 4 5 6 7 8 9 10
