@@ -2,7 +2,7 @@
 
 # Startup applications
 feh --bg-fill "$HOME/.config/wall.png"
-killall -q sxhkd &&
+# killall -q sxhkd &&
 sxhkd &
 # bash $HOME/.local/bin/colors-terminal.sh
 
