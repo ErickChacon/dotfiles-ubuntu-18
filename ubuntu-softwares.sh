@@ -184,6 +184,24 @@ sudo apt-get install -y gucharmap
 # i3 locks
 sudo apt-get install -y i3lock imagemagick scrot
 
+# BSPWM {{{1
+
+sudo apt-get install -y bspwm sxhkd
+path_bspwm=~/.config/bspwm/bspwmrc
+if [ ! -f $path_bspwm ]; then
+    mkdir -p $(dirname "$path_bspwm")
+    cp /usr/share/doc/bspwm/examples/bspwmrc $path_bspwm
+fi
+path_sxhkd=~/.config/sxhkd/sxhkdrc
+if [ ! -f $path_sxhkd ]; then
+    mkdir -p $(dirname "$path_sxhkd")
+    cp /usr/share/doc/bspwm/examples/sxhkdrc $path_sxhkd
+fi
+chmod +x $path_bspwm $path_sxhkd
+
+# by default /usr/share/xsessions/bspwm.desktop already exists, so I do not need
+# echo exec bspwm >> ~/.xinitrc
+
 # SYNC SOFTWARE {{{1
 
 # unison for bidirectional sync

@@ -35,6 +35,7 @@ if [ -x "$(command -v docker)" ]; then
         -v $HOME/.palettes:/home/rstudio/.palettes \
         -v $HOME/.config/mutt:/home/rstudio/.config/mutt \
         -v /tmp/local:/tmp/local \
+        -v $HOME/.local/bin:/home/rstudio/.local/bin \
         -v $dot_dir/.bash_it/custom:/home/rstudio/.bash_it/custom \
         -v $dot_docker/.bashrc:/home/rstudio/.bashrc \
         -v $dot_docker/.bash_profile:/home/rstudio/.bash_profile \
@@ -49,6 +50,10 @@ if [ -x "$(command -v docker)" ]; then
         -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
         --rm -it ${3:-erickchacon/stat-toolbox:3.6.2} bash
     }
+
+        # -v $HOME/.shortcuts:/home/rstudio/.shortcuts \
+        # -v $HOME/.palette-name.vim:/home/rstudio/.palette-name.vim \
+        # -v $HOME/.palettes:/home/rstudio/.palettes \
 
       # -v $dot_dir/.bash_it/custom/docker.plugins.bash:/dev/null \
       # -v $dot_dir/custom.plugins.bash:/home/rstudio/.bash_it/plugins/custom.plugins.bash \
@@ -156,7 +161,7 @@ R2() {
 }
 
 newcol() {
-  bash $HOME/.scripts/colors-i3-config.sh ${1:-true}
+  bash $HOME/.local/bin/colors-i3-config.sh ${1:-true}
   i3-msg reload
   i3-msg restart
 }

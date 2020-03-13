@@ -89,7 +89,8 @@ font-0 = ${env:FONT0}
 font-1 = ${env:FONT1}
 font-2 = ${env:FONT2}
 
-modules-left = powermenu i3 xwindow
+#modules-left = powermenu i3 xwindow
+modules-left = powermenu i3 bspwm xwindow
 ; modules-center = networkspeedup networkspeeddown
 modules-center = cpu
 ; mpd
@@ -148,8 +149,73 @@ label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
+# [module/bspwm]
+# type = internal/bspwm
+# pin-workspaces = true
+# inline-mode = false
+# enable-click = true
+# enable-scroll = false
+# reverse-scroll = false
+# fuzzy-match = false
+# ; ws-icon-[0-9]+ = label;icon
+# ; Note that the label needs to correspond with the bspwm workspace name
+# ws-icon-0 = I;
+# ws-icon-1 = II;
+# ws-icon-2 = III;
+# ws-icon-3 = IV;
+# ws-icon-4 = V;
+# ws-icon-5 = VI;
+# ws-icon-6 = VII;
+# ws-icon-7 = VIII;
+# ws-icon-8 = IX;
+# ws-icon-9 = X;
+# ;ws-icon-default = ♟
+# format = <label-state> <label-mode>
+# label-monitor = %name%
+# label-mode-padding = 1
+# label-focused = %icon% %name%
+# label-focused-padding = 1
+# label-occupied = %icon% %name%
+# label-occupied-padding = 1
+# label-urgent = %icon% %name%
+# label-urgent-padding = 1
+# label-empty = %icon% %name%
+# label-empty-padding = 1
+# label-dimmed-foreground = ${colors.purple}
+# label-dimmed-underline = ${colors.purple}
+# label-dimmed-focused-background = ${colors.purple}
+# label-focused-foreground = ${colors.blue}
+# label-focused-underline = ${colors.blue}
+# label-occupied-underline = ${colors.purple}
+# label-urgent-foreground = ${colors.urgent}
+# label-urgent-underline = ${colors.urgent}
+# ; The following labels will be used to indicate the layout/mode
+# ; for the focused workspace. Requires <label-mode>
+# label-monocle = 
+# label-tiled = 
+# label-fullscreen = 
+# label-floating = 
+# label-pseudotiled = P
+# label-locked = 
+# label-sticky = 
+# label-private = 
+# label-sticky-foreground = ${colors.purple}
+# label-locked-foreground = ${colors.moderate}
+# label-private-foreground = ${colors.urgent}
+
 [module/bspwm]
 type = internal/bspwm
+pin-workspaces = true
+
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+
+label-mode-foreground = #000
+label-mode-background = ${neovim.color_14}
+label-mode-padding = 2
+
 
 label-focused = %index%
 label-focused-background = ${colors.background-alt}

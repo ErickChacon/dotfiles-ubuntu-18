@@ -10,6 +10,9 @@ path_local_bin=~/.local/bin
 path_palettes=~/.palettes
 path_unison=~/.unison/default.prf
 path_nvim=~/.config/nvim
+path_bspwmrc=~/.config/bspwm/bspwmrc
+path_sxhkdrc=~/.config/sxhkd/sxhkdrc
+path_polybar=~/.config/polybar
 
 # overwrite dotfiles
 
@@ -52,6 +55,25 @@ if [ ! -d $path_nvim ]; then
     ln -s $path_dotfiles/.config/nvim $path_nvim
 fi
 
+# bspwm
+
+if [ ! -L $path_bspwmrc ] && [ ! -f $path_bspwmrc ]; then
+    mkdir -p ~/.config/bspwm
+    ln -s $path_dotfiles/.config/bspwm/bspwmrc $path_bspwmrc
+fi
+
+if [ ! -L $path_sxhkdrc ] && [ ! -f $path_sxhkdrc ]; then
+    mkdir -p ~/.config/sxhkd
+    ln -s $path_dotfiles/.config/sxhkd/sxhkdrc $path_sxhkdrc
+fi
+
+# polybar
+
+if [ ! -d $path_polybar ]; then
+    mkdir -p ~/.config
+    ln -s $path_dotfiles/.config/polybar $path_polybar
+fi
+
 # # Ranger
 # mkdir -p ~/.config/ranger
 # ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/ranger/rc.conf ~/.config/ranger/rc.conf
@@ -65,11 +87,7 @@ fi
 # ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3/config-base.sh ~/.config/i3/config-base.sh
 # ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/i3/layouts ~/.config/i3/layouts
 #
-# # polybar
-# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar/launch.sh ~/.config/polybar/launch.sh
-# # ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/launch.sh ~/.config/polybar/launch.sh
-# ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar/config ~/.config/polybar/config
-# # ln -s ~/Documents/Repositories/dotfiles-ubuntu-18/polybar-weather ~/.config/polybar/weather
+
 #
 #
 #

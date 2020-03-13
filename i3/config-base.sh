@@ -248,12 +248,12 @@ bindsym $mod+Ctrl+c exec "killall -q gpick && gpick -p && killall -q gpick"
 ################################################################################
 # Screen lock
 
-bindsym $mod+Ctrl+l exec $HOME/.scripts/i3lock.sh
+bindsym $mod+Ctrl+l exec $HOME/.local/bin/i3lock.sh
 
 ################################################################################
 # Colors for terminal and polybar
 
-exec_always --no-startup-id $HOME/.scripts/colors-terminal.sh
+exec_always --no-startup-id $HOME/.local/bin/colors-terminal.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 ################################################################################
