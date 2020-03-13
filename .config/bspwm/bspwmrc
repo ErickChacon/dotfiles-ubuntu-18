@@ -14,7 +14,7 @@ killall -q sxhkd && sxhkd &
 # then
 # fi
 
-if [ $HOSTNAME == "chaconmo-ThinkPad-L470-W10DG" ]; then
+if [ $HOSTNAME == "fyb044000004" ]; then
     bspc monitor eDP-1 -d 6 7 8 9
     bspc monitor HDMI-1 -d 1 2 3 4 5
 elif [[ $HOSTNAME == "chaconmo-Precision-5510" ]]; then

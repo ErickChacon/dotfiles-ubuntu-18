@@ -19,7 +19,8 @@ path_polybar=~/.config/polybar
 overwrite=${1:-false}
 if [ $overwrite = true ]; then
     rm -rf $path_bashrc $path_bash_prof $path_local_bin \
-        $path_palettes $path_unison $path_nvim
+        $path_palettes $path_unison $path_nvim $path_bspwmrc \
+        $path_sxhkdrc $path_polybar
 fi
 
 # bash
