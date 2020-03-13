@@ -9,7 +9,7 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 # MONITOR=$(polybar -m|tail -1|sed -e 's/:.*$//g')
 
 
-if [[ $HOSTNAME == "chaconmo-ThinkPad-L470-W10DG" ]]; then
+if [[ $HOSTNAME == "fyb044000004" ]]; then
   echo "Working at Lancaster University!"
   height=27
   fontsize=10
