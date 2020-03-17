@@ -44,9 +44,9 @@ background = ${neovim.nvim_background}
 background-alt = ${neovim.nvim_background}
 ;foreground = ${xrdb:color7:#222}
 foreground = ${neovim.nvim_foreground}
-; foreground-alt = #7b7b7b
+foreground-alt = #808080
 ; foreground-alt = ${neovim.nvim_foreground}
-foreground-alt = ${neovim.nvim_foreground}
+; foreground-alt = ${neovim.nvim_foreground}
 ; foreground-alt = #555
 ; primary = #ffb52a
 ; primary = #aaff77
@@ -147,7 +147,7 @@ mount-0 = /
 
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+label-unmounted-foreground = ${colors.foreground}
 
 # [module/bspwm]
 # type = internal/bspwm
@@ -222,10 +222,10 @@ label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
-label-occupied = %name%*
+label-occupied = %name%
 label-occupied-padding = 2
 
-label-urgent = %index%!
+label-urgent = %name%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -357,7 +357,7 @@ ramp-coreload-7-foreground = #ff5555
 type = internal/memory
 interval = 2
 format-prefix = "RAM "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.foreground}
 ; format-underline = #4bffdc
 format-underline = ${neovim.color_02}
 ; label = %percentage_used%%
@@ -384,7 +384,7 @@ ramp-signal-0 = 
 ; ramp-signal-2 = 
 ; ramp-signal-3 = 
 ; ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-foreground = ${colors.foreground}
 
 [module/eth]
 type = internal/network
@@ -393,7 +393,7 @@ interval = 3.0
 
 format-connected-underline = #55aa55
 format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-prefix-foreground = ${colors.foreground}
 label-connected = %local_ip%
 
 format-disconnected =
@@ -414,7 +414,7 @@ time = %H:%M
 time-alt = %H:%M:%S
 
 format-prefix = "  "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.foreground}
 ; format-underline = #0a6cf5
 format-underline = ${neovim.color_10}
 
@@ -523,7 +523,7 @@ format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix-foreground = ${colors.foreground}
 format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
@@ -567,7 +567,7 @@ label-warn-foreground = ${colors.secondary}
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-foreground = ${colors.foreground}
 
 ; [module/hostname]
 ; type = internal/date
@@ -625,11 +625,13 @@ ramp-foreground = ${colors.foreground-alt}
 [module/powermenu]
 type = custom/menu
 expand-right = true
-format-spacing = 1
+format-spacing = 0
 
 label-open = "  "
 ; label-open-foreground = ${colors.foreground}
+; label-open-foreground = ${colors.foreground}
 label-open-foreground = ${colors.foreground}
+; label-open-background = ${colors.foreground}
 label-close = "  "
 label-close-foreground = ${colors.foreground-alt}
 label-separator = |

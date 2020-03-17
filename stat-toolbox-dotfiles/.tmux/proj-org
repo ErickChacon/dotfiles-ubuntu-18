@@ -1,14 +1,14 @@
-#!/bin/bash
+#!/bin/sh
+
 project_name='Organizer'
 
-function has-session {
-  tmux has-session -t $project_name  2>/dev/null
+has_session() {
+    tmux has-session -t $project_name  2>/dev/null
 }
 
-if has-session ; then
-  tmux a -t $project_name
+if has_session ; then
+    tmux a -t $project_name
 else
-
   # main work directory:
   proj="$HOME/Documents/Nvim/Vimwiki/"
   tmux new-session -d -c $proj -s 'Organizer'

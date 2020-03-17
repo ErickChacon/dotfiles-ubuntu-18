@@ -1,25 +1,24 @@
-#!/bin/bash
+#!/bin/sh
+
 project_name='Dotfiles'
 
-function has-session {
-  tmux has-session -t=$project_name 2>/dev/null
+has_session() {
+    tmux has-session -t $project_name 2>/dev/null
 }
 
-echo has-session
-
-if  has-session ; then
-  tmux a -t $project_name
+if has_session ; then
+    tmux a -t $project_name -d
 else
-  bigproj="$HOME/Documents/Repositories"
-  proj="$bigproj/dotfiles-ubuntu-18"
-  tmux new-session -d -c $proj -s $project_name
+    bigproj="$HOME/Documents/Repositories"
+    proj="$bigproj/dotfiles-ubuntu-18"
+    tmux new-session -d -c $proj -s $project_name
 
-  # window: notes
-  tmux rename-window "Main"
-  tmux send-keys 'nvim' C-m
+    # window: notes
+    tmux rename-window "Main"
+    tmux send-keys 'nvim' C-m
 
-  # focus on window:
-  tmux select-window -t "Main"
-  tmux attach-session -d
+    # focus on window:
+    tmux select-window -t "Main"
+    tmux attach-session -d
 fi
 

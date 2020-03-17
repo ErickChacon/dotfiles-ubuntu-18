@@ -46,7 +46,7 @@ set ignorecase    " case insensitive searching (unless specified)
 set smartcase
 nnoremap <silent> <leader>, :noh<cr> " Stop highlight after searching
 
-set shiftwidth=2
+set shiftwidth=4
 set softtabstop=2   " number of spaces in tab when editing
 set expandtab       " tabs are spaces
 " set showcmd         " show incomplete command in bottom bar

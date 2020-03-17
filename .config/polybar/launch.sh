@@ -8,7 +8,6 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # MONITOR=$(polybar -m|tail -1|sed -e 's/:.*$//g')
 
-
 if [[ $HOSTNAME == "fyb044000004" ]]; then
   echo "Working at Lancaster University!"
   height=27

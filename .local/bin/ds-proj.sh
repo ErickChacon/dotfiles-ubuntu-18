@@ -17,3 +17,5 @@ touch \
 touch \
     60-outputs/{10-extract/.keep,20-clean/.keep,30-process/.keep,40-explore/.keep,50-model/.keep,60-summarise/.keep}
 
+touch Makefile
+
