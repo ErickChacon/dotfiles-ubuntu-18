@@ -10,8 +10,8 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 if [[ $HOSTNAME == "fyb044000004" ]]; then
   echo "Working at Lancaster University!"
-  height=27
-  fontsize=10
+  height=42
+  fontsize=20
   wlan_interface=wlp6s0
 elif [[ $HOSTNAME == "chaconmo-Precision-5510" ]]; then
   height=47
@@ -29,7 +29,6 @@ path_palname="$HOME/.palette-name.vim"
 pal=$(cat $path_palname)
 path_colors=$path_pals/$pal
 
-# path_colors="/tmp/local/.nvim_colors.vim"
 IFS=$'\r\n' GLOBIGNORE='*' command eval  'colors=($(cat $path_colors))'
 nvim_background=${colors[0]}
 nvim_foreground=${colors[1]}

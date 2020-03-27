@@ -1,0 +1,38 @@
+#!/bin/sh
+
+project_name='Land-use'
+
+has-session() {
+    tmux has-session -t=$proj_name 2>/dev/null
+}
+
+if has-session; then
+    tmux a -t $proj_name
+else
+    bigproj="$HOME/Documents/Projects/food-insecurity"
+    proj="$bigproj/70-studies/study-birthweight"
+    tmux new-session -d -c $proj -s $project_name
+
+    # window: notes
+    tmux rename-window "Notes"
+    tmux send-keys "nvim README.md" C-m
+
+    # window: scripts 1
+    tmux new-window -c "$proj/50-scripts"
+    tmux rename-window "Scripts I"
+    tmux send-keys 'nvim' C-m
+
+    # window: scripts 2
+    tmux new-window -c "$proj/50-scripts"
+    tmux rename-window "Scripts II"
+    tmux send-keys 'nvim' C-m
+
+    # window: makefile
+    tmux new-window -c "$proj"
+    tmux rename-window "Makefile"
+    tmux send-keys "nvim Makefile" C-m
+
+    # focus on window:
+    tmux select-window -t "Scripts"
+    tmux attach-session -d
+fi

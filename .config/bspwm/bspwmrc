@@ -1,68 +1,21 @@
 #!/bin/sh
 
-# STARTUP APPLICATIONS
+# ONLY AT STARTUP APPLICATIONS
 
-feh --bg-fill "$HOME/.config/wall.png" # wallpaper
-killall -q sxhkd; sxhkd &              # hotkeys
-xsetroot -cursor_name left_ptr &       # mouse
-$HOME/.local/bin/colors-terminal.sh    # random color
+killall -q sxhkd; sxhkd &                      # hotkeys
+xsetroot -cursor_name left_ptr &               # mouse
 /usr/lib/gnome-settings-daemon/gsd-xsettings & # gnome settings
-gnome-flashback &   # gnome utilities
-bash $HOME/.config/polybar/launch.sh # polybar
+gnome-flashback &                              # gnome utilities
+gsettings set org.gnome.desktop.interface scaling-factor 2 # scale everything
 
-monitors=$(bspc query -M --names)
-monitors_len=$(echo $monitors | wc -w)
+$HOME/.local/bin/colors-01-random.sh           # random color
+$HOME/.local/bin/colors-03-terminal.sh         # random color
 
-ws1="  "
-ws2="  "
-ws3="  "
-ws4="  "
-ws5="  "
-ws6="  "
-ws7="  "
-ws8="  "
-ws9="  "
-ws10="  "
+$HOME/.config/bspwm/bspwmrc-monitors.sh             # monitors
+bash $HOME/.config/polybar/launch.sh           # polybar
+redshift &                                     # redshift for
+
+$HOME/.config/bspwm/bspwmrc-custom.sh               # custom config
+$HOME/.config/bspwm/bspwmrc-desktops.sh               # custom config
 
 
-if [ $monitors_len -eq 1 ]; then
-    bspc monitor $monitors -d "$ws1" "$ws2" "$ws3" "$ws4" "$ws5" "$ws6" "$ws7" "$ws8" "$ws9" "$ws10"
-elif [ $monitors_len -eq 2 ]; then
-    bspc monitor $(echo $monitors | awk '{print $1}') -d 1 2 3 4 5
-    bspc monitor $(echo $monitors | awk '{print $2}') -d 6 7 8 9 10
-elif [ $monitors_len -eq 3 ]; then
-    bspc monitor $(echo $monitors | awk '{print $1}') -d 1 2 3 4 5
-    bspc monitor $(echo $monitors | awk '{print $2}') -d 6 7 8
-    bspc monitor $(echo $monitors | awk '{print $3}') -d 9 10
-fi
-
-bspc config border_width         4
-bspc config window_gap          30
-
-bspc config focused_border_color "#D23D3D"
-bspc config normal_border_color "#000000"
-
-bspc config split_ratio          0.6
-bspc config borderless_monocle   true
-bspc config gapless_monocle      false
-
-bspc config focus_follows_pointer true
-
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
-# bspc rule -a Firefox desktop='^6'
-bspc rule -a spotify desktop='^10'
-
-# xrandr --dpi 220
-
-# gnome integration
-
-# gnome-power-manager
-# /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-#redshift &
-
-~/recep
