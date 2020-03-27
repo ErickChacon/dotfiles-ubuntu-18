@@ -10,7 +10,7 @@ path_local_bin=~/.local/bin
 path_palettes=~/.palettes
 path_unison=~/.unison/default.prf
 path_nvim=~/.config/nvim
-path_bspwmrc=~/.config/bspwm/bspwmrc
+path_bspwm=~/.config/bspwm
 path_sxhkdrc=~/.config/sxhkd/sxhkdrc
 path_polybar=~/.config/polybar
 
@@ -19,7 +19,7 @@ path_polybar=~/.config/polybar
 overwrite=${1:-false}
 if [ $overwrite = true ]; then
     rm -rf $path_bashrc $path_bash_prof $path_local_bin \
-        $path_palettes $path_unison $path_nvim $path_bspwmrc \
+        $path_palettes $path_unison $path_nvim $path_bspwm \
         $path_sxhkdrc $path_polybar
 fi
 
@@ -33,8 +33,9 @@ if [ ! -f $path_bash_prof ]; then
     ln -s $path_dotfiles/.bash_profile $path_bash_prof
 fi
 
-if [ ! -d $local_bin ]; then
+if [ ! -d $path_local_bin -o -z "$(ls -A "$path_local_bin")" ]; then
     mkdir -p ~/.local
+    rm -rf ~/.local/bin
     ln -s $path_dotfiles/.local/bin $path_local_bin
 fi
 
@@ -58,9 +59,9 @@ fi
 
 # bspwm
 
-if [ ! -L $path_bspwmrc ] && [ ! -f $path_bspwmrc ]; then
-    mkdir -p ~/.config/bspwm
-    ln -s $path_dotfiles/.config/bspwm/bspwmrc $path_bspwmrc
+if [ ! -d $path_bspwm ]; then
+    mkdir -p ~/.config
+    ln -s $path_dotfiles/.config/bspwm $path_bspwm
 fi
 
 if [ ! -L $path_sxhkdrc ] && [ ! -f $path_sxhkdrc ]; then

@@ -148,6 +148,12 @@ Prior
 Next
         dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 
+
+# mic
+# alsamixer
+# amixer set Capture nocap
+# amixer set Capture cap
+
 # amixer set Master unmute
 # amixer set Speaker unmute
 

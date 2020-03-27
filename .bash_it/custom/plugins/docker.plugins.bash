@@ -48,7 +48,7 @@ if [ -x "$(command -v docker)" ]; then
         -v $dot_docker/R/Makevars:/home/rstudio/.R/Makevars \
         -w /home/rstudio$current \
         -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
-        --rm -it ${3:-erickchacon/stat-toolbox:3.6.2} bash
+        --rm -it ${3:-erickchacon/stat-toolbox:3.6.2} /home/rstudio/bash-enable.sh
     }
 
         # -v $HOME/.shortcuts:/home/rstudio/.shortcuts \
