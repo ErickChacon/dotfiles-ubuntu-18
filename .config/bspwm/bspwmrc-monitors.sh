@@ -20,3 +20,5 @@ elif [ $monitors_len -eq 3 ]; then
     bspc monitor $(echo $monitors | awk '{print $2}') -d 6 7 8
     bspc monitor $(echo $monitors | awk '{print $3}') -d 9 10
 fi
+
+# xdpyinfo | grep -B2 resolution
