@@ -7,10 +7,7 @@ path_pals="$HOME/.palettes"
 pal=$(cat $HOME/.palette-name.vim)
 
 # set up the terminal colors
-profile=$(dconf read /org/gnome/terminal/legacy/profiles:/default)
-if [ -z "$var" ]; then
-    profile=$(gsettings get org.gnome.Terminal.ProfilesList default)
-fi
+profile=$(gsettings get org.gnome.Terminal.ProfilesList default)
 full_profile=/org/gnome/terminal/legacy/profiles:/:${profile//\'/}
 IFS=$'\r\n' GLOBIGNORE='*' command eval  'XYZ=($(cat $path_pals/$pal))'
 dconf write $full_profile/background-color "'"${XYZ[0]}"'"
@@ -21,6 +18,7 @@ dconf write $full_profile/palette "[ \
   '${XYZ[8]}', '${XYZ[9]}', '${XYZ[10]}', '${XYZ[11]}', '${XYZ[12]}', '${XYZ[13]}', \
   '${XYZ[14]}', '${XYZ[15]}', '${XYZ[16]}', '${XYZ[17]}' \
   ]"
+echo $XYZ
 
 # 1 mutt bg unred messages
 # 2 string, bar for error message, zip file ranger, read email color

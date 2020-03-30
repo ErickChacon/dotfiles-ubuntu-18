@@ -13,6 +13,7 @@ path_nvim=~/.config/nvim
 path_bspwm=~/.config/bspwm
 path_sxhkdrc=~/.config/sxhkd/sxhkdrc
 path_polybar=~/.config/polybar
+path_dwm=~/.config/dwm
 
 # overwrite dotfiles
 
@@ -20,7 +21,7 @@ overwrite=${1:-false}
 if [ $overwrite = true ]; then
     rm -rf $path_bashrc $path_bash_prof $path_local_bin \
         $path_palettes $path_unison $path_nvim $path_bspwm \
-        $path_sxhkdrc $path_polybar
+        $path_sxhkdrc $path_polybar $path_dwm
 fi
 
 # bash
@@ -74,6 +75,13 @@ fi
 if [ ! -d $path_polybar ]; then
     mkdir -p ~/.config
     ln -s $path_dotfiles/.config/polybar $path_polybar
+fi
+
+# dwm
+
+if [ ! -d $path_dwm ]; then
+    mkdir -p ~/.config
+    ln -s $path_dotfiles/.config/dwm $path_dwm
 fi
 
 # # Ranger
