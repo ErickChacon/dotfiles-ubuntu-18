@@ -1,0 +1,27 @@
+# dimensions:    3840x2160 pixels (1010x568 millimeters)
+#  resolution:    97x97 dots per inch
+
+# xrandr --fb 7470x2160 \
+#   --output DP-1 --mode 3440x1440 --scale 1.5x1.5 --pos 0x0 --primary \
+#   --output eDP-1 --auto --scale 1.2x1.2 --pos 5166x0
+# 3440 * 1.5 + 1920 * 1.2
+# 1440 * 1.5 = 2160
+
+# eDP-1 connected primary 3840x2160+0+0
+# DP-1 connected 3440x1440+3840+0
+
+# 3440 * 1.5 + 3840 * 1 = 9768
+# max(1440, 2160) * 1 = 2160
+
+xrandr \
+  --output DP-1 --mode 3440x1440 --scale 1.5x1.5 --pos 0x0 --primary \
+  --output eDP-1 --mode 3840x2160 --scale 1x1 --pos 5160x0
+
+# xrandr --fb 9000x2160 \
+#   --output DP-1 --mode 3440x1440 --scale 1.5x1.5 --pos 0x0 --primary \
+#   --output eDP-1 --mode 3840x2160 --scale 1x1 --pos 5160x0
+
+xrandr \
+  --output DP-1 --mode 3440x1440 --scale 1.5x1.5 --pos 0x0 --primary \
+  --output eDP-1 --off
+

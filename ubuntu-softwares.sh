@@ -34,14 +34,13 @@ curl -OL \
   tic xterm-256color-italic.terminfo && \
   rm xterm-256color-italic.terminfo
 
-
 # MANAGMENT AND SYSTEM SOFTWARE {{{1
 
 # tweak-tool
-sudo apt-get install -y gnome-tweak-tool chrome-gnome-shell
+# sudo apt-get install -y gnome-tweak-tool chrome-gnome-shell
 
 # synaptic
-sudo apt-get install synaptic -y
+# sudo apt-get install synaptic -y
 
 # psensor
 sudo apt-get install psensor -y
@@ -50,7 +49,7 @@ sudo apt-get install psensor -y
 sudo apt-get install redshift-gtk -y
 
 # evolution
-sudo apt-get install evolution -y
+# sudo apt-get install evolution -y
 
 # OFFICE SOFTWARE {{{1
 
@@ -119,70 +118,70 @@ sudo apt-get install -y neomutt
 # Comment following line on /usr/bin/mailsync
 # pgrep -u "$USER" >/dev/null || exit
 
-# i3-gaps {{{1
-
-# requirements
-sudo apt-get install -y libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm0 libxcb-xrm-dev automake
-sudo apt-get install -y i3status
-
-cd /tmp
-
-# clone the repository
-git clone https://www.github.com/Airblader/i3 i3-gaps
-cd i3-gaps
-
-# compile & install
-autoreconf --force --install
-rm -rf build/
-mkdir -p build && cd build/
-
-# Disabling sanitizers is important for release versions!
-# The prefix and sysconfdir are, obviously, dependent on the distribution.
-../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-make
-sudo make install
-
-# cat > /etc/ld.so.conf.d/i3.conf
-
-# for dmenu
-sudo apt install suckless-tools
-
-# configure with gnome
-sudo apt-get install -y gnome-flashback
-git clone https://github.com/csxr/i3-gnome.git
-cd i3-gnome
-sudo make install
-# install -m0644 -D session/i3-gnome-xsession.desktop //usr/share/xsessions/i3-gnome.desktop
-# install -m0644 -D session/i3-gnome.desktop //usr/share/applications/i3-gnome.desktop
-# install -m0644 -D session/i3-gnome.session //usr/share/gnome-session/sessions/i3-gnome.session
-# install -m0755 -D session/i3-gnome //usr/bin/i3-gnome
-# install -m0755 -D session/gnome-session-i3 //usr/bin/gnome-session-i3
+# # i3-gaps {{{1
+# 
+# # requirements
+# sudo apt-get install -y libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm0 libxcb-xrm-dev automake
+# sudo apt-get install -y i3status
+# 
+# cd /tmp
+# 
+# # clone the repository
+# git clone https://www.github.com/Airblader/i3 i3-gaps
+# cd i3-gaps
+# 
+# # compile & install
+# autoreconf --force --install
+# rm -rf build/
+# mkdir -p build && cd build/
+# 
+# # Disabling sanitizers is important for release versions!
+# # The prefix and sysconfdir are, obviously, dependent on the distribution.
+# ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+# make
+# sudo make install
+# 
+# # cat > /etc/ld.so.conf.d/i3.conf
+# 
+# # for dmenu
+# sudo apt install suckless-tools
+# 
+# # configure with gnome
+# sudo apt-get install -y gnome-flashback
+# git clone https://github.com/csxr/i3-gnome.git
+# cd i3-gnome
+# sudo make install
+# # install -m0644 -D session/i3-gnome-xsession.desktop //usr/share/xsessions/i3-gnome.desktop
+# # install -m0644 -D session/i3-gnome.desktop //usr/share/applications/i3-gnome.desktop
+# # install -m0644 -D session/i3-gnome.session //usr/share/gnome-session/sessions/i3-gnome.session
+# # install -m0755 -D session/i3-gnome //usr/bin/i3-gnome
+# # install -m0755 -D session/gnome-session-i3 //usr/bin/gnome-session-i3
 
 # for wallpaper
 sudo apt-get install -y feh
 
-# polybar
-sudo apt-get install -y cmake xcb-proto libxcb-randr0-dev libxcb-ewmh-dev python-xcbgen \
-  wireless-tools
+# # polybar
+# sudo apt-get install -y cmake xcb-proto libxcb-randr0-dev libxcb-ewmh-dev python-xcbgen \
+#   wireless-tools
 
-# modules
-sudo apt-get install -y libxcb-xkb-dev libdssialsacompat0 libdssialsacompat-dev libpulse-dev \
-  libjsoncpp-dev libmpdclient-dev libmpdclient2 libcurl4 libnl-genl-3-dev
+# # modules
+# sudo apt-get install -y libxcb-xkb-dev libdssialsacompat0 libdssialsacompat-dev libpulse-dev \
+#   libjsoncpp-dev libmpdclient-dev libmpdclient2 libcurl4 libnl-genl-3-dev
+# 
+# git clone --branch 3.2 --recursive https://github.com/jaagr/polybar
+# mkdir polybar/build
+# cd polybar/build
+# cmake ..
+# sudo make install
+# make userconfig
+# polybar example
 
-git clone --branch 3.2 --recursive https://github.com/jaagr/polybar
-mkdir polybar/build
-cd polybar/build
-cmake ..
-sudo make install
-make userconfig
-polybar example
+# # font-awesome
+# sudo apt-get install -y fonts-font-awesome
+# sudo apt-get install -y gucharmap
 
-# font-awesome
-sudo apt-get install -y fonts-font-awesome
-sudo apt-get install -y gucharmap
-
-# i3 locks
-sudo apt-get install -y i3lock imagemagick scrot
+# # i3 locks
+# sudo apt-get install -y i3lock imagemagick scrot
 
 # BSPWM {{{1
 

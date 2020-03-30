@@ -28,3 +28,4 @@ fi
 # xrandr --fb 1920x1080 \
 #   --output DP-1 --off \
 #   --output eDP-1 --auto --scale 1x1 --primary
+# xdpyinfo | grep -B2 resolution
