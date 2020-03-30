@@ -25,3 +25,6 @@ bspc rule -a spotify desktop='^10'
 
 # xrandr --dpi 220
 
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+
