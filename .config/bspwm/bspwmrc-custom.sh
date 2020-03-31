@@ -1,6 +1,5 @@
 #!/bin/sh
 
-feh --bg-fill "$HOME/.config/wall.png" # wallpaper
 
 
 bspc config border_width         4
