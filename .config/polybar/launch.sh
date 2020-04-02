@@ -10,9 +10,10 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 if [[ $HOSTNAME == "fyb044000004" ]]; then
   echo "Working at Lancaster University!"
-  height=42
+  height=40
   fontsize=20
-  wlan_interface=wlp6s0
+  #wlan_interface=wlp6s0
+  wlan_interface=wlp2s0
 elif [[ $HOSTNAME == "chaconmo-Precision-5510" ]]; then
   height=47
   fontsize=20

@@ -11,11 +11,11 @@ xsetroot -cursor_name left_ptr &               # mouse
 $HOME/.local/bin/colors-01-random.sh           # random color
 $HOME/.local/bin/colors-03-terminal.sh         # random color
 
-# $HOME/.config/bspwm/bspwmrc-monitors.sh             # monitors
+$HOME/.config/bspwm/bspwmrc-monitors.sh             # monitors
 # bash $HOME/.config/polybar/launch.sh           # polybar
-# redshift &                                     # redshift for
+redshift &                                     # redshift for
 
 $HOME/.config/bspwm/bspwmrc-custom.sh               # custom config
-# $HOME/.config/bspwm/bspwmrc-desktops.sh               # custom config
+$HOME/.config/bspwm/bspwmrc-desktops.sh               # custom config
 
 

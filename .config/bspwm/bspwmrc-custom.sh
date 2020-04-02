@@ -3,7 +3,7 @@
 
 
 bspc config border_width         4
-bspc config window_gap          12
+bspc config window_gap          5
 
 bspc config focused_border_color "#D23D3D"
 bspc config normal_border_color "#000000"
