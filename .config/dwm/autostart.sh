@@ -1,6 +1,7 @@
 #!/bin/sh
 
 monitors=$(xrandr | awk '/ connected/ { print $1}')
+resolutions=$(xrandr | awk '/[ \*]\+/ { print $1}')
 monitors_len=$(echo $monitors | wc -w)
 only_one=${1:-true}
 internal=${2:-false}
@@ -57,4 +58,9 @@ fi
 fi
 
 feh --bg-fill "$HOME/.config/wall.png"
-# /usr/bin/setxkbmap -option "ctrl:swapcaps"
+/usr/bin/setxkbmap -option "ctrl:swapcaps"
+
+while true; do
+    xsetroot -name "$(date)"
+    sleep 1
+done
