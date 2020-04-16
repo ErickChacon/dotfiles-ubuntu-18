@@ -62,3 +62,5 @@ else
         --output $sec_mon --mode $sec_res --scale $sec_sc'x'$sec_sc \
         --pos $main_pan_x'x'0 --panning $sec_pan
 fi
+
+/usr/bin/setxkbmap -option "ctrl:swapcaps"

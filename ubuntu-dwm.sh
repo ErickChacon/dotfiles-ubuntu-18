@@ -9,5 +9,7 @@ sudo apt-get install -y gnome-flashback
 
 sudo apt-get install -y feh
 
+sudo apt install -y xbacklight
+
 # xrandr is already installed
 # sudo apt-get install -y x11-xserver-utils

@@ -1,0 +1,3 @@
+- [bla](../a/bla.md)
+- [bla](../a/bla)
+- [why](../../why.md)

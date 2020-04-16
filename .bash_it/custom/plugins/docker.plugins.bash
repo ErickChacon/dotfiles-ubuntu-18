@@ -19,11 +19,14 @@ if [ -x "$(command -v docker)" ]; then
         local dot_dir="/home/chaconmo/Documents/Repositories/dotfiles-ubuntu-18"
         local dot_dir_g="/home/chaconmo/Documents/Repositories/dotfiles-ubuntu-18/stat-toolbox-dotfiles"
         local dot_docker="$dot_dir/stat-toolbox"
+        local cont_name=${1:-global-docker}
+        arg_port=""
+        if [ $cont_name = "global-docker" ]; then arg_port="-p 8787:8787"; fi
         echo $dot_docker
         XSOCK=/tmp/.X11-unix && \
         XAUTH=/tmp/.docker.xauth && \
         xauth nlist :0 | sed -e "s/^..../ffff/" | xauth -f $XAUTH nmerge - && \
-        docker run -d --user rstudio --name ${1:-global-docker} \
+        docker run -d --user rstudio --name $cont_name \
         -v $XSOCK:$XSOCK -v $XAUTH:$XAUTH \
         -v $HOME/Documents/:/home/rstudio/Documents \
         -v $HOME/Dropbox/:/home/rstudio/Dropbox \
@@ -48,9 +51,11 @@ if [ -x "$(command -v docker)" ]; then
         -v $dot_docker/R/Makevars:/home/rstudio/.R/Makevars \
         -w /home/rstudio$current \
         -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
+        $arg_port \
         --rm -it ${3:-erickchacon/stat-toolbox:3.6.2} /home/rstudio/bash-enable.sh
     }
 
+        # -p 8787:8787 \
         # -v $HOME/.shortcuts:/home/rstudio/.shortcuts \
         # -v $HOME/.palette-name.vim:/home/rstudio/.palette-name.vim \
         # -v $HOME/.palettes:/home/rstudio/.palettes \
