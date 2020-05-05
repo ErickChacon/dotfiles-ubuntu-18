@@ -36,7 +36,7 @@ sec_mon=$(echo $monitors | cut -d " " -f $sec_ix)
 sec_res=$(echo $resolutions | cut -d " " -f $sec_ix)
 sec_res_x=$(echo $resolutions_x | cut -d " " -f $sec_ix)
 sec_res_y=$(echo $resolutions_y | cut -d " " -f $sec_ix)
-if [ $sec_res_y -gt 2000 ]; then
+if [ $sec_res_y -gt 2000 ] && [ ! $only_one = "true" ]; then
     sec_sc=1
 fi
 sec_sc_aux=$(echo "scale=0; $sec_sc*10/1" | bc)
