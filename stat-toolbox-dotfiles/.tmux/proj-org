@@ -7,29 +7,29 @@ has_session() {
 }
 
 if has_session ; then
-    tmux a -t $project_name
+    tmux a -t $project_name -d
 else
   # main work directory:
-  proj="$HOME/Documents/Nvim/Vimwiki/"
-  tmux new-session -d -c $proj -s 'Organizer'
+  proj="$HOME/Documents/Organizer/"
+  tmux new-session -d -c $proj -s $project_name
   # window 1: vimwiki
   tmux rename-window "Notes"
-  tmux send-keys "nvim -c 'VimwikiIndex'" C-m
+  tmux send-keys "nvim -c 'Organize'" C-m
   # window 2: todo
-  tmux new-window -c $proj
-  tmux rename-window "Todo"
-  tmux send-keys "nvim Main\ Todo.wiki" C-m
-  # window 3: agenda
-  tmux new-window -c $proj
-  tmux rename-window "Agenda"
-  tmux send-keys "nvim -c 'VimwikiDiaryIndex'" C-m
-  tmux send-keys ":VimwikiDiaryGenerateLinks" C-m
-  tmux send-keys ":w" C-m
-  tmux send-keys "6ggw"
-  tmux split-window -c -h -p 50
-  tmux send-keys "nvim -c 'VimwikiMakeDiaryNote'" C-m
-  tmux selectp -t 1
+  # tmux new-window -c $proj
+  # tmux rename-window "Todo"
+  # tmux send-keys "nvim Main\ Todo.wiki" C-m
+  # # window 3: agenda
+  # tmux new-window -c $proj
+  # tmux rename-window "Agenda"
+  # tmux send-keys "nvim -c 'VimwikiDiaryIndex'" C-m
+  # tmux send-keys ":VimwikiDiaryGenerateLinks" C-m
+  # tmux send-keys ":w" C-m
+  # tmux send-keys "6ggw"
+  # tmux split-window -c -h -p 50
+  # tmux send-keys "nvim -c 'VimwikiMakeDiaryNote'" C-m
+  # tmux selectp -t 1
   # focus on window:
-  tmux select-window -t "Todo"
+  # tmux select-window -t "Todo"
   tmux attach-session -d
 fi
