@@ -86,12 +86,9 @@ cd && git clone --depth 1 https://github.com/alexanderjeurissen/ranger_devicons.
 # sudo apt-get install -y ess
 
 # qgis
-echo -e "\n## Mirror for qgis" | sudo tee -a /etc/apt/sources.list && \
-  sudo add-apt-repository "deb https://qgis.org/ubuntu bionic main"
-wget -O - https://qgis.org/downloads/qgis-2017.gpg.key | gpg --import
-gpg --export --armor CAEB3DC3BDF7FB45 | sudo apt-key add -
-sudo apt-get update && \
-  sudo apt-get install -y qgis python-qgis qgis-plugin-grass
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 51F523511C7028C3
+sudo add-apt-repository "deb https://qgis.org/ubuntu bionic main"
+sudo apt-get install -y qgis python-qgis qgis-plugin-grass
 
 # diconnected islands plugin requirements
 pip3 install networkx --user
@@ -260,6 +257,10 @@ sudo apt-get install docker-ce -y
 sudo usermod -a -G docker $USER
 # Verifying installation
 # docker run hello-world
+
+# Docker composer
+sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
 # WEB SOFTWARE {{{1
 

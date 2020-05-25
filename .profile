@@ -1,9 +1,9 @@
-#!/bin/sh
-# Profile file. Runs on login.
-
-export PATH="$PATH:$HOME/.scripts"
-export EDITOR="nvim"
-
-[ -f ~/.bashrc ] && source ~/.bashrc
-
-# /usr/bin/setxkbmap -option "ctrl:swapcaps"
+# #!/bin/sh
+# # Profile file. Runs on login.
+#
+# export PATH="$PATH:$HOME/.scripts"
+# export EDITOR="nvim"
+#
+# [ -f ~/.bashrc ] && source ~/.bashrc
+#
+# # /usr/bin/setxkbmap -option "ctrl:swapcaps"

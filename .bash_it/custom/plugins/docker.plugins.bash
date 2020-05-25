@@ -38,10 +38,10 @@ if [ -x "$(command -v docker)" ]; then
         -v $HOME/.palettes:/home/rstudio/.palettes \
         -v $HOME/.config/mutt:/home/rstudio/.config/mutt \
         -v /tmp/local:/tmp/local \
-        -v $HOME/.local/bin:/home/rstudio/.local/bin \
-        -v $dot_dir/.bash_it/custom:/home/rstudio/.bash_it/custom \
-        -v $dot_docker/.bashrc:/home/rstudio/.bashrc \
         -v $dot_docker/.bash_profile:/home/rstudio/.bash_profile \
+        -v $dot_docker/.bashrc:/home/rstudio/.bashrc \
+        -v $dot_dir/.bash_it/custom:/home/rstudio/.bash_it/custom \
+        -v $HOME/.local/bin:/home/rstudio/.local/bin \
         -v $dot_dir_g/.scripts:/home/rstudio/.scripts \
         -v $dot_docker/nvim:/home/rstudio/.config/nvim \
         -v $dot_dir_g/.tmux:/home/rstudio/.tmux \
@@ -49,11 +49,14 @@ if [ -x "$(command -v docker)" ]; then
         -v $dot_docker/.Rprofile:/home/rstudio/.Rprofile \
         -v $dot_docker/.ctags:/home/rstudio/.ctags \
         -v $dot_docker/R/Makevars:/home/rstudio/.R/Makevars \
+        -v $dot_docker/.lintr:/home/rstudio/.lintr \
         -w /home/rstudio$current \
         -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
         $arg_port \
         --rm -it ${3:-erickchacon/stat-toolbox:3.6.2} /home/rstudio/bash-enable.sh
     }
+
+        # -v $dot_docker/.profile:/home/rstudio/.profile \
 
         # -p 8787:8787 \
         # -v $HOME/.shortcuts:/home/rstudio/.shortcuts \
@@ -101,6 +104,7 @@ if [ -x "$(command -v docker)" ]; then
         -v $dot_docker/.Rprofile:/home/rstudio/.Rprofile \
         -v $dot_docker/.ctags:/home/rstudio/.ctags \
         -v $dot_docker/R/Makevars:/home/rstudio/.R/Makevars \
+        -v $dot_docker/.lintr:/home/rstudio/.lintr \
         -w /home/rstudio$current \
         -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
         -p 8787:8787 -e PASSWORD=reproducible \

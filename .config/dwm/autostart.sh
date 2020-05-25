@@ -3,6 +3,7 @@
 $HOME/.local/bin/monitors.sh
 feh --bg-fill "$HOME/.config/wall.png"
 /usr/bin/setxkbmap -option "ctrl:swapcaps"
+killall -q sxhkd; sxhkd &
 
 mem(){
     mem=`free -h | awk '/Mem/ {printf $7}'`
