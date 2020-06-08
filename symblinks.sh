@@ -14,6 +14,7 @@ path_bspwm=~/.config/bspwm
 path_sxhkdrc=~/.config/sxhkd/sxhkdrc
 path_polybar=~/.config/polybar
 path_dwm=~/.config/dwm
+path_tmux=~/.tmux.conf
 
 # overwrite dotfiles
 
@@ -21,7 +22,7 @@ overwrite=${1:-false}
 if [ $overwrite = true ]; then
     rm -rf $path_bashrc $path_bash_prof $path_local_bin \
         $path_palettes $path_unison $path_nvim $path_bspwm \
-        $path_sxhkdrc $path_polybar $path_dwm
+        $path_sxhkdrc $path_polybar $path_dwm $path_tmux
 fi
 
 # bash
@@ -56,6 +57,12 @@ fi
 if [ ! -d $path_nvim ]; then
     mkdir -p ~/.config
     ln -s $path_dotfiles/.config/nvim $path_nvim
+fi
+
+# tmux
+
+if [ ! -L $path_tmux ] && [ ! -f $path_tmux ]; then
+    ln -s $path_dotfiles/.tmux.conf $path_tmux
 fi
 
 # bspwm
