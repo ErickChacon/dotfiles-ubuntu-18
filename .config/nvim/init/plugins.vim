@@ -22,7 +22,7 @@ Plug 'Shougo/deoplete.nvim'            , {'commit': 'a76d2fb',
 Plug 'tomtom/tcomment_vim'             , {'commit': '622cc05'}  " commenting
 Plug 'Shougo/neosnippet.vim'           , {'commit': '23c9743'}  " snippets
 Plug 'honza/vim-snippets'              , {'commit': '7ade68c'}  " snippets scripts
-" Plug 'jalvesaq/vimcmdline'             , {'commit': '17275ab'}  " command line
+Plug 'jalvesaq/vimcmdline'
 " Plug 'hkupty/iron.nvim'                , {'commit': 'c3542c2'}  " repls over neovim
 Plug 'tpope/vim-fugitive'              , {'commit': '5d99841'}  " git commands
 
@@ -76,3 +76,4 @@ Plug 'morhetz/gruvbox'                 , {'commit': 'cb4e7a5'}
 " Plug 'chriskempson/tomorrow-theme'     , {'commit': '0e0d35a', 'rtp': 'vim/'}
 
 call plug#end()
+" up

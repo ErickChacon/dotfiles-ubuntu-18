@@ -25,3 +25,16 @@ so ~/.config/nvim/init/markdown.vim
 " others
 so ~/.config/nvim/init/easyalign.vim
 so ~/.config/nvim/init/wiki.vim
+
+" function StartDocker()
+"     let bclapp = b:cmdline_app
+"     if &filetype == "python"
+"         let b:cmdline_app = "docker exec -it container /usr/python3"
+"     elseif &filetype == "ruby"
+"         let b:cmdline_app = "docker exec -it container /usr/irb"
+"     endif
+"     call VimCmdLineStartApp()
+"     let b:cmdline_app = bclapp
+" endfunction
+
+" nmap <LocalLeader>d :call StartDocker()<CR>

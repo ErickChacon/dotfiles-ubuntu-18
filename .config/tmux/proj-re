@@ -1,0 +1,19 @@
+#!/bin/bash
+
+project_name='Repositories'
+
+has_session() {
+    tmux has-session -t $project_name 2>/dev/null
+}
+if has_session; then
+    tmux attach-session -t $project_name -d
+else
+    bigproj="$HOME/Documents/Repositories"
+    proj="$bigproj"
+    tmux new-session -d -c $proj -s $project_name
+    tmux send-keys 'nvim' C-m
+
+    # focus on window:
+    tmux attach-session -d
+fi
+

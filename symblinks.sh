@@ -15,6 +15,8 @@ path_sxhkdrc=~/.config/sxhkd/sxhkdrc
 path_polybar=~/.config/polybar
 path_dwm=~/.config/dwm
 path_tmux=~/.tmux.conf
+path_tmux_proj=~/.config/tmux
+
 
 # overwrite dotfiles
 
@@ -64,6 +66,12 @@ fi
 if [ ! -L $path_tmux ] && [ ! -f $path_tmux ]; then
     ln -s $path_dotfiles/.tmux.conf $path_tmux
 fi
+
+if [ ! -d $path_tmux_proj ]; then
+    mkdir -p ~/.config
+    ln -s $path_dotfiles/.config/tmux $path_tmux_proj
+fi
+
 
 # bspwm
 

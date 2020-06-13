@@ -160,6 +160,9 @@ else
         docker exec -it -w /home/rstudio$current ${3:-global-docker} \
             /home/rstudio/.tmux/proj-$1 $2
     }
+    txoo() {
+        ~/.config/tmux/proj-$1 $2
+    }
 fi
 
 

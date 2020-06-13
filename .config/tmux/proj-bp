@@ -1,0 +1,47 @@
+#!/bin/bash
+
+proj_name='Black-Points'
+
+function has-session {
+  tmux has-session -t=$proj_name 2>/dev/null
+}
+
+if  has-session ; then
+  tmux a -t $proj_name
+else
+
+  # main work directory:
+  proj="$HOME/Documents/Projects/TrafficAccidents/AT2018/"
+  tmux new-session -d -c $proj -s $proj_name
+
+  # window: notes
+  tmux rename-window "About"
+  tmux send-keys \
+    'nvim README.md' C-m
+
+  if [[ "$1" == *clean* ]]; then
+    # window: clean
+    tmux new-window -c $proj/3.Cleaning
+    tmux rename-window "Cleaning"
+    tmux send-keys "nvim" C-m
+  fi
+
+  if [[ "$1" == *ana* ]]; then
+    # window: blackpoints
+    tmux new-window -c $proj/4.BlackPoints
+    tmux rename-window "BlackPoints"
+    tmux send-keys "nvim" C-m
+  fi
+
+  if [[ "$1" == *write* ]]; then
+    # window: datasheets
+    tmux new-window -c $proj/5.DatasheetsCode
+    tmux rename-window "Datasheets"
+    tmux send-keys "nvim" C-m
+  fi
+
+  # focus on window:
+  tmux select-window -t "About"
+  tmux attach-session -d
+fi
+
