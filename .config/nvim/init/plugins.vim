@@ -33,7 +33,7 @@ Plug 'cespare/vim-toml'                , {'commit': '2295e61'}  " toml: syntax
 " Plug 'jalvesaq/Nvim-R'                 , {'commit': '9ab1ead'}  " R: support
 " Plug 'vim-python/python-syntax'                          " python: better syntax
 " Plug 'octol/vim-cpp-enhanced-highlight'                  " cpp: better syntax
-" Plug 'JuliaEditorSupport/julia-vim'                      " julia: support
+Plug 'JuliaEditorSupport/julia-vim'                      " julia: support
 
 " Motions
 Plug 'junegunn/vim-easy-align'         , {'commit': '12dd631'}  " align

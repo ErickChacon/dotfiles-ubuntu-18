@@ -108,7 +108,7 @@ if [ -x "$(command -v docker)" ]; then
         -w /home/rstudio$current \
         -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
         -p 8787:8787 -e PASSWORD=reproducible \
-        --rm ${3:-erickchacon/stat-toolbox:3.6.0}
+        --rm ${3:-erickchacon/stat-toolbox:3.6.2}
     }
 
     stop-docker() {
