@@ -18,6 +18,8 @@ function StartDocker()
         let b:cmdline_app = "docker exec -it " . container . " python"
     elseif &filetype == "julia"
         let b:cmdline_app = "docker exec -it " . container . " julia"
+    elseif &filetype == "r"
+        let b:cmdline_app = "docker exec -it " . container . " geospatial"
     endif
     call VimCmdLineStartApp()
     let b:cmdline_app = bclapp

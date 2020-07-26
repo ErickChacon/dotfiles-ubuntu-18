@@ -29,11 +29,14 @@ Plug 'tpope/vim-fugitive'              , {'commit': '5d99841'}  " git commands
 " Languages
 Plug 'lervag/vimtex'                   , {'commit': 'ef428bb'}  " latex: compile
 Plug 'cespare/vim-toml'                , {'commit': '2295e61'}  " toml: syntax
+" Plug 'jalvesaq/Nvim-R'
 " Plug 'jalvesaq/Nvim-R'                 , {'commit': '7a551bd'}  " R: support
 " Plug 'jalvesaq/Nvim-R'                 , {'commit': '9ab1ead'}  " R: support
 " Plug 'vim-python/python-syntax'                          " python: better syntax
 " Plug 'octol/vim-cpp-enhanced-highlight'                  " cpp: better syntax
 Plug 'JuliaEditorSupport/julia-vim'                      " julia: support
+" Plug 'kassio/neoterm'
+Plug 'jpalardy/vim-slime'
 
 " Motions
 Plug 'junegunn/vim-easy-align'         , {'commit': '12dd631'}  " align
@@ -77,3 +80,54 @@ Plug 'morhetz/gruvbox'                 , {'commit': 'cb4e7a5'}
 
 call plug#end()
 " up
+"
+" let g:slime_target = "neovim"
+let g:slime_target = "tmux"
+" let g:slime
+" xmap <leader>ss <Plug>SlimeRegionSend
+" nmap <leader>ss <Plug>SlimeParagraphSend
+" xmap <leader>s <Plug>SlimeRegionSend
+nmap <leader>ss <Plug>SlimeMotionSend
+" nmap <leader>ss <Plug>SlimeLineSend
+
+" " let g:neoterm_repl_python = 'python3'
+" let g:neoterm_default_mod = "belowright"
+" let g:neoterm_direct_open_repl = 1
+" nmap gx <Plug>(neoterm-repl-send)
+
+" docker-compose -f ~/Documents/Repositories/dotfiles-ubuntu-18/toolbox/docker-compose.yml run --rm python bash
+" docker-compose -f ~/Documents/Repositories/dotfiles-ubuntu-18/toolbox/docker-compose.yml run --rm geospatial bash
+
+" docker exec -it " . container . " python"
+"
+" docker-compose -f ~/Documents/Repositories/dotfiles-ubuntu-18/toolbox/docker-compose.yml run --name python_run --detach --rm python bash
+" docker exec -ti python_run bash
+" --name python_run 
+" docker exec -ti toolbox_python_1 bash
+"
+
+" " let R_app = 'docker'
+" " let R_app = 'docker'
+" let $NVIM_IP_ADDRESS = substitute(system("hostname -I"), " .*", "", "")
+" let R_app = 'docker exec -it global-docker R'
+" let R_cmd = 'docker exec global-docker R'
+" let R_compldir = '~/.remoteR/NvimR_cache'
+" " let R_tmpdir = '/tmp/Nvim-R'
+" " let R_remote_tmpdir = '/tmp/Nvim-R-rstudio'
+" let R_nvimcom_home = '/home/chaconmo/.remoteR/R_library/nvimcom'
+" let R_nvim_wd = 1
+" " let R_tmpdir = '~/.remoteR/NvimR_cache/tmp'
+" " let R_remote_tmpdir = '/home/rstudio/.cache/NvimR_cache/tmp'
+" " let R_tmpdir = 'tmp/Nvim-R-tmp'
+" " let R_compldir = '/home/rstudio/.cache/Nvim-R'
+" " let R_compldir = '/tmp/Nvim-R-tmp/.cache'
+" " let R_cmd = 'docker exec -it global-docker R'
+" " let R_args = ['exec -it global-docker R']
+"
+" " let R_cmd = 'exec -it global-docker R'
+" "  
+"
+" " let R_args =['run -it --rm', '-e DISPLAY=$DISPLAY', '-v /tmp/.X11-unix:/tmp/.X11-unix:ro', '--ipc host my-r-image']
+" " let R_args = ['exec -it global-docker R']
+"
+" " 1) Fi

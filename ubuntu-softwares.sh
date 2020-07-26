@@ -208,8 +208,10 @@ curl -o ~/.unison/default.prf -L \
 
 # Mendeley
 wget https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
+sudo apt-get install -y gconf2
 sudo dpkg -i mendeleydesktop-latest
 rm mendeleydesktop-latest
+# sudo apt install ./foo-1.2.3.deb
 
 # dropbox
 sudo apt-get -y install python-gpg

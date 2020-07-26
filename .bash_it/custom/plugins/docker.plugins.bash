@@ -38,6 +38,9 @@ if [ -x "$(command -v docker)" ]; then
         -v $HOME/.palettes:/home/rstudio/.palettes \
         -v $HOME/.config/mutt:/home/rstudio/.config/mutt \
         -v /tmp/local:/tmp/local \
+        -v $HOME/.remoteR/R_library/nvimcom:/usr/local/lib/R/site-library/nvimcom \
+        -v $HOME/.remoteR/NvimR_cache:/home/rstudio/.cache/Nvim-R \
+        -v /tmp/Nvim-R-chaconmo:/tmp/Nvim-R-chaconmo \
         -v $dot_docker/.bash_profile:/home/rstudio/.bash_profile \
         -v $dot_docker/.bashrc:/home/rstudio/.bashrc \
         -v $dot_dir/.bash_it/custom:/home/rstudio/.bash_it/custom \
@@ -52,9 +55,16 @@ if [ -x "$(command -v docker)" ]; then
         -v $dot_docker/.lintr:/home/rstudio/.lintr \
         -w /home/rstudio$current \
         -e XAUTHORITY=$XAUTH  -e DISPLAY=$DISPLAY -e "TERM=xterm-256color-italic" \
+        -e NVIMR_COMPLDIR=~/.cache/Nvim-R  -e NVIMR_TMPDIR=~/.cache/Nvim-R/tmp \
+        -e "TERM=xterm-256color-italic" \
         $arg_port \
         --rm -it ${3:-erickchacon/stat-toolbox:3.6.2} /home/rstudio/bash-enable.sh
     }
+
+        # -v $HOME/.cache/Nvim-R:/home/rstudio/.remoteR/NvimR_cache \
+        # -v $HOME/blassdf:/usr/local/lib/R/site-library \
+
+        # --rm -it ${3:-erickchacon/stat-toolbox:3.6.2} touch bla.R
 
         # -v $dot_docker/.profile:/home/rstudio/.profile \
 
@@ -67,6 +77,8 @@ if [ -x "$(command -v docker)" ]; then
       # -v $dot_dir/custom.plugins.bash:/home/rstudio/.bash_it/plugins/custom.plugins.bash \
       # -v $dot_docker/custom.aliases.bash:/home/rstudio/.bash_it/aliases/custom.aliases.bash \
         # custom.plugins.bash:/home/rstudio/.bash_it/plugins/custom.plugins.bash \
+
+        # -v /tmp/Nvim-R:/tmp/Nvim-R \
 
     function start-docker-rstudio() {
         mkdir -p /tmp/local
