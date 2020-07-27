@@ -42,7 +42,7 @@ Plug 'jpalardy/vim-slime'
 Plug 'junegunn/vim-easy-align'         , {'commit': '12dd631'}  " align
 Plug 'tpope/vim-surround'              , {'commit': 'ca58a2d'}  " sorround
 " Plug 'kana/vim-textobj-indent'         , {'commit': 'deb7686'}  " copy indented block
-" Plug 'kana/vim-textobj-user'           , {'commit': '074ce25'}  " custom text object
+Plug 'kana/vim-textobj-user'           , {'commit': '074ce25'}  " custom text object
 
 " Note taking
 Plug 'lervag/wiki.vim'                 , {'commit': '92734dc'}  " make notes
@@ -79,16 +79,6 @@ Plug 'morhetz/gruvbox'                 , {'commit': 'cb4e7a5'}
 " Plug 'chriskempson/tomorrow-theme'     , {'commit': '0e0d35a', 'rtp': 'vim/'}
 
 call plug#end()
-" up
-"
-" let g:slime_target = "neovim"
-let g:slime_target = "tmux"
-" let g:slime
-" xmap <leader>ss <Plug>SlimeRegionSend
-" nmap <leader>ss <Plug>SlimeParagraphSend
-" xmap <leader>s <Plug>SlimeRegionSend
-nmap <leader>ss <Plug>SlimeMotionSend
-" nmap <leader>ss <Plug>SlimeLineSend
 
 " " let g:neoterm_repl_python = 'python3'
 " let g:neoterm_default_mod = "belowright"
@@ -131,3 +121,11 @@ nmap <leader>ss <Plug>SlimeMotionSend
 " " let R_args = ['exec -it global-docker R']
 "
 " " 1) Fi
+
+call textobj#user#plugin('chunk', {
+\   'angle': {
+\     'pattern': ['^```{r', '^```$'],
+\     'select-a': 'ac',
+\     'select-i': 'ic',
+\   },
+\ })
