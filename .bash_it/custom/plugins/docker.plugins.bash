@@ -167,12 +167,12 @@ if ! [ -x "$(command -v docker)" ]; then
         ~/.tmux/proj-$1 $2
     }
 else
-    txo() {
+    txoo() {
         local current=$(pwd_short)
         docker exec -it -w /home/rstudio$current ${3:-global-docker} \
             /home/rstudio/.tmux/proj-$1 $2
     }
-    txoo() {
+    txo() {
         ~/.config/tmux/proj-$1 $2
     }
 fi

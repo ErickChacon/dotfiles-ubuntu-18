@@ -36,7 +36,7 @@ set numberwidth=4                            " width
 set relativenumber                           " relative
 
 " TEXTWIDTH AND WRAPING
-set textwidth=85                             " textwidth
+set textwidth=90                             " textwidth
 set formatoptions=cqt                        " text wraping
 " set colorcolumn=+1                           " color column after textwidth
 " let &colorcolumn="".join(range(91,999),",")  " color column after textwidth

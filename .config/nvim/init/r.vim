@@ -1,4 +1,3 @@
-
 " R configuration
 let R_source = '~/.local/share/nvim/plugged/Nvim-R/R/tmux_split.vim'
 let R_args = ['--no-save', '--quiet']                       " R arguments
@@ -29,6 +28,7 @@ let g:rmd_fenced_languages = ['r']
 " markdown focuments.
 
 au BufNewFile,BufRead *.Rmarkdown set filetype=rmd
+au BufNewFile,BufRead *.Rmkd set filetype=rmd
 
 command! Reprodown
       \ call system("r -e 'reprodown::makefile()'")

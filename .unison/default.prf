@@ -37,6 +37,9 @@ ignore = Name .git
 
 # igone repositories
 ignore = Path Repositories/*
+ignore = Path Web
+ignore = Path Web-minimal
+ignore = Path Webtest
 # ignore = Path Projects/FoodSecurity/5.Studies/MapFoodInse/7.Writing/paper-spmirt/*
 # ignore = Path Projects/FoodSecurity/5.Studies/MapFoodInse-Cities/7.Writing/paper-mapfi/*
 # ignore = Path texmf/tex/latex/*

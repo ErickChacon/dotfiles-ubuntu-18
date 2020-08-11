@@ -2,6 +2,8 @@
 " local config
 setlocal spell
 
+iabb <buffer> _ <-
+
 " functions
 function! RObjBrowserNerd()
   call RObjBrowser()
@@ -9,7 +11,8 @@ function! RObjBrowserNerd()
 endfunction
 
 " Mapping and nvim-r
-inoremap <buffer> >> <Esc>:normal! a%>%<CR>a
+" inoremap <buffer> >> <Esc>:normal! a%>%<CR>a
+" inoremap <buffer> __ <Esc>:normal! a<-<CR>a
 " inoremap <leader>, <C-x><C-o>
 
 " folding

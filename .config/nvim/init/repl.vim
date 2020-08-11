@@ -29,8 +29,7 @@
 
 
 function! SlimeOverride_EscapeText_rmd(text)
-    let rchunk = match(a:text, '```{r}') " return trimmed
-    echo rchunk
+    let rchunk = match(a:text, '```{r') " return trimmed
     if rchunk < 0
         let text_new = "```{r}\n" . a:text
     else
@@ -73,18 +72,82 @@ function SlimeAllSend()
     " let filepath = expand("%:t")
     " call slime#send('source("' . filepath . '")' . "\n")
     if &filetype == "r"
-        let command = 'source'
+        let cmd = 'source'
     elseif &filetype == "rmd"
-        let command = "```{r}\nrmarkdown::render"
+        let cmd = "```{r}\nrmarkdown::render"
     endif
-    call slime#send(command . '("' . filepath . '")' . "\n")
+    call slime#send(cmd . '("' . filepath . '")' . "\n")
 endfunction
+
+function SlimeHelpSend()
+    let object = expand("<cword>")
+    if &filetype == "r"
+        let cmd = '?'
+    elseif &filetype == "rmd"
+        let cmd = '?'
+    endif
+    call slime#send(cmd . object . "\n")
+endfunction
+
+function SlimePrintSend()
+    let object = expand("<cword>")
+    call slime#send(object . "\n")
+endfunction
+
+function SlimeStructureSend()
+    let object = expand("<cword>")
+    if &filetype == "r"
+        let cmd = 'str'
+    elseif &filetype == "rmd"
+        let cmd = 'str'
+    endif
+    call slime#send(cmd . '(' . object . ')' . "\n")
+    " call slime#send(cmd)
+endfunction
+
+function SlimeQuitSend()
+    if &filetype == "r"
+        let cmd = 'quit()'
+    elseif &filetype == "rmd"
+        let cmd = 'quit()'
+    endif
+    call slime#send(cmd . "\n")
+endfunction
+
+function SlimeExitSend()
+    let cmd = 'exit'
+    call slime#send(cmd . "\n")
+endfunction
+
+function SlimeMakeSend()
+    " if &filetype == 'r'
+    "     let cmd = "reprodown::makefile(); system('make')\n"
+    " elseif &filetype == 'rmd'
+    "     let cmd = "reprodown::makefile(); system('make')\n"
+    " endif
+    let cmd = "reprodown::makefile(); system('make')\n"
+    call slime#send(cmd)
+endfunction
+
+" function SlimeStructureSend()
+"     let object = expand("<cword>")
+"     if &filetype == "r"
+"         let cmd = 'str'
+"     elseif &filetype == "rmd"
+"         let cmd = 'str'
+"     endif
+"     call slime#send(cmd . '(' . object . ')' . "\n")
+"     " call slime#send(cmd)
+" endfunction
 
 " let g:slime_target = "neovim"
 let g:slime_target = "tmux"
 let g:slime_no_mappings = 1
 let g:slime_cell_delimiter = "#%%"
 nmap <leader>rf <Plug>SlimeConfig
+nmap <silent> <leader>rq :call SlimeQuitSend()<CR>
+nmap <silent> <leader>re :call SlimeExitSend()<CR>
+nmap <silent> <leader>rm :call SlimeMakeSend()<CR>
 nmap <leader>ll <Plug>SlimeLineSend
 nmap <leader>pp <Plug>SlimeParagraphSend
 xmap <leader>ss <Plug>SlimeRegionSend
@@ -97,4 +160,7 @@ nmap <leader>aa :call SlimeAllSend()<CR>
 " nmap <leader>bb <Plug>SlimeSendCell
 nmap <silent> <leader>pwd :call SlimeGetwd()<CR>
 nmap <silent> <leader>cd :call SlimeSetwd()<CR>
+nmap <silent> <leader>rh :call SlimeHelpSend()<CR>
+nmap <silent> <leader>rp :call SlimePrintSend()<CR>
+nmap <silent> <leader>rt :call SlimeStructureSend()<CR>
 

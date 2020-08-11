@@ -1,0 +1,139 @@
+# this is a test for links, references and footnotes. 
+
+a link to [the example.com website](http://www.example.com "example") 
+
+well, [the example.com website](http://www.example.com) 
+
+testing footnotes[^footnote1]. this is kinda silly.^[another footnote.] 
+^superscrips^ are ok, but be careful to keep spaces between the inline
+footnotes and the superscripts.^[inline footnotes-- *test*]
+
+[^footnote1]: this is a footnote --.
+
+[see @Lovejoy, pp. 12]
+
+Mister @Lovejoy95, at [-@Lovejoy], cites @Lovejoy [pp. 12-12].
+
+Some printable characters might not be matched (in @Krämer, `ä` caused
+issues). @Krámer @Kraßmer @Kràmer
+
+*[PCL]: P C L
+
+[hello][welcome] aaaaaa this with [inline link](http://site.com) gets messed up
+
+[hello][hello]aaaaaa this
+
+[hello] [hello] this is a test.
+
+[hello][]
+
+[hello1]: www.google.com
+
+[hello2]: www.google.com "pandoc"
+
+[hello3]: www.google.com
+  "pandoc"
+this is no longer part of the reference definition
+
+![test](test.png)
+
+![testimg][]
+
+[testimg]: test.png
+
+What follows are some notes on algorithms I've been reviewing from
+[Algorithms](http://amzn.com/032157351X) by Robert Sedgewick and Kevin Wayne,
+[The Algorithm Design Manual](http://amzn.com/1849967202) by Steven S. Skiena,
+and other sources around the Internet [^mit] [^umd] [^umgd]. I wanted to write
+some notes on the material so that I could easily look back on it, but mainly so
+that I could be sure that I understand the material --- since I have to understand it
+to explain it.
+
+[Convolution](http://en.wikipedia.org/wiki/Convolution) is a mathematical method of combining two signals to form a third signal. fds sfddswhty is thie snot breaking? wht is your problem fdsa fdsa fds, fdsaf dsdf . fdsa
+
+Passing the [Dirac delta
+function](http://en.wikipedia.org/wiki/Dirac_delta_function) (unit impulse)
+$\delta[n]$ through a linear system results in the impulse response $h[n]$. The
+impulse response is simply the signal resulting from passing the unit impulse
+(Dirac delta function) through a linear system. fdsa fdsa fdsa fdsa fdsa fdsa
+fdsa fdsa fds afd safdasdf fdfds
+
+
+
+This is my personal webpage and blog. I am a PhD student in Statistics and fds sp
+fdsfds fds fds fds fds fds fds Epidemiology in the Faculty of Health and Medicine at
+[Lancaster University] supervised by [Dr. Benjamin Taylor] and [Dr. Luke Parry]. I
+work in the research group called [CHICAS] (Centre for Health, Informatics, Computing
+and Statistics). Previously, I obtained my Master of Science degree in Statistics at
+Lancaster University and my Bachelor and fd fdsap fds fds fds fds Engineering degree
+at \[\[Universidad Nacional de should it update? fds fds fds fds fds fds fds fds fdsa
+fds fds fds fds\]\] fdsafdsa fdsa fdsa fds fdsa fds fds fd fds dfsaf fdsa fdsa fds
+fdsa fdsa fdsa fdsa fdsa i hope this is foing to improcep later, I do am not sure
+what deoplete behave that way, but there is not sloajj
+
+  [Lancaster University]: http://www.lancaster.ac.uk/
+  [Dr. Benjamin Taylor]: http://www.lancaster.ac.uk/staff/taylorb1/
+  [Dr. Luke Parry]: http://www.lancaster.ac.uk/lec/about-us/people/luke-parry
+  [CHICAS]: http://chicas.lancaster-university.uk/
+
+fdsa fdjsk [fd fdsaIngeniería](http://www.uni.edu.pe/). I am a senior
+research associate in environmental data science at DSNE with focus on the
+development of methodology for spatio-temporal statistics. fds fds fdsa fdsa fdsa I
+obtained my PhD degree in Statistics and Epidemiology at Lancaster University and
+later I worked as a part-time lecturer in spatial statistics at Universidad Nacional
+de Ingeniería. My research focusses in proposing and using spatio-temporal methods to
+model environmental and health data, integrating it with other areas such as Bayesian
+statistics, computational statistics, reproducibility, data visualization and causal
+inference. fdfds fds fd fds fd fds fdsf fd fds fds i s s s s sf fds i this fds fds
+fin? what fd fds fds his fds fds fdsa dfsa adf adffdas fda fadfds fdsa fdsa fdsa fdsa
+is tnote breaking why? nor suer fds tis nice bur we have to make it better. I have to
+use fds fds fdsdfds fdsa fdsafdsa fdsa fds
+
+it seee fdsa fdf sdf df sddddddddddddddddddddddddddddddddddddddd fds fds f
+djfksd fds afjdksaf sa fsd fdsa fdsa fdfsa adfsfdas fdsa fds sdfdf sdfdf sdfd
+fdsa fdsa fdsa fdsa fdsa fds fds fdsfdsa fdsafdsa fdsa fdasfdsa fdsafdsa
+fdasfdsa fdsafdsa fdf dsfd safd fdsa fdsa fdsa fdsa kdfds fdsa fdsa fds fdsa
+fdasfdsafds fdas fdsa fdsa fdsa fdsa fdsa fdas fdsa fdsa [this is a very lonkg
+link goole](gogle) fdsaff fds fdsa fdsa safds afsda fdsa fdsa fdsa fdsa fdsa fds
+ffdsa fdasfdsa fdsa
+
+dfsafd [link long](fdsafdsa) is fds fdsa fdsa fdsa fdsa jfkdsa fdsaa fjdska fdsa
+adf sfd dfsa fdsa fdsa fdas fdsa fdsa fdas fdas fas fas fdsa fdsa fsa fdsa
+safdfsafdsa fdsa fds fds fds fds *irafdas* and **bold**. This is nice
+
+# issue 25 
+
+[[abc]](xxx)
+
+[[abc]][]
+
+[[abc]]: x
+
+# issue 107 (vim-pandoc)
+
+[`]`](http://foo.com) foo
+
+[Why isn't `ListT []`{.haskell} a monad](http://blog.sigfpe.com/2006/11/why-isnt-listt-monad.html)
+
+This is my personal webpage and blog. I am a PhD student in Statistics and
+Epidemiology in the Faculty of Health and Medicine at [Lancaster University]
+supervised by [Dr. Benjamin Taylor] and [Dr. Luke Parry]. I work in the research
+group called [CHICAS] (Centre for Health, Informatics, Computing and Statistics).
+Previously, I obtained my Master of Science degree in Statistics at Lancaster
+University and my Bachelor and Engineering degree at [Universidad Nacional de
+Ingeniería].
+
+  [Lancaster University]: http://www.lancaster.ac.uk/
+  [Dr. Benjamin Taylor]: http://www.lancaster.ac.uk/staff/taylorb1/
+  [Dr. Luke Parry]: http://www.lancaster.ac.uk/lec/about-us/people/luke-parry
+  [CHICAS]: http://chicas.lancaster-university.uk/
+  [Universidad Nacional de Ingeniería]: http://www.uni.edu.pe/
+
+I am a senior research associate in environmental data science at DSNE with focus on
+the development of methodology for spatio-temporal statistics. I obtained my PhD
+degree in Statistics and Epidemiology at Lancaster University and later I worked as a
+part-time lecturer in spatial statistics at Universidad Nacional de Ingeniería. My
+research focusses in proposing and using spatio-temporal methods to model
+environmental and health data, integrating it with other areas such as Bayesian
+statistics, computational statistics, reproducibility, data visualization and causal
+inference.

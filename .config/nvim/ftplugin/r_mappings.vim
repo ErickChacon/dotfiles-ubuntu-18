@@ -11,3 +11,8 @@ nmap <buffer> <LocalLeader>rgj :RSend dev.set(which = dev.prev())<CR>
 nmap <buffer> <LocalLeader>rgs :RSend dev.set(
 nmap <buffer> <LocalLeader>rgq :RSend graphics.off()<CR>
 
+
+" Mapping shortcuts
+inoremap <buffer> >> <Esc>:normal! a%>%<CR>a
+" inoremap <buffer> __ <Esc>:normal! a<-<CR>a
+iabb <buffer> _ <-
