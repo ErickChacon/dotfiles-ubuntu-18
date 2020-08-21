@@ -6,10 +6,10 @@ function has-session {
 }
 
 if has-session ; then
-    tmux a -t $proj_name
+    tmux attach-session -t $project_name -d
 else
-    bigproj="$HOME/Documents/Projects/food-insecurity"
-    proj="$bigproj/70-studies/study-birthweight"
+    bigproj="$HOME/Documents/Projects/data-amazonia"
+    proj="$bigproj/70-studies/birthweight"
     tmux new-session -d -c $proj -s $project_name
 
     # window: notes
