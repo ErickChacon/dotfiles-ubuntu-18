@@ -15,8 +15,8 @@ Plug 'christoomey/vim-tmux-navigator'  , {'commit': '4e1a877'}  " tmux-vim navig
 Plug 'junegunn/fzf'                    , {'commit': '430e819',
             \ 'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'                , {'commit': 'ac4e7bf'}  " fuzzy matching
-Plug 'autozimu/LanguageClient-neovim'  , {'commit': '4b35f5d',
-            \ 'branch': 'next', 'do': 'bash install.sh'}        " language server
+" Plug 'autozimu/LanguageClient-neovim'  , {'commit': '4b35f5d',
+"             \ 'branch': 'next', 'do': 'bash install.sh'}        " language server
 Plug 'Shougo/deoplete.nvim'            , {'commit': 'a76d2fb',
             \ 'do': ':UpdateRemotePlugins' }                    " completion
 Plug 'tomtom/tcomment_vim'             , {'commit': '622cc05'}  " commenting
@@ -27,7 +27,7 @@ Plug 'jalvesaq/vimcmdline'
 Plug 'tpope/vim-fugitive'              , {'commit': '5d99841'}  " git commands
 
 " Languages
-Plug 'lervag/vimtex'                   , {'commit': 'ef428bb'}  " latex: compile
+" Plug 'lervag/vimtex'                   , {'commit': 'ef428bb'}  " latex: compile
 Plug 'cespare/vim-toml'                , {'commit': '2295e61'}  " toml: syntax
 " Plug 'jalvesaq/Nvim-R'
 " Plug 'jalvesaq/Nvim-R'                 , {'commit': '7a551bd'}  " R: support

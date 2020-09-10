@@ -22,3 +22,8 @@ apt-get install -y ninja-build gettext libtool libtool-bin autoconf automake cma
 # remove files
 cd .. && \
     rm -rf neovim-${NEOVIM_VERSION}
+
+# neovim requirements
+pip3 install --user msgpack
+pip3 install --user pynvim
+# pip3 install --user --upgrade pynvim

@@ -138,6 +138,43 @@ if [ -x "$(command -v docker)" ]; then
     }
     # --user ${2:-rstudio}
 
+    # docker-compose rm
+    dcomp-rm(){
+    docker-compose --file \
+        ${2:-~/Documents/Repositories/dotfiles-ubuntu-18/toolbox/docker-compose.yml} \
+        rm --f ${1:-}
+    }
+
+    # docker-compose down
+    dcomp-down(){
+    docker-compose --file \
+        ${1:-~/Documents/Repositories/dotfiles-ubuntu-18/toolbox/docker-compose.yml} \
+        down
+    }
+
+    # docker-compose build
+    dcomp-build(){
+    docker-compose --file \
+        ${2:-~/Documents/Repositories/dotfiles-ubuntu-18/toolbox/docker-compose.yml} \
+        build --build-arg UID=$(id -u) --build-arg GID=$(id -g) ${1:-r}
+    }
+
+    # docker-compose run
+    dcomp-run(){
+    mkdir -p /tmp/local && \
+    XAUTH=/tmp/.docker.xauth && \
+        xauth nlist :0 | sed -e "s/^..../ffff/" | xauth -f $XAUTH nmerge - && \
+        docker-compose --file \
+        ${3:-~/Documents/Repositories/dotfiles-ubuntu-18/toolbox/docker-compose.yml} \
+        run --name toolbox_${1:-r} --rm --service-ports ${2:---detach} ${1:-r} bash
+    }
+
+    # docker-compose exec
+    dcomp-exec(){
+    local current=$(pwd_short)
+    docker exec -ti -w /home/rstudio$current toolbox_${1:-r} bash
+    }
+
 fi
 
 # nvim shortcut

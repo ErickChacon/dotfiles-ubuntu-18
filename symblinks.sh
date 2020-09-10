@@ -1,11 +1,13 @@
-#!/bin/sh
+# !/bin/sh
 # This scripts creates symbolinks for the dotfiles.
 
-# paths
+# define software paths
 
 path_dotfiles=$(pwd)
+echo $path_dotfiles
 path_bashrc=~/.bashrc
 path_bash_prof=~/.bash_profile
+path_bash_it=~/.bash
 path_local_bin=~/.local/bin
 path_palettes=~/.palettes
 path_unison=~/.unison/default.prf
