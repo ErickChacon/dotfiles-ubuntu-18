@@ -1,8 +1,9 @@
 #!/bin/bash
+
 project_name='Birth-weight'
 
 function has-session {
-    tmux has-session -t=$proj_name 2>/dev/null
+    tmux has-session -t $project_name  2>/dev/null
 }
 
 if has-session ; then
@@ -16,14 +17,9 @@ else
     tmux rename-window "Notes"
     tmux send-keys "nvim README.md" C-m
 
-    # window: scripts 1
+    # window: scripts
     tmux new-window -c "$proj/scripts"
-    tmux rename-window "Scripts I"
-    tmux send-keys 'nvim' C-m
-
-    # window: scripts 2
-    tmux new-window -c "$proj/scripts"
-    tmux rename-window "Scripts II"
+    tmux rename-window "Scripts"
     tmux send-keys 'nvim' C-m
 
     # window: makefile
