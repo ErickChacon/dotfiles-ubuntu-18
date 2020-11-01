@@ -1,5 +1,14 @@
 # Steps after installing ubuntu
 
+- Bootable usb
+
+```
+# identify your usb label (eg. sda)
+lsblk
+# create bootable usb
+sudo dd if=~/Downloads/ubuntu-20.04.1-desktop-amd64.iso of=/dev/sda status=progress
+```
+
 - Update and upgrade
 
 ```
