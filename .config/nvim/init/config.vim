@@ -93,10 +93,10 @@ imap <left> <nop>
 imap <right> <nop>
 
 " Mapping g-[hjkl] to select split in normal mode
-nmap <silent> gk :wincmd k<CR>
-nmap <silent> gj :wincmd j<CR>
-nmap <silent> gh :wincmd h<CR>
-nmap <silent> gl :wincmd l<CR>
+" nmap <silent> gk :wincmd k<CR>
+" nmap <silent> gj :wincmd j<CR>
+" nmap <silent> gh :wincmd h<CR>
+" nmap <silent> gl :wincmd l<CR>
 
 " initvim
 nnoremap <leader>ve :split $MYVIMRC<cr>

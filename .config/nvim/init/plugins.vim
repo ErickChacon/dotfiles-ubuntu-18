@@ -9,7 +9,7 @@ Plug 'ntpeters/vim-better-whitespace'  , {'commit': 'f5726c4'}  " trailing space
 Plug 'ap/vim-css-color'                , {'commit': '5a31c72'}  " TODO: closes rmd chunk
 
 " Ide features
-Plug 'scrooloose/nerdtree'             , {'commit': '67fa9b3'}  " file navigator
+" Plug 'scrooloose/nerdtree'             , {'commit': '67fa9b3'}  " file navigator
 Plug 'ton/vim-bufsurf'                 , {'commit': 'e93829b'}  " buffer navigator
 Plug 'christoomey/vim-tmux-navigator'  , {'commit': '4e1a877'}  " tmux-vim navigation
 Plug 'junegunn/fzf'                    , {'commit': '430e819',
@@ -121,11 +121,18 @@ call plug#end()
 " " let R_args = ['exec -it global-docker R']
 "
 " " 1) Fi
+" \     'pattern': ['^```{r', '^```$'],
+
+
+" let g:tex_no_math = 1
+" let g:tex_stylish = 1 " do not highlgiht
+"
 
 call textobj#user#plugin('chunk', {
 \   'angle': {
-\     'pattern': ['^```{r', '^```$'],
+\     'pattern': ['^```[{a-z]', '^```$'],
 \     'select-a': 'ac',
 \     'select-i': 'ic',
 \   },
 \ })
+

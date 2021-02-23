@@ -1,7 +1,7 @@
-" Neovim settings
-"
-" Maintainer:	Erick Chacón
-" Last Change:	2020 May 6
+" File: init.vim
+" Author: Erick A. Chacón Montalván
+" Description: Neovim settings
+" Last Modified: January 22, 2021
 
 " minimal
 so ~/.config/nvim/init/plugins.vim

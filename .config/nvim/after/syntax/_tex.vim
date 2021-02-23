@@ -1,8 +1,11 @@
-" " Additional tex syntax file
-" " Language:	      tex
-" " Maintainer: Erick Chacon
-" " Description:
-"
+" Additional tex syntax file
+" Language:	      tex
+" Maintainer: Erick Chacon
+" Description:
+
+" I added the following command to the main /usr/local/share/nvim/runtime/syntax/tex.vim
+" call TexNewMathZone("E","align",1)
+
 " " Matching chapter, part, section, subsection and corresponding  titles
 " syn match texContent  '\\\%(chapter\>\|part\|section\>\|subsection\>\|subsubsection\)' containedin=ALLBUT,texComment nextgroup=texContentNames
 " syn region texContentNames matchgroup=Delimiter start="{" end="}" contained
