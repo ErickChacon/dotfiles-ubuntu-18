@@ -1,7 +1,7 @@
 snippet yaml
         ---
         title: "${1}"
-        Author: "Erick A. Chacón-Montalván"
+        author: "Erick A. Chacón-Montalván"
         date: "\`r format(Sys.time(), '%d %B %Y, %H:%M:%S', usetz = TRUE)\`"
         output: rmarkdown::html_vignette
         ---
@@ -14,7 +14,17 @@ snippet yaml
         \`\`\`
         ${2}
 
-snippet r
+snippet cr
         \`\`\`{r}
+        ${1}
+        \`\`\`
+
+snippet cj
+        \`\`\`{julia}
+        ${1}
+        \`\`\`
+
+snippet cp
+        \`\`\`{python}
         ${1}
         \`\`\`

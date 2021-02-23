@@ -115,16 +115,22 @@ vim-devicons.
 # ssh
 - set server with:
   - sudo apt-get install openssh-server
-  - check the ip server: `ip addr show` or `ip a`
+  - check ssh server: ps -A | grep sshd
+  - check the ip server: `ip addr show` or `ip a`, `ifconfig`
+  - 192.168.1.47/24
   - from the client: `ssh ip`
   - it works when the username is the same, but more generally: `ssh username@ip`
-  - ssh key from the client: `ssh-copy-id -i ~/.ssh/id_rsa.pub ip`
+  - ssh key from the client: `ssh-copy-id -i ~/.ssh/id_rsa.pub ip` or `ssh-copy-id ip`
   - on the server: `sudo nvim /etc/ssh/sshd_config`
   - `PasswordAuthentication no`
   - `sudo systemctl restart ssh`
 - check proccesses running and kill them:
   - `ps aux` or `ps aux | grep top`
   - `kill #PIDnumber`
+
+
+ssh marilu@192.168.1.47
+
 # nice customization
 - numix theme and icons with unity-tweak-tool
 

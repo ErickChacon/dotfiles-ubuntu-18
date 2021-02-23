@@ -28,5 +28,6 @@ esac
 
 # date "+%Y %b %d (%a) $icon%I:%M%p"
 # date '+ %a, %d %b, %H:%M %Z'
-date "+ %a %d %b  $icon %H:%M %Z "
+date "+ %a %d %b │ $icon %H:%M %Z "
 #   
+# 

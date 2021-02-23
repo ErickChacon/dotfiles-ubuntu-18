@@ -19,6 +19,7 @@ wifi_state=$(cat /sys/class/net/w*/operstate 2>/dev/null)
 if [ $wifi_state = "up" ]; then
     wifiicon="$(awk '/^\s*w/ { print "直 " int($3 * 100 / 70) "%" }' /proc/net/wireless)";
     wifiname=" ("$(nmcli device wifi list | awk -F '[[:space:]][[:space:]]+' '/^\*/ {print $2}')")";
+    # $7 signal
 elif [ $wifi_state = "down" ]; then
     wifiicon="睊 ";
 fi
