@@ -1,0 +1,5 @@
+snippet fun function
+	function ${1:`expand('%') =~ 'autoload' ? substitute(matchstr(expand('%:p'),'autoload/\zs.*\ze.vim'),'[/\\]','#','g').'#' : ''`}${2:function_name}(${3})
+		${0}
+	endfunction
+

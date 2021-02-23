@@ -163,3 +163,7 @@ vpn() {
   nmcli --ask con up id "vpn"
 }
 
+ls_size() {
+    du -h -d 1 | sort -rh
+}
+

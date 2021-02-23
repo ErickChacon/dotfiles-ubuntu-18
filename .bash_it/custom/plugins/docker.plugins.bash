@@ -172,7 +172,15 @@ if [ -x "$(command -v docker)" ]; then
     # docker-compose exec
     dcomp-exec(){
     local current=$(pwd_short)
-    docker exec -ti -w /home/rstudio$current toolbox_${1:-r} bash
+    local what=${1:-r}
+    if [ $what = "r" ]; then
+        user=rstudio
+    elif [ $what = "julia" ]; then
+        user=julia
+    else
+        user=rstudio
+    fi
+    docker exec -ti -w /home/$user$current toolbox_$what bash
     }
 
 fi
