@@ -167,3 +167,6 @@ ls_size() {
     du -h -d 1 | sort -rh
 }
 
+xp-pen() {
+    sudo /opt/xp-pen/Pentablet_Driver.sh
+}
