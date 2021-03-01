@@ -91,6 +91,28 @@ function SlimeAllSend()
     call slime#send(cmd . "\n")
 endfunction
 
+function SlimeAllSendB()
+    let filepath = expand("%:p")
+    let filepath = substitute(filepath, expand('~'), '~', '')
+    if &filetype == "tex"
+        let auxpath = fnamemodify(filepath, ":t:r")
+        let cmd = "pdflatex " . filepath
+        let cmd = cmd . " && bibtex " . auxpath . " && " . cmd . " && " . cmd
+    elseif &filetype == "rmd"
+        " let cmd = 'rmarkdown::render("' . filepath . '")'
+        let path_head3 = fnamemodify(filepath, ":h:h:h")
+        let file_blogdown3 = join([path_head3, "config.toml"], "/")
+        if filereadable(expand(file_blogdown3))
+            let filepath_short = substitute(filepath, path_head3 . '/', '', '')
+            let filepath_short = substitute(filepath_short, '\~', '', '')
+            let cmd = 'blogdown:::build_rmds("' . filepath_short . '")'
+        else
+            let cmd = ""
+        endif
+    endif
+    call slime#send(cmd . "\n")
+endfunction
+
 function SlimeServeSend()
     let filepath = expand("%:p")
     let filepath = substitute(filepath, expand('~'), '~', '')
@@ -115,16 +137,18 @@ function SlimeServeSend()
     call slime#send(cmd . "\n")
 endfunction
 
-function SlimeAllSendB()
+function SlimeHugo()
     let filepath = expand("%:p")
     let filepath = substitute(filepath, expand('~'), '~', '')
-    if &filetype == "tex"
-        let auxpath = fnamemodify(filepath, ":t:r")
-        let cmd = "pdflatex " . filepath
-        let cmd = cmd . " && bibtex " . auxpath . " && " . cmd . " && " . cmd
+    if &filetype == "rmd"
+        let cmd = "system('/usr/bin/hugo server -w -p 8787 --bind=0.0.0.0 " .
+                    \ " --disableFastRender --forceSyncStatic --gc')"
+    else
+        let cmd = ""
     endif
     call slime#send(cmd . "\n")
 endfunction
+
 
 function GetHtmlName(filepath)
     let path_head = fnamemodify(a:filepath, ":h")
@@ -210,9 +234,10 @@ function SlimeSetwd()
     call slime#send(cmd . "\n")
 endfunction
 
-function Setwd(lang)
-    let wd = expand("%:p:h")
-    let wd_new = substitute(wd, expand('~'), '~', '')
+function Setwd(lang, ...)
+    let wd_new = expand("%:p:h")
+    let wd_new = get(a:, 1, wd_new) " for optional new working directory
+    let wd_new = substitute(wd_new, expand('~'), '~', '')
     if a:lang == 'r'
         let cmd = 'setwd("' . wd_new . '")'
     elseif a:lang == 'julia'
@@ -224,6 +249,25 @@ function Setwd(lang)
     return cmd
 endfunction
 
+function GitPath()
+    let path_file = expand("%:p")
+    let path_file = substitute(path_file, expand('~'), '~', '')
+    let path_head = fnamemodify(path_file, ":h")
+    let path_git = system('git -C ' . path_head . ' rev-parse --show-toplevel')
+    let path_git = split(path_git, "\n")[0]
+    return path_git
+endfunction
+
+function SlimeGitwd()
+    let path_git = GitPath()
+    if &filetype == 'rmd'
+        let cmd = Setwd(g:chunk_language, path_git)
+    else
+        let cmd = Setwd(&filetype, path_git)
+    endif
+    call slime#send(cmd . "\n")
+endfunction
+
 function SlimeHelpSend()
     if &filetype == 'rmd'
         let cmd = HelpSend(g:chunk_language)
@@ -232,7 +276,6 @@ function SlimeHelpSend()
     endif
     call slime#send(cmd . "\n")
 endfunction
-
 
 function HelpSend(lang)
     let object = expand("<cword>")
@@ -318,11 +361,13 @@ nmap <leader>hh \ssgg
 " nmap <leader>ff <Plug>SlimeFunctionSend
 nmap <leader>bb ['\ss]'<C-o>
 nmap <leader>aa :call SlimeAllSend()<CR>
-nmap <leader>aa :call SlimeAllSend()<CR>
+nmap <leader>ab :call SlimeAllSendB()<CR>
 nmap <leader>vv :call SlimeServeSend()<CR>
+nmap <leader>vh :call SlimeHugo()<CR>
 " nmap <leader>bb <Plug>SlimeSendCell
 nmap <silent> <leader>pwd :call SlimeGetwd()<CR>
 nmap <silent> <leader>cd :call SlimeSetwd()<CR>
+nmap <silent> <leader>cg :call SlimeGitwd()<CR>
 nmap <silent> <leader>rh :call SlimeHelpSend()<CR>
 nmap <silent> <leader>rp :call SlimePrintSend()<CR>
 nmap <silent> <leader>rt :call SlimeStructureSend()<CR>

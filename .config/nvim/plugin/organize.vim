@@ -54,17 +54,33 @@ let g:org_root = '~/Documents/Organizer'
 let g:org_academic = g:org_root . '/academic'
 let g:org_personal = g:org_root . '/personal'
 let g:org_todo = g:org_root . '/todo'
+let g:org_write = g:org_root . '/writing'
 
 command! Organize
       \ call Organize(g:org_root)
 
-nnoremap <unique><script> <Plug>Organizer :Organize<CR>
-nnoremap <unique><script> <Plug>gff :call Gofile()<CR>
+command! Academic
+      \ call Organize(g:org_academic)
 
-nmap <silent> <leader>wo <Plug>Organizer
-nmap <silent> <leader>wa :call Organize(g:org_academic)<CR>
-nmap <silent> <leader>wp :call Organize(g:org_personal)<CR>
-nmap <silent> <leader>wt :call Organize(g:org_todo)<CR>
-nmap <silent> <leader>wd :call Organize(g:org_todo, "daily.md")<CR>
-nmap <silent> <leader>wf :call Organize(g:org_todo, "daily.md")<CR>
+command! Personal
+      \ call Organize(g:org_personal)
+
+command! Writing
+      \ call Organize(g:org_write)
+
+command! Todo
+      \ call Organize(g:org_todo)
+
+command! Daily
+      \ call Organize(g:org_todo, "daily.md")
+
+" nnoremap <unique><script> <Plug>Organizer :Organize<CR>
+" nnoremap <unique><script> <Plug>gff :call Gofile()<CR>
+
+" nmap <silent> <leader>wo <Plug>Organizer
+" nmap <silent> <leader>wa :call Organize(g:org_academic)<CR>
+" nmap <silent> <leader>wp :call Organize(g:org_personal)<CR>
+" nmap <silent> <leader>wt :call Organize(g:org_todo)<CR>
+" nmap <silent> <leader>wd :call Organize(g:org_todo, "daily.md")<CR>
+" nmap <silent> <leader>wf :call Organize(g:org_todo, "daily.md")<CR>
 nmap <silent> fg :call Gofile() <CR>

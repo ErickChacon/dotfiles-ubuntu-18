@@ -1,4 +1,4 @@
-snippet yaml
+snippet yam
         ---
         title: "${1}"
         author: "Erick A. Chacón-Montalván"
@@ -13,6 +13,15 @@ snippet yaml
         options(width = 100)
         \`\`\`
         ${2}
+
+snippet yaml
+        ---
+        title: "${1}"
+        date: 2021-${2}
+        categories: cat
+        tags: tag
+        ---
+        ${3}
 
 snippet cr
         \`\`\`{r}
