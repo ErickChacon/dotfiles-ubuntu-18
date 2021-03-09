@@ -137,7 +137,7 @@ function SlimeServeSend()
     call slime#send(cmd . "\n")
 endfunction
 
-function SlimeHugo()
+function SlimeHugoSend()
     let filepath = expand("%:p")
     let filepath = substitute(filepath, expand('~'), '~', '')
     if &filetype == "rmd"
@@ -149,6 +149,13 @@ function SlimeHugo()
     call slime#send(cmd . "\n")
 endfunction
 
+function SlimeHugoBashSend()
+    let filepath = expand("%:p")
+    let filepath = substitute(filepath, expand('~'), '~', '')
+    let cmd = "/usr/bin/hugo server -w -p 8787 --bind=0.0.0.0 " .
+                \ "--disableFastRender --forceSyncStatic --gc"
+    call slime#send(cmd . "\n")
+endfunction
 
 function GetHtmlName(filepath)
     let path_head = fnamemodify(a:filepath, ":h")
@@ -349,9 +356,22 @@ let g:slime_target = "tmux"
 let g:slime_no_mappings = 1
 let g:slime_cell_delimiter = "#%%"
 nmap <leader>rf <Plug>SlimeConfig
+" basic commands
 nmap <silent> <leader>rq :call SlimeQuitSend()<CR>
 nmap <silent> <leader>re :call SlimeExitSend()<CR>
 nmap <silent> <leader>rm :call SlimeMakeSend()<CR>
+nmap <silent> <leader>rh :call SlimeHelpSend()<CR>
+nmap <silent> <leader>rp :call SlimePrintSend()<CR>
+nmap <silent> <leader>rt :call SlimeStructureSend()<CR>
+" firefox integration
+nmap <leader>fo :call FirefoxOpen()<CR>
+nmap <leader>fs :call FirefoxUpdateSync()<CR>
+nmap <leader>fk :call FirefoxUpdateKill()<CR>
+" working directory
+nmap <silent> <leader>pwd :call SlimeGetwd()<CR>
+nmap <silent> <leader>cd :call SlimeSetwd()<CR>
+nmap <silent> <leader>cg :call SlimeGitwd()<CR>
+" send code
 nmap <leader>ll <Plug>SlimeLineSend
 nmap <leader>pp <Plug>SlimeParagraphSend
 xmap <leader>ss <Plug>SlimeRegionSend
@@ -360,18 +380,10 @@ nmap <leader>cc \ssac
 nmap <leader>hh \ssgg
 " nmap <leader>ff <Plug>SlimeFunctionSend
 nmap <leader>bb ['\ss]'<C-o>
+" nmap <leader>bb <Plug>SlimeSendCell
+" run, render or serve
 nmap <leader>aa :call SlimeAllSend()<CR>
 nmap <leader>ab :call SlimeAllSendB()<CR>
 nmap <leader>vv :call SlimeServeSend()<CR>
-nmap <leader>vh :call SlimeHugo()<CR>
-" nmap <leader>bb <Plug>SlimeSendCell
-nmap <silent> <leader>pwd :call SlimeGetwd()<CR>
-nmap <silent> <leader>cd :call SlimeSetwd()<CR>
-nmap <silent> <leader>cg :call SlimeGitwd()<CR>
-nmap <silent> <leader>rh :call SlimeHelpSend()<CR>
-nmap <silent> <leader>rp :call SlimePrintSend()<CR>
-nmap <silent> <leader>rt :call SlimeStructureSend()<CR>
-nmap <leader>fo :call FirefoxOpen()<CR>
-nmap <leader>fs :call FirefoxUpdateSync()<CR>
-nmap <leader>fk :call FirefoxUpdateKill()<CR>
+nmap <leader>vh :call SlimeHugoSend()<CR>
 
