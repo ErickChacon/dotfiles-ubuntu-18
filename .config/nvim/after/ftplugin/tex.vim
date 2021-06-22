@@ -1,7 +1,12 @@
-setlocal spell
-setlocal foldlevel=0
-setlocal conceallevel=2
-setlocal formatoptions-=t " text wraping: it changes depending of the filetype
+
+setlocal shiftwidth=2                             " indentation size
+setlocal softtabstop=2                            " number of spaces per tab
+
+" setlocal spell
+" setlocal foldlevel=0
+" setlocal conceallevel=2
+" setlocal formatoptions-=t " text wraping: it changes depending of the filetype
+" let g:surround_{char2nr('c')} = "\\\1command\1{\r}"
 
 " Latex shortcuts
 " nnoremap <localleader>lt :VimtexTocOpen<CR>
@@ -21,4 +26,3 @@ setlocal formatoptions-=t " text wraping: it changes depending of the filetype
 "
 " " Basic setup
 " set foldtext=MyFoldText()
-let g:surround_{char2nr('c')} = "\\\1command\1{\r}"

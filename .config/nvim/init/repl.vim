@@ -62,6 +62,11 @@ function! SlimeOverride_EscapeText_rmd(text)
     return "\n" . trimmed
 endfunction
 
+function! SlimeOverride_EscapeText_jmd(text)
+    call SlimeOverride_EscapeText_rmd(text)
+endfunction
+
+
 function! CountChunks()
     let l:count = 0
     Nomove g/^[^$,\"]/let l:count += 1
@@ -109,6 +114,11 @@ function SlimeAllSendB()
         else
             let cmd = ""
         endif
+    elseif &filetype == "julia"
+        let filepath = substitute(filepath, '\~', '$(homedir())', '')
+        let path_head = fnamemodify(filepath, ":h")
+        let cmd = 'using Weave; weave("' . filepath . '", out_path = "' . path_head .
+                    \ '", fig_path = "figures")'
     endif
     call slime#send(cmd . "\n")
 endfunction
@@ -179,6 +189,8 @@ function FirefoxOpen()
         let filepath_html = GetHtmlName(filepath)
     elseif &filetype == "html"
         let filepath_html = GetHtmlName(filepath)
+    elseif &filetype == "julia"
+        let filepath_html = GetHtmlName(filepath)
     else
         let filepath_html = ""
     endif
@@ -196,6 +208,8 @@ function FirefoxUpdateSync()
     if &filetype == "rmd"
         let filepath_html = GetHtmlName(filepath)
     elseif &filetype == "html"
+        let filepath_html = GetHtmlName(filepath)
+    elseif &filetype == "julia"
         let filepath_html = GetHtmlName(filepath)
     else
         let filepath_html = ""
@@ -344,10 +358,25 @@ endfunction
 function SlimeMakeSend()
     " if &filetype == 'r'
     "     let cmd = "reprodown::makefile(); system('make')\n"
-    " elseif &filetype == 'rmd'
+    " elseif &filetypm == 'rmd'
     "     let cmd = "reprodown::makefile(); system('make')\n"
     " endif
     let cmd = "reprodown::makefile(); system('make')\n"
+    call slime#send(cmd)
+endfunction
+
+function SlimeMakeSendTar()
+    let cmd = "reprodown::makefile(test = 'tar'); system('make')\n"
+    call slime#send(cmd)
+endfunction
+
+function SlimeMakeSendPre()
+    let cmd = "reprodown::makefile(test = 'pre'); system('make')\n"
+    call slime#send(cmd)
+endfunction
+
+function SlimeMakeSendBoth()
+    let cmd = "reprodown::makefile(test = c('pre', 'tar')); system('make')\n"
     call slime#send(cmd)
 endfunction
 
