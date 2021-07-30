@@ -174,7 +174,7 @@ function GetHtmlName(filepath)
     " if bookdown, change folder and file names
     let file_bookdown = join([path_head, "_bookdown.yml"], "/")
     if filereadable(expand(file_bookdown))
-        let path_head = join([path_head, "_book"], "/")
+        let path_head = join([path_head, "public"], "/")
         " let path_tail = substitute(path_tail, "^[0-9]*-*", "", "")
     endif
 
@@ -196,7 +196,7 @@ function FirefoxOpen()
     endif
 
     if filepath_html != ""
-        let cmd_firefox = 'firefox ' . filepath_html
+        let cmd_firefox = 'firefox ' . filepath_html . ' &'
         call system(cmd_firefox)
     endif
 endfunction
