@@ -1,0 +1,38 @@
+#!/bin/sh
+
+project_name='Gei-estimation'
+
+has_session() {
+    tmux has-session -t $project_name 2>/dev/null
+}
+
+if has_session; then
+    tmux attach-session -t $project_name -d
+else
+    bigproj="$HOME/Documents/Projects"
+    proj="$bigproj/nama-gei-estimation"
+    tmux new-session -d -c $proj -s $project_name
+
+    # window: notes
+    tmux rename-window "Notes"
+    tmux send-keys "nvim README.md" C-m
+
+    # window: scripts 1
+    tmux new-window -c "$proj/scripts"
+    tmux rename-window "Scripts I"
+    tmux send-keys 'nvim' C-m
+
+    # window: scripts 2
+    tmux new-window -c "$proj/scripts"
+    tmux rename-window "Scripts II"
+    tmux send-keys 'nvim' C-m
+
+    # window: makefile
+    tmux new-window -c "$proj"
+    tmux rename-window "Makefile"
+    tmux send-keys "nvim Makefile" C-m
+
+    # focus on window:
+    tmux select-window -t "Scripts I"
+    tmux attach-session -d
+fi

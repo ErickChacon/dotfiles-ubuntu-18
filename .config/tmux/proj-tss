@@ -1,0 +1,23 @@
+#!/bin/sh
+
+project_name='Spatial-Statistics'
+
+has_session() {
+    tmux has-session -t $project_name 2>/dev/null
+}
+
+if has_session ; then
+    tmux a -t $project_name -d
+else
+    bigproj="$HOME/Documents/Teaching/uni-undergraduate"
+    proj="$bigproj/08-spatial-statistics"
+    tmux new-session -d -c $proj -s $project_name
+
+    # window: notes
+    tmux rename-window "Notes"
+    tmux send-keys "nvim README.md" C-m
+
+    # focus on window:
+    tmux attach-session -d
+fi
+
