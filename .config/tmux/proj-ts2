@@ -17,7 +17,23 @@ else
     tmux rename-window "Notes"
     tmux send-keys "nvim README.md" C-m
 
+    # window: scripts 1
+    tmux new-window -c "$proj"
+    tmux rename-window "Scripts I"
+    tmux send-keys "nvim" C-m
+
+    # window: scripts 2
+    tmux new-window -c "$proj"
+    tmux rename-window "Scripts II"
+    tmux send-keys "nvim" C-m
+
+    # window: makefile
+    tmux new-window -c "$proj"
+    tmux rename-window "Makefile"
+    tmux send-keys "nvim Makefile" C-m
+
     # focus on window:
+    tmux select-window -t "Scripts I"
     tmux attach-session -d
 fi
 
