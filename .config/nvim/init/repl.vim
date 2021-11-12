@@ -62,9 +62,66 @@ function! SlimeOverride_EscapeText_rmd(text)
     return "\n" . trimmed
 endfunction
 
-function! SlimeOverride_EscapeText_jmd(text)
-    call SlimeOverride_EscapeText_rmd(text)
+function! SlimeOverride_EscapeText_markdown(text)
+
+    if a:text !~ "```"
+        let trimmed = a:text
+    else
+        let splited = split(a:text, "\n")
+        let nlines = len(splited)
+        let rlines = nlines
+        let line_number = 0
+
+        " initialize inside or outside chunk
+        let first_open = match(a:text, "```[{a-z]")
+        let first_close = match(a:text, "```\n")
+
+        let chunk = 0
+        if first_open < 0
+            let chunk = 1
+        elseif first_close > -1 && first_close < first_open
+            let chunk = 1
+        endif
+        let chunk_next = chunk
+
+        " regex
+        let chunk_open = "^```\\a\\+$"
+        let chunk_close = "^```"
+
+        " clean lines
+        while rlines > 0
+            " define is inside of chunk
+            if splited[line_number] =~ chunk_open
+                let chunk = 0
+                let chunk_next = 1
+            elseif splited[line_number] =~ chunk_close
+                let chunk = 0
+                let chunk_next = 0
+            elseif splited[line_number] =~ "^#"
+                let chunk = 0
+            elseif splited[line_number] == ""
+                let chunk = 0
+            endif
+            " if outside chunk remove line
+            if chunk == 0
+                call remove(splited, line_number)
+            else
+                let line_number = line_number + 1
+            endif
+            " update next chunk
+            let chunk = chunk_next
+            let rlines = rlines - 1
+        endw
+
+        let trimmed = join(splited, "\n") . "\n"
+    endif
+
+    return "\n" . trimmed
 endfunction
+
+" function! SlimeOverride_EscapeText_md(text)
+"     call SlimeOverride_EscapeText_rmd(text)
+" endfunction
 
 
 function! CountChunks()
@@ -117,8 +174,10 @@ function SlimeAllSendB()
     elseif &filetype == "julia"
         let filepath = substitute(filepath, '\~', '$(homedir())', '')
         let path_head = fnamemodify(filepath, ":h")
-        let cmd = 'using Weave; weave("' . filepath . '", out_path = "' . path_head .
-                    \ '", fig_path = "figures")'
+        let cmd = 'using Weave; ENV["GKSwstype"]="100"; weave("' . filepath . '", out_path = "' . path_head .
+                    \ '", fig_path = "figures"); ENV["GKSwstype"]="gksqt"'
+        " let cmd = 'using Weave; notebook("' . filepath . '")'
+        " let cmd = 'using Weave; convert_doc("' . filepath . '", "plop.ipynb")'
     endif
     call slime#send(cmd . "\n")
 endfunction
@@ -356,13 +415,12 @@ function SlimeExitSend()
 endfunction
 
 function SlimeMakeSend()
-    " if &filetype == 'r'
-    "     let cmd = "reprodown::makefile(); system('make')\n"
-    " elseif &filetypm == 'rmd'
-    "     let cmd = "reprodown::makefile(); system('make')\n"
-    " endif
-    let cmd = "reprodown::makefile(); system('make')\n"
-    call slime#send(cmd)
+    if &filetype == 'tex'
+        let cmd = "make"
+    else
+        let cmd = "reprodown::makefile(); system('make')"
+    endif
+    call slime#send(cmd . "\n")
 endfunction
 
 function SlimeMakeSendTar()

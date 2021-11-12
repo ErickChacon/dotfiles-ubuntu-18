@@ -177,6 +177,8 @@ if [ -x "$(command -v docker)" ]; then
         user=rstudio
     elif [ $what = "julia" ]; then
         user=julia
+    elif [ $what = "juliat" ]; then
+        user=julia
     else
         user=rstudio
     fi
