@@ -10,7 +10,7 @@ if [[ $path_local =~ $cloud_path_regex ]]; then
         folder_remote=$(echo $rel_path | sed -e 's/^.*'$remote'//')
         folder_remote=$(echo $folder_remote | sed -e 's/\///')
         echo Executing: rclone sync $path_local $remote:$folder_remote
-        rclone sync $path_local $remote:$folder_remote --progress
+        echo "rclone sync $path_local $remote:$folder_remote --progress"
     else
         echo "Root of cloud: not syncing"
     fi
